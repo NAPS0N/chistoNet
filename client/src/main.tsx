@@ -9,29 +9,32 @@ import './index.css';
 import { store } from './App/redux/store';
 import Nav from './components/Navbar/Nav';
 import ErrorPage from './components/Navbar/ErrorPage';
-import ListOfProduct from './components/Product/ListOfProducts';
+import ListOfProducts from './components/Product/ListOfProducts';
+import Layout from './components/Layout';
+import SignUp from '../pages/Auth/SignUp';
+import LogIn from '../pages/Auth/LogIn';
 
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Nav />,
+    element: <Layout/>,
     errorElement: <ErrorPage />,
     children: [
       {
         path: '/products',
-        element: <ListOfProduct />,
+        element: <ListOfProducts/>,
       },
-      // {
-      //   path: 'auth',
-      //   element: <LogIn />,
+      {
+        path: '/login',
+        element: <LogIn />,
       
-      // },
-      // {
-      //   path: 'reg',
-      //   element: <Reg />,
+      },
+      {
+        path: 'reg',
+        element: <SignUp />,
       
-      // },
+      },
     
     ],
   },

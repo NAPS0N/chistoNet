@@ -2,9 +2,9 @@ import React from 'react';
 
 function ListOfProducts(props) {
   return (
-    <div>
+    <h1>
       Products
-    </div>
+    </h1>
   );
 }
 

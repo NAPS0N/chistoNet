@@ -12,7 +12,8 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
+import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
 
 const pages = [
   {title: 'Товары', path: '/products'}, 
@@ -45,7 +46,7 @@ function Nav(): JSX.Element {
     <AppBar position="fixed">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+        <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography
             variant="h6"
             noWrap
@@ -62,56 +63,18 @@ function Nav(): JSX.Element {
             }}
           >
             ChistoNet
-            {/* <Link to='/products'>Продукты</Link> */}
           </Typography>
-
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-              }}
-            >
-              {pages.map(({title, path}) => (
-                <MenuItem key={title} onClick={handleCloseNavMenu}>
-                  <Link to={path}><Typography textAlign="center">{title}</Typography></Link>
-                  
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-          <Typography
-            variant="h5"
+        <PopupState variant="popover" popupId="demo-popup-menu">
+  {(popupState) => (
+    <>
+                <Typography
+            variant="h6"
             noWrap
             component="a"
             href="#app-bar-with-responsive-menu"
             sx={{
               mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
+              display: { xs: 'none', md: 'flex' },
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
@@ -119,56 +82,144 @@ function Nav(): JSX.Element {
               textDecoration: 'none',
             }}
           >
-            ChistoNet
+      <Link to='/products' variant="contained" {...bindTrigger(popupState)}>
+        Продукты
+      </Link>
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map(({title, path}) => (
-              <Button
-                key={title}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {title}
-              </Button>
-            ))}
-          </Box>
 
+      <Menu {...bindMenu(popupState)}>
+        <MenuItem onClick={popupState.close}>Инвентарь</MenuItem>
+        <MenuItem onClick={popupState.close}>Расходные материалы</MenuItem>
+        <MenuItem onClick={popupState.close}>Моющие средства</MenuItem>
+      </Menu>
+    </>
+  )}
+    </PopupState>
+
+    <PopupState variant="popover" popupId="demo-popup-menu">
+  {(popupState) => (
+    <>
+                <Typography
+            variant="h6"
+            noWrap
+            component="a"
+            href="#app-bar-with-responsive-menu"
+            sx={{
+              mr: 2,
+              display: { xs: 'none', md: 'flex' },
+              fontFamily: 'monospace',
+              fontWeight: 700,
+              letterSpacing: '.3rem',
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
+          >
+      <Link to='/products' variant="contained" {...bindTrigger(popupState)}>
+        Оборудование
+      </Link>
+          </Typography>
+
+      <Menu {...bindMenu(popupState)}>
+        <MenuItem onClick={popupState.close}>Новое</MenuItem>
+        <MenuItem onClick={popupState.close}>Б/У</MenuItem>
+      </Menu>
+    </>
+  )}
+    </PopupState>
+
+    <PopupState variant="popover" popupId="demo-popup-menu">
+  {(popupState) => (
+    <>
+                <Typography
+            variant="h6"
+            noWrap
+            component="a"
+            href="#app-bar-with-responsive-menu"
+            sx={{
+              mr: 2,
+              display: { xs: 'none', md: 'flex' },
+              fontFamily: 'monospace',
+              fontWeight: 700,
+              letterSpacing: '.3rem',
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
+          >
+      <Link to='/products' variant="contained" {...bindTrigger(popupState)}>
+        Аренда
+      </Link>
+          </Typography>
+
+      <Menu {...bindMenu(popupState)}>
+        <MenuItem onClick={popupState.close}>Пылесос</MenuItem>
+        <MenuItem onClick={popupState.close}>Химчистка</MenuItem>
+        <MenuItem onClick={popupState.close}>Парогенератор</MenuItem>
+        <MenuItem onClick={popupState.close}>Роторная машина</MenuItem>
+        <MenuItem onClick={popupState.close}>Мойка высокого давления</MenuItem>
+        <MenuItem onClick={popupState.close}>Поломоечная машина</MenuItem>
+      </Menu>
+    </>
+  )}
+    </PopupState>
+
+    <PopupState variant="popover" popupId="demo-popup-menu">
+  {(popupState) => (
+    <>
+                <Typography
+            variant="h6"
+            noWrap
+            component="a"
+            href="#app-bar-with-responsive-menu"
+            sx={{
+              mr: 2,
+              display: { xs: 'none', md: 'flex' },
+              fontFamily: 'monospace',
+              fontWeight: 700,
+              letterSpacing: '.3rem',
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
+          >
+      <Link to='/products' variant="contained" {...bindTrigger(popupState)}>
+        Работа
+      </Link>
+          </Typography>
+
+      <Menu {...bindMenu(popupState)}>
+        <MenuItem onClick={popupState.close}>Вакансии</MenuItem>
+      </Menu>
+    </>
+  )}
+    </PopupState>
+    <Typography
+            variant="h6"
+            noWrap
+            component="a"
+            href="#app-bar-with-responsive-menu"
+            sx={{
+              mr: 2,
+              display: { xs: 'none', md: 'flex' },
+              fontFamily: 'monospace',
+              fontWeight: 700,
+              letterSpacing: '.3rem',
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
+          >
+      <Link to='/products'>
+        Новости
+      </Link>
+          </Typography>
           <Box>
-            <Button color='inherit' variant='outlined'>Log in</Button>
+            <Link to='/login'><Button color='inherit' variant='outlined'>Войти </Button></Link>
+            
           </Box>
-          <Button color='secondary'> Sign In</Button>
-
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
+          <Box>
+            <Link to='/reg'><Button color='inherit' > Зарегестрироваться </Button></Link>
           </Box>
         </Toolbar>
       </Container>
+    
     </AppBar>
   );
 }
