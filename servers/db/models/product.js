@@ -16,12 +16,48 @@ module.exports = (sequelize, DataTypes) => {
   }
   Product.init(
     {
-      userId: DataTypes.INTEGER,
-      categoryId: DataTypes.INTEGER,
-      title: DataTypes.TEXT,
-      price: DataTypes.TEXT,
-      description: DataTypes.TEXT,
-      geo: DataTypes.TEXT,
+      userId: {
+        allowNull: false,
+        type: DataTypes.INTEGER,
+        references: {
+          model: 'Users',
+          key: 'id',
+        },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
+      },
+      categoryId: {
+        allowNull: false,
+        type: DataTypes.INTEGER,
+        references: {
+          model: 'Categories',
+          key: 'id',
+        },
+      },
+      title: {
+        allowNull: false,
+        type: DataTypes.TEXT,
+      },
+      price: {
+        allowNull: false,
+        type: DataTypes.TEXT,
+      },
+      description: {
+        allowNull: false,
+        type: DataTypes.TEXT,
+      },
+      address: {
+        allowNull: true,
+        type: DataTypes.TEXT,
+      },
+      lax: {
+        allowNull: true,
+        type: DataTypes.INTEGER,
+      },
+      lon: {
+        allowNull: true,
+        type: DataTypes.INTEGER,
+      },
     },
     {
       sequelize,
