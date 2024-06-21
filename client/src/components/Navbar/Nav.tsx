@@ -235,7 +235,7 @@ function Nav(): JSX.Element {
             </Link>
           </Box>
           <Box>
-            <Link to="/reg" className="menuLink">
+            <Link to="/registration" className="menuLink">
               <Button color="inherit"> Зарегестрироваться </Button>
             </Link>
           </Box>

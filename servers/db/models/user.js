@@ -1,7 +1,5 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     /**
@@ -12,14 +10,41 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       this.hasMany(models.Product, { foreignKey: 'categoryId' });
       this.hasMany(models.Chat, { foreignKey: 'userId' });
+      this.hasOne(model.Individual, {foreignKey: 'userId'})
+      this.hasOne(model.Company, {foreignKey: 'userId'})
     }
   }
-  User.init({
-    email: DataTypes.TEXT,
-    password: DataTypes.TEXT
-  }, {
-    sequelize,
-    modelName: 'User',
-  });
+  User.init(
+    {
+      phoneNumber: {
+        allowNull: false,
+        type: DataTypes.INTEGER,
+      },
+      email: {
+        allowNull: false,
+        type: DataTypes.TEXT,
+      },
+      firstName: {
+        allowNull: false,
+        type: DataTypes.TEXT,
+      },
+      lastName: {
+        allowNull: false,
+        type: DataTypes.TEXT,
+      },
+      password: {
+        allowNull: false,
+        type: DataTypes.TEXT,
+      },
+      isBlocked: {
+        defaultValue: false,
+        type: DataTypes.BOOLEAN,
+      },
+    },
+    {
+      sequelize,
+      modelName: 'User',
+    }
+  );
   return User;
 };

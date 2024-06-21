@@ -12,11 +12,17 @@ import { store } from './App/redux/store';
 import ErrorPage from './components/Navbar/ErrorPage';
 import ListOfProducts from './components/Product/ListOfProducts';
 import Layout from './components/Layout';
-import SignUp from '../pages/Auth/SignUp';
-import LogIn from '../pages/Auth/LogIn';
+import Login from './components/Auth/Login';
 import Registration from './components/Auth/Registration';
+
 import HomePageChat from '../pages/Chat/HomePageChat';
 import ChatPage from '../pages/Chat/ChatPage';
+
+
+
+
+
+
 
 const router = createBrowserRouter([
   {
@@ -33,7 +39,7 @@ const router = createBrowserRouter([
         element: <Login />,
       },
       {
-        path: 'reg',
+        path: '/registration',
         element: <Registration />,
       },
       {

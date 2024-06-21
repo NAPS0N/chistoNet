@@ -33,10 +33,10 @@ export const fetchRegister = async ({
   email: string;
   password: string;
 }): Promise<ServerAuthResponse> => {
-  const response: AxiosResponse<ServerAuthResponse> = await axios.post('/api/auth/register', {
+  const response: AxiosResponse<ServerAuthResponse> = await axios.post('/api/auth/registration', {
     email,
     password,
-  });
+  }); 
 
   return response.data;
 };

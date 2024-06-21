@@ -25,7 +25,7 @@ const logInThunk = createAsyncThunk('login', async (userLoginData: UserLogInForm
 );
 const logOutThunk = createAsyncThunk('logout', async () => fetchLogOut());
 // const tokenLoadThunk = createAsyncThunk('token', async () => fetchToken());
-const registrationThunk = createAsyncThunk('reg', async (userRegData: User, { dispatch }) => {
+const registrationThunk = createAsyncThunk('registration', async (userRegData: User, { dispatch }) => {
   const resReg = await fetchRegister(userRegData); // Регистрация
   const loginData: UserLogInForm = {
     email: userRegData.email,
