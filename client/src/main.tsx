@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
-import { Chat, Home, Login } from '@mui/icons-material';
+import { Chat, Home } from '@mui/icons-material';
 import App from './App/App';
 import './index.css';
 
