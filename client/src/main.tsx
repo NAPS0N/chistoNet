@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { RouterProvider, createBrowserRouter, useParams } from 'react-router-dom';
 
+import { Chat, Home } from '@mui/icons-material';
 import App from './App/App';
 import './index.css';
 
@@ -11,11 +12,16 @@ import { store, useAppSelector } from './App/redux/store';
 import ErrorPage from './components/Navbar/ErrorPage';
 import ListOfProducts from './components/Product/ListOfProducts';
 import Layout from './components/Layout';
-import SignUp from '../pages/Auth/SignUp';
-import LogIn from '../pages/Auth/LogIn';
+import Login from './components/Auth/Login';
 import Registration from './components/Auth/Registration';
-import { Login } from '@mui/icons-material';
 import ProductItem from './components/Product/ProductItem';
+import HomePageChat from '../pages/Chat/HomePageChat';
+import ChatPage from '../pages/Chat/ChatPage';
+
+
+
+
+
 
 
 // { id } = useParams()
@@ -23,12 +29,12 @@ import ProductItem from './components/Product/ProductItem';
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Layout/>,
+    element: <Layout />,
     errorElement: <ErrorPage />,
     children: [
       {
         path: '/products',
-        element: <ListOfProducts/>,
+        element: <ListOfProducts />,
       },
       // {
       //   path: '/products',
@@ -41,20 +47,25 @@ const router = createBrowserRouter([
       {
         path: '/login',
         element: <Login />,
-      
       },
       {
-        path: 'reg',
+        path: '/registration',
         element: <Registration />,
-      
       },
-    
+      {
+        path: '/homepagechat',
+        element: <HomePageChat />,
+      },
+      {
+        path: '/chat',
+        element: <ChatPage />,
+      },
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <Provider store={store}>
-     <RouterProvider router={router} />
-    </Provider>,
+    <RouterProvider router={router} />
+  </Provider>,
 );

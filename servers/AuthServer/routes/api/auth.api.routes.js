@@ -5,6 +5,7 @@ const generateTokens = require("../../../utils/generateTokens");
 const cookiesConfig = require("../../configs/cookiesConfig");
 const basicValidateFields = require("../../utils/basicValidateFields");
 
+
 authRoute.post("/login", async (req, res) => {
   const { email, password } = req.body;
   try {
@@ -28,8 +29,9 @@ authRoute.post("/login", async (req, res) => {
   }
 });
 
-authRoute.post("/register", async (req, res) => {
+authRoute.post("/registration", async (req, res) => {
   const { email, password } = req.body;
+  console.log(email, password );
   const errors = basicValidateFields(req.body);
   if (Object.keys(errors).length > 0) {
     return res.status(400).json(errors);
