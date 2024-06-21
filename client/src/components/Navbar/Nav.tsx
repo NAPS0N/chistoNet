@@ -154,8 +154,7 @@ function Nav(): JSX.Element {
             </PopupState>
             <PopupState variant="popover" popupId="demo-popup-menu">
               {(popupState) => (
-                <>
-                  <Typography
+                <Typography
                     variant="h6"
                     noWrap
                     component="a"
@@ -173,17 +172,10 @@ function Nav(): JSX.Element {
                     <Link
                       to="/products"
                       className="menuLink"
-                      variant="contained"
-                      {...bindTrigger(popupState)}
                     >
-                      Работа
+                      Вакансии
                     </Link>
                   </Typography>
-
-                  <Menu {...bindMenu(popupState)}>
-                    <MenuItem onClick={popupState.close}>Вакансии</MenuItem>
-                  </Menu>
-                </>
               )}
             </PopupState>
             <Typography
