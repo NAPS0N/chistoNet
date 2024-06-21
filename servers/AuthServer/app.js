@@ -32,6 +32,6 @@ const server = http.createServer(app);
 // // Ловим событие подключения к веб-сокету см connectionCb  wss.emit("connection", ws, request, user.user);
 // wss.on("connection", wssCb);
 
-server.listen(process.env.PORT, () => {
+server.listen(process.env.PORTauth, () => {
   console.log(`Тигрята очень классно пляшут на ${process.env.PORTauth} порту!!!`);
 });

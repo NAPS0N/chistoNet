@@ -11,10 +11,11 @@ import { store } from './App/redux/store';
 import ErrorPage from './components/Navbar/ErrorPage';
 import ListOfProducts from './components/Product/ListOfProducts';
 import Layout from './components/Layout';
-import SignUp from '../pages/Auth/SignUp';
-import LogIn from '../pages/Auth/LogIn';
+import Login from './components/Auth/Login';
 import Registration from './components/Auth/Registration';
-import { Login } from '@mui/icons-material';
+
+
+
 
 
 const router = createBrowserRouter([
@@ -33,7 +34,7 @@ const router = createBrowserRouter([
       
       },
       {
-        path: 'reg',
+        path: '/registration',
         element: <Registration />,
       
       },
