@@ -1,17 +1,19 @@
 // импорт устаревшего метода legacy_createStore + переименование
 import { useDispatch, useSelector, type TypedUseSelectorHook } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
-// import productReducer from './slicers/ProductSlice';
 // import counterReducer from './slicers/CounterSlice';
 // import productReducer from './slicers/ProductSlice';
 // import categoryReducer from './slicers/CategorySlice';
+import authSlicer from '../../App/redux/slicers/AuthSlicer';
+
 
 export const store = configureStore({
   reducer: {
-    // products: productReducer,
     // counter: counterReducer,
-
+    // products: productReducer,
     // categories: categoryReducer,
+    auth: authSlicer,
+  
   },
 });
 
