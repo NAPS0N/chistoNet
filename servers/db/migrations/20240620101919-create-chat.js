@@ -13,7 +13,17 @@ module.exports = {
         allowNull: false,
         type: Sequelize.TEXT,
       },
-      userId: {
+      fromId: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Users',
+          key: 'id',
+        },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
+      },
+     toId: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
