@@ -7,12 +7,14 @@ import App from './App/App';
 import './index.css';
 
 import { store } from './App/redux/store';
-import Nav from './components/Navbar/Nav';
+// k
 import ErrorPage from './components/Navbar/ErrorPage';
 import ListOfProducts from './components/Product/ListOfProducts';
 import Layout from './components/Layout';
 import SignUp from '../pages/Auth/SignUp';
 import LogIn from '../pages/Auth/LogIn';
+import Registration from './components/Auth/Registration';
+import { Login } from '@mui/icons-material';
 
 
 const router = createBrowserRouter([
@@ -27,12 +29,12 @@ const router = createBrowserRouter([
       },
       {
         path: '/login',
-        element: <LogIn />,
+        element: <Login />,
       
       },
       {
         path: 'reg',
-        element: <SignUp />,
+        element: <Registration />,
       
       },
     

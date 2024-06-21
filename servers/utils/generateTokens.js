@@ -1,6 +1,6 @@
 require('dotenv').config();
 const jwt = require('jsonwebtoken');
-const jwtConfig = require('../config/jwtConfig');
+const jwtConfig = require('../AuthServer/configs/jwtConfig');
 
 /**
  *

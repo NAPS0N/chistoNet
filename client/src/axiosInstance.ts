@@ -1,9 +1,9 @@
 import type { AxiosError, AxiosInstance, InternalAxiosRequestConfig } from 'axios';
 
 import axios from 'axios';
-import type { RootState } from './app/redux/store';
-import { store } from './app/redux/store';
-import { setAccessToken } from './app/redux/slicers/AuthSlicer';
+import type { RootState } from './App/redux/store';
+import { store } from './App/redux/store';
+import { setAccessToken } from './App/redux/slicers/AuthSlicer';
 import type { User } from './components/Auth/UserType';
 
 type RetryConfig = {
