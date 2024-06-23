@@ -10,7 +10,8 @@ module.exports = (sequelize, DataTypes) => {
   Chat.init(
     {
       message: DataTypes.TEXT,
-      userId: DataTypes.INTEGER,
+      fromId: DataTypes.INTEGER,
+      toId: DataTypes.INTEGER,
     },
     {
       sequelize,
