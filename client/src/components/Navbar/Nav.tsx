@@ -22,6 +22,7 @@ const pages = [
   { title: 'Товары', path: '/products' },
   { title: 'Вакансии', path: '/vacancies' },
   { title: 'Новости', path: '/news' },
+  { title: 'Чатик', path: '/chat' },
 ];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
@@ -203,6 +204,25 @@ function Nav(): JSX.Element {
             >
               <Link to="/products" className="menuLink">
                 Новости
+              </Link>
+            </Typography>
+            <Typography
+              variant="h6"
+              noWrap
+              component="a"
+              href="#app-bar-with-responsive-menu"
+              sx={{
+                mr: 2,
+                display: { xs: 'none', md: 'flex' },
+                fontFamily: 'monospace',
+                fontWeight: 700,
+                letterSpacing: '.3rem',
+                color: 'inherit',
+                textDecoration: 'none',
+              }}
+            >
+              <Link to="/homepagechat" className="menuLink">
+                Чатик
               </Link>
             </Typography>
           </div>
