@@ -13,6 +13,7 @@ import ListOfProducts from './components/Product/ListOfProducts';
 import Layout from './components/Layout';
 import Login from './components/Auth/Login';
 import Registration from './components/Auth/Registration';
+import ProfileIndividual from '../pages/Profile/ProfileIndividual';
 
 
 
@@ -36,6 +37,11 @@ const router = createBrowserRouter([
       {
         path: '/registration',
         element: <Registration />,
+      
+      },
+      {
+        path: '/profile',
+        element: <ProfileIndividual />,
       
       },
     

@@ -10,8 +10,8 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       this.hasMany(models.Product, { foreignKey: 'categoryId' });
       this.hasMany(models.Chat, { foreignKey: 'userId' });
-      this.hasOne(model.Individual, {foreignKey: 'userId'})
-      this.hasOne(model.Company, {foreignKey: 'userId'})
+      this.hasOne(models.Individual, {foreignKey: 'userId'})
+      this.hasOne(models.Company, {foreignKey: 'userId'})
     }
   }
   User.init(
@@ -25,11 +25,11 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.TEXT,
       },
       firstName: {
-        allowNull: false,
+        allowNull: true,
         type: DataTypes.TEXT,
       },
       lastName: {
-        allowNull: false,
+        allowNull: true,
         type: DataTypes.TEXT,
       },
       password: {
