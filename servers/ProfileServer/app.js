@@ -20,7 +20,7 @@ const indexRouteApi = require("./routes/index.routes");
 // const wssCb = require("./socket/wssCb");
 
 
-app.use("/api", indexRouteApi);
+app.use("/api/profile", indexRouteApi);
 
 //
 // Create an HTTP server.
@@ -32,6 +32,6 @@ const server = http.createServer(app);
 // // Ловим событие подключения к веб-сокету см connectionCb  wss.emit("connection", ws, request, user.user);
 // wss.on("connection", wssCb);
 
-server.listen(process.env.PORTauth, () => {
-  console.log(`Server Auth запущен! PORT=${process.env.PORTauth}`);
+server.listen(process.env.PORTprofile, () => {
+  console.log(`Server Profile запущен! PORT=${process.env.PORTprofile}`);
 });

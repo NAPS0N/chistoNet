@@ -30,8 +30,8 @@ authRoute.post("/login", async (req, res) => {
 });
 
 authRoute.post("/registration", async (req, res) => {
-  const { email, password } = req.body;
-  console.log(email, password );
+  const { email, password, phoneNumber} = req.body;
+  console.log(email, password, phoneNumber );
   const errors = basicValidateFields(req.body);
   if (Object.keys(errors).length > 0) {
     return res.status(400).json(errors);
