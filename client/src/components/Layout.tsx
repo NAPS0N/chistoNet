@@ -5,8 +5,9 @@ import Nav from './Navbar/Nav';
 import '../index.css';
 import Footer from './Footer/Footer';
 import axios from 'axios';
-import axiosInstance from '../axiosInstance';
 import { useAppDispatch, useAppSelector } from '../App/redux/store';
+import { loadProducts } from '../App/redux/slicers/ProductSlice';
+import axiosInstance from '../axiosInstance';
 import { setUser } from '../App/redux/slicers/AuthSlicer';
 import type { ServerAuthResponse } from './Auth/UserType';
 
@@ -19,6 +20,14 @@ export default function Layout(): JSX.Element {
       .then((data) => userDispatch(setUser(data.data.user)))
       .catch(console.log);
   }, []);
+  export default function Layout(): JSX.Element {
+  const productDispatch = useAppDispatch();
+
+
+  useEffect(() => {
+    productDispatch(loadProducts()).catch(console.log);
+  
+
 
   return (
     <>

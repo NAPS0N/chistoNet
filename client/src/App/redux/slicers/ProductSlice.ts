@@ -27,6 +27,8 @@ export const productSlice = createSlice({
     builder
       .addCase(loadProducts.fulfilled, (state, action) => {
         state.products = action.payload; 
+ 
+        
       })
       .addCase(loadProducts.rejected, (state, action) => {
         state.products = [];
