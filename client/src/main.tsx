@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { RouterProvider, createBrowserRouter, useParams } from 'react-router-dom';
 
-import { Chat, Home } from '@mui/icons-material';
-import App from './App/App';
+// import { Chat, Home } from '@mui/icons-material';
+// import App from './App/App';
 import './index.css';
 
 import { store, useAppSelector } from './App/redux/store';
@@ -14,16 +14,12 @@ import ListOfProducts from './components/Product/ListOfProducts';
 import Layout from './components/Layout';
 import Login from './components/Auth/Login';
 import Registration from './components/Auth/Registration';
+import ProfileIndividual from '../pages/Profile/Individual/ProfileIndividual';
 import ProductItem from './components/Product/ProductItem';
-import ProfileIndividual from '../pages/Profile/ProfileIndividual';
+
 import HomePageChat from '../pages/Chat/HomePageChat';
 import ChatPage from '../pages/Chat/ChatPage';
-
-
-
-
-
-
+import Shop from '../pages/Shop/Shop';
 
 // { id } = useParams()
 // const selectedProduct = useAppSelector((store) => store.products.products.find(product => product.id === id));
@@ -54,12 +50,10 @@ const router = createBrowserRouter([
         element: <Registration />,
       },
       {
-
         path: '/profile',
         element: <ProfileIndividual />,
-      
       },
-    
+
       {
         path: '/homepagechat',
         element: <HomePageChat />,
@@ -68,7 +62,10 @@ const router = createBrowserRouter([
         path: '/chat',
         element: <ChatPage />,
       },
-
+      {
+        path: '/shop',
+        element: <Shop />,
+      },
     ],
   },
 ]);
