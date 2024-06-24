@@ -16,7 +16,7 @@ const initialState: InitialStateType = {
 };
 
 const loadProducts = createAsyncThunk('products/load', async () => fetchProductLoad())
-const loadProduct = createAsyncThunk('product/load', async () => fetchSingleProduct())
+// const loadProduct = createAsyncThunk('product/load', async () => fetchSingleProduct())
   
 
 export const productSlice = createSlice({
@@ -34,13 +34,13 @@ export const productSlice = createSlice({
       .addCase(loadProducts.pending, (state, action) => {
         state.products = [];
       })
-      .addCase(loadProduct.fulfilled, (state, action) => {
-        state.products = action.payload; 
-      })
+      // .addCase(loadProduct.fulfilled, (state, action) => {
+      //   state.products = action.payload; 
+      // })
       
   },
 });
 
-export { loadProducts, loadProduct};
+export { loadProducts};
 
 export default productSlice.reducer
