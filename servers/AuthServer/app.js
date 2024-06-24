@@ -33,5 +33,5 @@ const server = http.createServer(app);
 // wss.on("connection", wssCb);
 
 server.listen(process.env.PORTauth, () => {
-  console.log(`Тигрята очень классно пляшут на ${process.env.PORTauth} порту!!!`);
+  console.log(`Server Auth запущен! PORT=${process.env.PORTauth}`);
 });

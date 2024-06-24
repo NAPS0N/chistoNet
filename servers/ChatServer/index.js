@@ -6,7 +6,7 @@ const app = express();
 const PORT = 5000;
 
 // функция, которая будет прослушивать приложение
-app.get('api', (req, res) => {
+app.get('/api', (req, res) => {
   res.json({
     message: 'Hello',
   });
