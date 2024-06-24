@@ -15,6 +15,7 @@ import Layout from './components/Layout';
 import Login from './components/Auth/Login';
 import Registration from './components/Auth/Registration';
 import ProductItem from './components/Product/ProductItem';
+import ProfileIndividual from '../pages/Profile/ProfileIndividual';
 import HomePageChat from '../pages/Chat/HomePageChat';
 import ChatPage from '../pages/Chat/ChatPage';
 
@@ -53,6 +54,13 @@ const router = createBrowserRouter([
         element: <Registration />,
       },
       {
+
+        path: '/profile',
+        element: <ProfileIndividual />,
+      
+      },
+    
+      {
         path: '/homepagechat',
         element: <HomePageChat />,
       },
@@ -60,6 +68,7 @@ const router = createBrowserRouter([
         path: '/chat',
         element: <ChatPage />,
       },
+
     ],
   },
 ]);

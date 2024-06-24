@@ -29,14 +29,17 @@ export const fetchLogOut = async (): Promise<ServerAuthResponse> => {
 export const fetchRegister = async ({
   email,
   password,
+  phoneNumber,
 }: {
   email: string;
   password: string;
+  phoneNumber:string;
 }): Promise<ServerAuthResponse> => {
   const response: AxiosResponse<ServerAuthResponse> = await axios.post('/api/auth/registration', {
     email,
     password,
+    phoneNumber,
   }); 
-
+  
   return response.data;
 };

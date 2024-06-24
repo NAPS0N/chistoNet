@@ -8,13 +8,13 @@ import { useNavigate } from 'react-router-dom';
 function Registration(): JSX.Element {
   const [signUpForm, setSignUpForm] = useState({
     id: null,
+    phoneNumber: '',
     login: '',
     password: '',
     firstName: '',
     lastName: '',
     email: '',
-    age: '',
-    photo: '',
+    isBlocked: false,
   });
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -51,17 +51,17 @@ function Registration(): JSX.Element {
       />
 
 
-      {/* <label htmlFor="login" className="form-label">
-        Login
+      <label htmlFor="phoneNumber" className="form-label">
+        Номер телефона
       </label>
       <input
         type="text"
-        placeholder="Login"
-        value={signUpForm.login}
-        onChange={(e) => setSignUpForm({ ...signUpForm, login: e.target.value })}
+        placeholder="Номер телефона"
+        value={signUpForm.phoneNumber}
+        onChange={(e) => setSignUpForm({ ...signUpForm, phoneNumber: e.target.value })}
         className="form-control"
-        id="login"
-      /> */}
+        id="phoneNumber"
+      />
 
       <label htmlFor="password" className="form-label">
         Password

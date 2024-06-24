@@ -9,7 +9,8 @@ export default function Layout(): JSX.Element {
       <Nav  />
       <Container>
 
-      <div style={{ marginTop: "200px" }}>
+
+      <div style={{ marginTop: "150px" }}>
         <Outlet />
       </div>
       </Container>

@@ -11,6 +11,7 @@ export default defineConfig({
         changeOrigin: true,
       },
       '/api': 'http://localhost:3000',
+      '/api/profile': 'http://localhost:3001',
     },
   },
 });
