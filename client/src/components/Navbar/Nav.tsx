@@ -20,6 +20,8 @@ import { makeStyles } from '@mui/material';
 
 const pages = [
   { title: 'Товары', path: '/products' },
+  { title: 'Оборудование', path: '/products' },
+  { title: 'Аренда', path: '/products' },
   { title: 'Вакансии', path: '/vacancies' },
   { title: 'Новости', path: '/news' },
   { title: 'Чатик', path: '/chat' },
@@ -102,7 +104,7 @@ function Nav(): JSX.Element {
                       variant="contained"
                       {...bindTrigger(popupState)}
                     >
-                      Продукты
+                      Товары
                     </Link>
                   </Typography>
 
@@ -138,7 +140,7 @@ function Nav(): JSX.Element {
                       variant="contained"
                       {...bindTrigger(popupState)}
                     >
-                      Аренда
+                      Оборудование
                     </Link>
                   </Typography>
 
@@ -177,16 +179,33 @@ function Nav(): JSX.Element {
                       variant="contained"
                       {...bindTrigger(popupState)}
                     >
-                      Работа
+                      Аренда
                     </Link>
                   </Typography>
 
-                  <Menu {...bindMenu(popupState)}>
-                    <MenuItem onClick={popupState.close}>Вакансии</MenuItem>
-                  </Menu>
+
                 </>
               )}
             </PopupState>
+            <Typography
+              variant="h6"
+              noWrap
+              component="a"
+              href="#app-bar-with-responsive-menu"
+              sx={{
+                mr: 2,
+                display: { xs: 'none', md: 'flex' },
+                fontFamily: 'monospace',
+                fontWeight: 700,
+                letterSpacing: '.3rem',
+                color: 'inherit',
+                textDecoration: 'none',
+              }}
+            >
+              <Link to="/products" className="menuLink">
+                Вакансии
+              </Link>
+            </Typography>
             <Typography
               variant="h6"
               noWrap
@@ -232,11 +251,6 @@ function Nav(): JSX.Element {
               <Button color="inherit" variant="outlined">
                 Войти{' '}
               </Button>
-            </Link>
-          </Box>
-          <Box>
-            <Link to="/registration" className="menuLink">
-              <Button color="inherit"> Зарегестрироваться </Button>
             </Link>
           </Box>
         </Toolbar>
