@@ -1,0 +1,63 @@
+version: '3.8'
+
+services:
+
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: mydatabase
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - my-network
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+
+  auth_service:
+    build:
+      context: ./servers/AuthServer
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    networks:
+      - my-network
+    environment:
+      - SERVICE_NAME=AuthService
+      - SERVICE_PORT=3000
+      - USERNAMEDB=postgres
+      - PASSWORD=5432
+      - DATABASE=mydatabase
+      - host=postgres
+      - dialect=postgres
+
+  product_service:
+    build:
+      context: ./servers/ProductServer
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+    networks:
+      - my-network
+    environment:
+      - SERVICE_NAME=ProductService
+      - SERVICE_PORT=4000
+      - USERNAMEDB=postgres
+      - PASSWORD=5432
+      - DATABASE=mydatabase
+      - host=postgres
+      - dialect=postgres
+ 
+
+networks:
+  my-network:
+    driver: bridge
+
+volumes:
+  pgdata:
