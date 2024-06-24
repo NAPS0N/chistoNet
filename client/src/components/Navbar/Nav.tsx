@@ -73,7 +73,7 @@ function Nav(): JSX.Element {
                 textDecoration: 'none',
               }}
             >
-              ChistoNet
+              <Link to='/home'>ChistoNet</Link>
             </Typography>
           </div>
 

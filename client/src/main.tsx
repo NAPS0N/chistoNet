@@ -22,6 +22,8 @@ import ChatPage from '../pages/Chat/ChatPage';
 import NewsPage from '../pages/News/NewsPage';
 
 import Shop from '../pages/Shop/Shop';
+import Home from './components/Home/Home';
+
 
 const router = createBrowserRouter([
   {
@@ -33,14 +35,18 @@ const router = createBrowserRouter([
         path: '/products',
         element: <ListOfProducts />,
       },
+      {
+        path: '/home',
+        element: <Home />,
+      },
       // {
       //   path: '/products',
       //   element: <ListOfProducts/>,
       // },
-      {
-        path: '/products/:id',
-        element: <ProductItem/>,
-      },
+      // {
+      //   path: '/products/:id',
+      //   element: <ProductItem/>,
+      // },
       {
         path: '/login',
         element: <Login />,
