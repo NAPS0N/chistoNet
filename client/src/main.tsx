@@ -19,10 +19,10 @@ import ProductItem from './components/Product/ProductItem';
 
 import HomePageChat from '../pages/Chat/HomePageChat';
 import ChatPage from '../pages/Chat/ChatPage';
+import NewsPage from '../pages/News/NewsPage';
+
 import Shop from '../pages/Shop/Shop';
 
-// { id } = useParams()
-// const selectedProduct = useAppSelector((store) => store.products.products.find(product => product.id === id));
 const router = createBrowserRouter([
   {
     path: '/',
@@ -62,6 +62,10 @@ const router = createBrowserRouter([
         path: '/chat',
         element: <ChatPage />,
       },
+      {
+        path: '/news',
+        element: <NewsPage />,
+      }, 
       {
         path: '/shop',
         element: <Shop />,
