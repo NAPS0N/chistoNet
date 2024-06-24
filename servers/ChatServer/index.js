@@ -1,9 +1,9 @@
+require("dotenv").config();
 const express = require('express');
 const cors = require('cors');
 
 const app = express();
 
-const PORT = 5000;
 
 // функция, которая будет прослушивать приложение
 app.get('/api', (req, res) => {
@@ -45,6 +45,6 @@ socketIo.on('connection', (socket) => {
   });
 });
 
-http.listen(PORT, () => {
-  console.log(`Server working on ${PORT} PORT`);
+http.listen(PORTchat, () => {
+  console.log(`Server working on ${PORTchat} PORT`);
 });
