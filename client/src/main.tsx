@@ -1,21 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { RouterProvider, createBrowserRouter, useParams } from 'react-router-dom';
 
 import { Chat, Home } from '@mui/icons-material';
 import App from './App/App';
 import './index.css';
 
-import { store } from './App/redux/store';
+import { store, useAppSelector } from './App/redux/store';
 // k
 import ErrorPage from './components/Navbar/ErrorPage';
 import ListOfProducts from './components/Product/ListOfProducts';
 import Layout from './components/Layout';
 import Login from './components/Auth/Login';
 import Registration from './components/Auth/Registration';
+import ProductItem from './components/Product/ProductItem';
 import ProfileIndividual from '../pages/Profile/ProfileIndividual';
-
 import HomePageChat from '../pages/Chat/HomePageChat';
 import ChatPage from '../pages/Chat/ChatPage';
 
@@ -25,6 +25,8 @@ import ChatPage from '../pages/Chat/ChatPage';
 
 
 
+// { id } = useParams()
+// const selectedProduct = useAppSelector((store) => store.products.products.find(product => product.id === id));
 const router = createBrowserRouter([
   {
     path: '/',
@@ -34,6 +36,14 @@ const router = createBrowserRouter([
       {
         path: '/products',
         element: <ListOfProducts />,
+      },
+      // {
+      //   path: '/products',
+      //   element: <ListOfProducts/>,
+      // },
+      {
+        path: '/products/:id',
+        element: <ProductItem/>,
       },
       {
         path: '/login',
