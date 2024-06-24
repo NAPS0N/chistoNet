@@ -5,6 +5,7 @@ import { configureStore } from '@reduxjs/toolkit';
 // import productReducer from './slicers/ProductSlice';
 // import categoryReducer from './slicers/CategorySlice';
 import authSlicer from '../../App/redux/slicers/AuthSlicer';
+import ProfileSlicer from './slicers/ProfileSlicer';
 
 
 export const store = configureStore({
@@ -13,6 +14,7 @@ export const store = configureStore({
     // products: productReducer,
     // categories: categoryReducer,
     auth: authSlicer,
+    profileIndividual: ProfileSlicer,
   
   },
 });

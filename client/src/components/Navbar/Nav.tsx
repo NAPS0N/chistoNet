@@ -102,7 +102,7 @@ function Nav(): JSX.Element {
                       variant="contained"
                       {...bindTrigger(popupState)}
                     >
-                      Продукты
+                      Товары
                     </Link>
                   </Typography>
 
