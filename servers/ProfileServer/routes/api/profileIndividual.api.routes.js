@@ -6,7 +6,7 @@ const {Individual} = require("../../../db/models/");
 router.get("/", verifyRefreshToken, async (req, res) => {
     try {
         const {user} =  res.locals;
-      const individual = await Individual.findOne({where: {id: user.id}  });
+      const individual = await Individual.findOne({where: {userId: user.id}  });
    
       res.status(200).json({ message: "OK", individual, user });
     } catch (error) {

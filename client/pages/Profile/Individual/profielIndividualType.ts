@@ -1,7 +1,7 @@
 export type ProfileIndividualType = { 
 userId: number | null;
 photo: string;
-date: Date;
+date: string;
 }
 
 // import { UserType } from "../../src/components/Auth/UserType"

@@ -6,21 +6,9 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      'api/chat': {
-        target: 'http://localhost:5000',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api\/chat/, ''),
-      },
-      'api/profile': {
-        target: 'http://localhost:3001',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api\/profile/, ''),
-      },
-      'api/auth': {
-        target: 'http://localhost:3000',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ''),
-      },
+      '/api/profile': 'http://localhost:3001',
+      '/api/products':'http://localhost:4000/',
+      '/api': 'http://localhost:3000',
     },
   },
 });
