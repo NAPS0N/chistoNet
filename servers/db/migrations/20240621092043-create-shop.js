@@ -35,6 +35,22 @@ module.exports = {
         allowNull: false,
         type: Sequelize.TEXT,
       },
+      description: {
+        allowNull: false,
+        type: Sequelize.TEXT,
+      },
+      lax: {
+        allowNull: true,
+        type: Sequelize.TEXT,
+      },
+      lon: {
+        allowNull: true,
+        type: Sequelize.TEXT,
+      },
+      phoneNumber: {
+        allowNull: true,
+        type: Sequelize.TEXT,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
