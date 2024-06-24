@@ -1,12 +1,13 @@
 const messageRouter = require('express').Router();
+const verifyAccessToken = require('../../../middleware/verifyAccessToken')
 
 const { Chat } = require('../../../db/models');
 
-messageRouter.get('/', async (req, res) => {
+messageRouter.get('/', verifyAccessToken, async (req, res) => {
   try {
-    const chatMessages = await Chat.findAll({
-      order: [['id', 'ASC']],
-    });
+    console.log('222222222222', Chat);
+    const chatMessages = await Chat.findAll();
+    console.log('111111111111', chatMessages);
     res.json({ chatMessages, message: 'OK' });
   } catch (error) {
     res.status(500).send({ error, message: 'Внутренняя ошибка сервера' });
