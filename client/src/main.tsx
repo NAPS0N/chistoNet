@@ -17,12 +17,7 @@ import Registration from './components/Auth/Registration';
 
 import HomePageChat from '../pages/Chat/HomePageChat';
 import ChatPage from '../pages/Chat/ChatPage';
-
-
-
-
-
-
+import NewsPage from '../pages/News/NewsPage';
 
 const router = createBrowserRouter([
   {
@@ -49,6 +44,10 @@ const router = createBrowserRouter([
       {
         path: '/chat',
         element: <ChatPage />,
+      },
+      {
+        path: '/news',
+        element: <NewsPage />,
       },
     ],
   },

@@ -202,7 +202,7 @@ function Nav(): JSX.Element {
                 textDecoration: 'none',
               }}
             >
-              <Link to="/products" className="menuLink">
+              <Link to="/news" className="menuLink">
                 Новости
               </Link>
             </Typography>
