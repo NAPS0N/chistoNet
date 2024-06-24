@@ -4,6 +4,8 @@ import { configureStore } from '@reduxjs/toolkit';
 // import counterReducer from './slicers/CounterSlice';
 // import categoryReducer from './slicers/CategorySlice';
 
+import MessageReducer from './slicers/MessageSlicer';
+
 import authSlicer from '../../App/redux/slicers/AuthSlicer';
 import ProfileSlicer from './slicers/ProfileSlicer';
 
@@ -11,12 +13,17 @@ import productReducer from './slicers/ProductSlice';
 
 
 
+
 export const store = configureStore({
   reducer: {
     products: productReducer,
     auth: authSlicer,
+
+    message: MessageReducer,
+
     profileIndividual: ProfileSlicer,
   
+
   },
 });
 
