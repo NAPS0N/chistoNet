@@ -16,11 +16,13 @@ export default function Layout(): JSX.Element {
 
   return (
     <>
+
       <Nav />
       <Container maxWidth="lg">
         <div style={{ marginTop: '65px', backgroundColor: '#f6f6f6' }}>
           <Outlet />
         </div>
+
       </Container>
       <div className="footer">
         <Footer />

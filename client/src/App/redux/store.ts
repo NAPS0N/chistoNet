@@ -2,17 +2,18 @@
 import { useDispatch, useSelector, type TypedUseSelectorHook } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 // import counterReducer from './slicers/CounterSlice';
-// import productReducer from './slicers/ProductSlice';
 // import categoryReducer from './slicers/CategorySlice';
+
 import authSlicer from '../../App/redux/slicers/AuthSlicer';
 import ProfileSlicer from './slicers/ProfileSlicer';
+
+import productReducer from './slicers/ProductSlice';
+
 
 
 export const store = configureStore({
   reducer: {
-    // counter: counterReducer,
-    // products: productReducer,
-    // categories: categoryReducer,
+    products: productReducer,
     auth: authSlicer,
     profileIndividual: ProfileSlicer,
   
