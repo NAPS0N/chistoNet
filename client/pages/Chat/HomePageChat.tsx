@@ -12,9 +12,12 @@ function HomePageChat(): JSX.Element {
   console.log('22222', userAuth);
 
   const dispatch = useAppDispatch();
-  const messages = useAppSelector((state) => state.message.chatMessages);
-  console.log('HomePaheChat', messages);
+  const allMessages = useAppSelector((state) => state.message.chatMessages);
 
+  const userMessages = allMessages.filter((message) => message.fromId === userAuth?.id);
+  const companionMessages = allMessages.filter((message) => message.toId === userAuth?.id);
+
+  console.log('HomePaheChat', companionMessages);
   useEffect(() => {
     dispatch(loadMessages()).catch(console.log);
   }, []);
