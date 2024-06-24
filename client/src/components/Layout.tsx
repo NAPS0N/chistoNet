@@ -20,12 +20,12 @@ export default function Layout(): JSX.Element {
       .then((data) => userDispatch(setUser(data.data.user)))
       .catch(console.log);
   }, []);
-  export default function Layout(): JSX.Element {
+ 
   const productDispatch = useAppDispatch();
 
 
   useEffect(() => {
-    productDispatch(loadProducts()).catch(console.log);
+    productDispatch(loadProducts()).catch(console.log)});
   
 
 
