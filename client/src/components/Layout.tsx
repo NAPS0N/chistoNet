@@ -5,14 +5,18 @@ import { Container } from '@mui/material';
 import '../index.css';
 import Footer from './Footer/Footer';
 import axios from 'axios';
+import { useAppDispatch, useAppSelector } from '../App/redux/store';
+import { loadProducts } from '../App/redux/slicers/ProductSlice';
 
 export default function Layout(): JSX.Element {
-  useEffect(() => {
-    console.log(1);
+  const productDispatch = useAppDispatch();
 
-    axios.get('/api/tokens/refresh');
-    axios.get('/api/profile');
+
+  useEffect(() => {
+    productDispatch(loadProducts()).catch(console.log);
   }, []);
+  
+
 
   return (
     <>
