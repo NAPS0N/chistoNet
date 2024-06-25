@@ -3,7 +3,7 @@ const cookieParser = require("cookie-parser");
 const path = require("path");
 const morgan = require("morgan");
 const http = require("http");
-require("dotenv").config();
+require("dotenv").config({ path: path.join('../.env')});
 // const { connectionCb, wss } = require("./socket/wsServer");
 // const { WebSocketServer } = require("ws");
 const map = new Map();
@@ -17,6 +17,7 @@ app.use(express.urlencoded()); // для чтения данных из форм
 app.use(express.json()); // для чтения JSON данных
 
 const indexRouteApi = require("./routes/index.routes");
+const { log } = require("console");
 // const wssCb = require("./socket/wssCb");
 
 
