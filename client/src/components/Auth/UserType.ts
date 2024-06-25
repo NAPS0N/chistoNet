@@ -1,16 +1,18 @@
-export type User = {
+export type UserType = {
     id: number | null;
     login?: string;
+    phoneNumber: string;
     email: string;
     password: string;
     isAdmin?: boolean;
     avatar?: string;
     isBlocked?: boolean;
   };
-  export type UserWithoutPassword = Omit<User, 'password'>;
+  export type UserWithoutPassword = Omit<UserType, 'password'>;
   export type UserLogInForm= {
     email: string;
     password: string;
+    phoneNumber: string;
   };
   
   export type AccessToken = {
@@ -18,7 +20,7 @@ export type User = {
   };
   
   export type ServerAuthResponse = {
-    user: User;
+    user: UserType;
     accessToken: string;
     message?: string;
     error?: {

@@ -1,12 +1,12 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const indexRouteApi = require('./routes/index.routes');
 
 const app = express();
 
-const PORT = 5000;
-
 // функция, которая будет прослушивать приложение
-app.get('api', (req, res) => {
+app.get('/api', (req, res) => {
   res.json({
     message: 'Hello',
   });
@@ -20,6 +20,8 @@ const socketIo = require('socket.io')(http, {
     origin: 'http://localhost:5173', // 5173 потому что vite будет работать на нем
   },
 });
+
+app.use('/api/chat/message', indexRouteApi);
 
 const users = [];
 // connection - это имя события, которое мы хотим прослушивать
@@ -45,6 +47,6 @@ socketIo.on('connection', (socket) => {
   });
 });
 
-http.listen(PORT, () => {
-  console.log(`Server working on ${PORT} PORT`);
+http.listen(process.env.PORTchat, () => {
+  console.log(`Server working on ${process.env.PORTchat} PORT`);
 });

@@ -59,6 +59,7 @@ function Nav(): JSX.Element {
               className="menuLink"
               sx={{ display: { xs: 'none', md: 'flex', alignItems: 'center' }, mr: 1 }}
             />
+           
             <Typography
               variant="h6"
               noWrap
@@ -75,7 +76,7 @@ function Nav(): JSX.Element {
                 textDecoration: 'none',
               }}
             >
-              ChistoNet
+              <Link to='/home'>ChistoNet</Link>
             </Typography>
           </div>
 
@@ -104,6 +105,7 @@ function Nav(): JSX.Element {
                       variant="contained"
                       {...bindTrigger(popupState)}
                     >
+                      Товары
                       Товары
                     </Link>
                   </Typography>
@@ -157,8 +159,7 @@ function Nav(): JSX.Element {
             </PopupState>
             <PopupState variant="popover" popupId="demo-popup-menu">
               {(popupState) => (
-                <>
-                  <Typography
+                <Typography
                     variant="h6"
                     noWrap
                     component="a"
@@ -176,9 +177,8 @@ function Nav(): JSX.Element {
                     <Link
                       to="/products"
                       className="menuLink"
-                      variant="contained"
-                      {...bindTrigger(popupState)}
                     >
+                      Вакансии
                       Аренда
                     </Link>
                   </Typography>
@@ -221,7 +221,7 @@ function Nav(): JSX.Element {
                 textDecoration: 'none',
               }}
             >
-              <Link to="/products" className="menuLink">
+              <Link to="/news" className="menuLink">
                 Новости
               </Link>
             </Typography>
