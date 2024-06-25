@@ -19,10 +19,10 @@ function ProductItem({ product }: { product: ProductType }): JSX.Element {
   return (
     <div>
       {product !== undefined && (
-        <Card sx={{ maxWidth: 345, height: '100%' }}>
+        <Card sx={{ maxWidth: 340, height: 300 }}>
           <CardHeader
             title={product.title}
-            
+            className='product-cardHeader'
           />
           <div className="slider-container">
             {slides.map((slide, index) => (
@@ -38,7 +38,7 @@ function ProductItem({ product }: { product: ProductType }): JSX.Element {
             ))}
           </div>
           <CardContent>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" color="text.secondary" className="text-description-item" height={100}>
               {product.description}
             </Typography>
             <Typography variant="body2" color="text.secondary">

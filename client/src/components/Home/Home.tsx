@@ -9,6 +9,7 @@ function Home(): JSX.Element {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
+      
       {products.map((product) => (
         <div className='product-item'>
           <ProductItem key={product.id} product={product}/>
