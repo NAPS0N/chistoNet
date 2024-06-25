@@ -23,7 +23,9 @@ import NewsPage from '../pages/News/NewsPage';
 
 import Shop from '../pages/Shop/Shop';
 import Home from './components/Home/Home';
-
+import NewsAdmin from './components/News/NewsCreateForm';
+import NewsCreateForm from './components/News/NewsCreateForm';
+import NewsUpdateForm from './components/News/NewsUpdateForm';
 
 const router = createBrowserRouter([
   {
@@ -71,10 +73,18 @@ const router = createBrowserRouter([
       {
         path: '/news',
         element: <NewsPage />,
-      }, 
+      },
       {
         path: '/shop',
         element: <Shop />,
+      },
+      {
+        path: '/createnews',
+        element: <NewsCreateForm />,
+      },
+      {
+        path: '/updatenews/:id',
+        element: <NewsUpdateForm />,
       },
     ],
   },

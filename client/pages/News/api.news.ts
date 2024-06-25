@@ -9,6 +9,14 @@ export const fetchNews = async (): Promise<NewsType[]> => {
 
   return response.data.allNews;
 };
+export const fetchOneNews = async (id: number): Promise<NewsType> => {
+  const response: AxiosResponse<{ message: string; oneNews: NewsType }> = await axios.get(
+    `/api/news/${id}`,
+  );
+  console.log(123);
+
+  return response.data.oneNews;
+};
 
 export const fetchCreateNews = async (obj: NewsType): Promise<NewsType> => {
   const response: AxiosResponse<{ message: string; newNews: NewsType }> = await axios.post(
