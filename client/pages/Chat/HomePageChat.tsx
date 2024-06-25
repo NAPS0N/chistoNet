@@ -17,7 +17,6 @@ function HomePageChat(): JSX.Element {
   const userMessages = allMessages.filter((message) => message.fromId === userAuth?.id);
   const companionMessages = allMessages.filter((message) => message.toId === userAuth?.id);
 
-  console.log('HomePaheChat', companionMessages);
   useEffect(() => {
     dispatch(loadMessages()).catch(console.log);
   }, []);
