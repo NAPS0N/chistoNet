@@ -57,7 +57,7 @@ function Nav(): JSX.Element {
               className="menuLink"
               sx={{ display: { xs: 'none', md: 'flex', alignItems: 'center' }, mr: 1 }}
             />
-           
+
             <Typography
               variant="h6"
               noWrap
@@ -74,7 +74,7 @@ function Nav(): JSX.Element {
                 textDecoration: 'none',
               }}
             >
-              <Link to='/home'>ChistoNet</Link>
+              <Link to="/home">ChistoNet</Link>
             </Typography>
           </div>
 
@@ -157,27 +157,24 @@ function Nav(): JSX.Element {
             <PopupState variant="popover" popupId="demo-popup-menu">
               {(popupState) => (
                 <Typography
-                    variant="h6"
-                    noWrap
-                    component="a"
-                    href="#app-bar-with-responsive-menu"
-                    sx={{
-                      mr: 2,
-                      display: { xs: 'none', md: 'flex' },
-                      fontFamily: 'monospace',
-                      fontWeight: 700,
-                      letterSpacing: '.3rem',
-                      color: 'inherit',
-                      textDecoration: 'none',
-                    }}
-                  >
-                    <Link
-                      to="/products"
-                      className="menuLink"
-                    >
-                      Вакансии
-                    </Link>
-                  </Typography>
+                  variant="h6"
+                  noWrap
+                  component="a"
+                  href="#app-bar-with-responsive-menu"
+                  sx={{
+                    mr: 2,
+                    display: { xs: 'none', md: 'flex' },
+                    fontFamily: 'monospace',
+                    fontWeight: 700,
+                    letterSpacing: '.3rem',
+                    color: 'inherit',
+                    textDecoration: 'none',
+                  }}
+                >
+                  <Link to="/products" className="menuLink">
+                    Вакансии
+                  </Link>
+                </Typography>
               )}
             </PopupState>
             <Typography
@@ -216,6 +213,44 @@ function Nav(): JSX.Element {
             >
               <Link to="/homepagechat" className="menuLink">
                 Чатик
+              </Link>
+            </Typography>
+            <Typography
+              variant="h6"
+              noWrap
+              component="a"
+              href="#app-bar-with-responsive-menu"
+              sx={{
+                mr: 2,
+                display: { xs: 'none', md: 'flex' },
+                fontFamily: 'monospace',
+                fontWeight: 700,
+                letterSpacing: '.3rem',
+                color: 'inherit',
+                textDecoration: 'none',
+              }}
+            >
+              <Link to="/createnews" className="menuLink">
+                Новая новость
+              </Link>
+            </Typography>
+            <Typography
+              variant="h6"
+              noWrap
+              component="a"
+              href="#app-bar-with-responsive-menu"
+              sx={{
+                mr: 2,
+                display: { xs: 'none', md: 'flex' },
+                fontFamily: 'monospace',
+                fontWeight: 700,
+                letterSpacing: '.3rem',
+                color: 'inherit',
+                textDecoration: 'none',
+              }}
+            >
+              <Link to="/updatenews" className="menuLink">
+                Редактировать новость
               </Link>
             </Typography>
           </div>
