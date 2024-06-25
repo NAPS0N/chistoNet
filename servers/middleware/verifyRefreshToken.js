@@ -1,15 +1,19 @@
-const jwt = require('jsonwebtoken');
-require('dotenv').config();
+const jwt = require("jsonwebtoken");
+const path = require("path");
+require("dotenv").config({ path: path.join("../.env") });
 
 function verifyRefreshToken(req, res, next) {
+  try {
     const { refreshToken } = req.cookies;
-    console.log(refreshToken);
     const { user } = jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET);
 
     res.locals.user = user;
 
     next();
- 
+  } catch (error) {
+    console.log("Invalid refresh token, in verifyRefreshToken.js", error);
+    res.status(403).send("Invalid refresh token");
+  }
 }
 
 module.exports = verifyRefreshToken;
