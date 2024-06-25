@@ -23,6 +23,9 @@ import NewsPage from '../pages/News/NewsPage';
 
 import Shop from '../pages/Shop/Shop';
 import Home from './components/Home/Home';
+import Category from './components/Product/ProductByCategory';
+import ProductByCategory from './components/Product/ProductByCategory';
+
 
 
 const router = createBrowserRouter([
@@ -38,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: '/home',
         element: <Home />,
+      },
+      {
+        path: '/products/categories/:id',
+        element: <ProductByCategory />,
       },
       // {
       //   path: '/products',

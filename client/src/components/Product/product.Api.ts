@@ -1,6 +1,7 @@
 import axios, { type AxiosResponse } from 'axios';
 import type { ProductType } from './ProductType';
 import axiosInstance from '../../axiosInstance';
+import type { CategoryType } from './CategoryType';
 
 /**
  * запрос на получение всех карточук с продуктом
@@ -11,6 +12,18 @@ import axiosInstance from '../../axiosInstance';
 export const fetchProductLoad = async (): Promise<ProductType[]> => {
   const response: AxiosResponse<{ message: string; products: ProductType[] }> =
     await axios.get('/api/products');
+  return response.data.products;
+};
+
+export const fetchCategoryLoad = async (): Promise<CategoryType[]> => {
+  const response: AxiosResponse<{ message: string; categories: CategoryType[] }> =
+    await axios.get('/api/categories/:id');
+  return response.data.categories;
+};
+
+export const fetchProductByCategoryLoad = async (id: number): Promise<ProductType[]> => {
+  const response: AxiosResponse<{ message: string; products: ProductType[] }> =
+    await axios.get(`/api/products/categories/${id}`);
   return response.data.products;
 };
 

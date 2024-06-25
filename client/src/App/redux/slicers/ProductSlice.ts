@@ -16,6 +16,7 @@ const initialState: InitialStateType = {
 };
 
 const loadProducts = createAsyncThunk('products/load', async () => fetchProductLoad())
+
 // const loadProduct = createAsyncThunk('product/load', async () => fetchSingleProduct())
   
 

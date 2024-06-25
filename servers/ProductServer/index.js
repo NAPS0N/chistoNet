@@ -6,7 +6,7 @@ const http = require("http");
 require("dotenv").config();
 const app = express();
 
-const { Product, ProductImg } = require("../db/models");
+const { Product, ProductImg, Category } = require("../db/models");
 
 const server = http.createServer(app);
 
@@ -27,6 +27,29 @@ app.get("/api/products", async (req, res) => {
   }
 });
 
+app.get("/api/products/categories/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const products = await Product.findAll({
+      where: { categoryId: id },
+      include: { model: ProductImg }
+    });
+    res.status(200).json({ message: "OK", products });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+// app.get("/api/categories/:id", async (req, res) => {
+//   const {id} = req.params;
+//   try {
+//     const categories = await Category.findAll({where: {pId: id}});
+//     //const products = await Product.findAll();
+//     res.status(200).json({ message: "OK", categories });
+//   } catch (error) {
+//     res.status(500).json({ message: error.message });
+//   }
+// });
 // app.get("/api/products/:id", async (req, res) => {
 //   const { id } = req.params;
 //   try {
