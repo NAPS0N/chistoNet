@@ -18,11 +18,11 @@ router.get("/", async (req, res) => {
 // достать по id
 router.get("/:id", async (req, res) => {
   try {
-    const news = await News.findByPk(req.params.id);
-    if (news) {
-      res.json(news);
+    const oneNews = await News.findByPk(req.params.id);
+    if (oneNews) {
+      res.json(oneNews);
     } else {
-      res.status(404).send({ message: "Категория не найдена" });
+      res.status(404).send({ message: "Новость не найдена" });
     }
   } catch (error) {
     res.status(500).send({ error, message: "Внутренняя ошибка сервера" });
@@ -39,8 +39,10 @@ router.post("/", async (req, res) => {
 });
 
 router.put("/:id", async (req, res) => {
+  const { id } = req.params;
+  console.log(1111111111, id);
   try {
-    const upNews = await News.findByPk(req.params.id);
+    const upNews = await News.findByPk(id);
     if (upNews) {
       await upNews.update(req.body);
       res.json({ upNews });

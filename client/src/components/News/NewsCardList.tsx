@@ -17,6 +17,10 @@ import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { format } from 'date-fns';
+import { useNavigate } from 'react-router-dom';
+import DeleteForeverTwoToneIcon from '@mui/icons-material/DeleteForeverTwoTone';
+import { useAppDispatch } from '../../App/redux/store';
+import { deleteNews } from '../../App/redux/slicers/NewsSlicer';
 
 type ExpandMoreProps = {
   expand: boolean;
@@ -34,17 +38,29 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
 }));
 
 function NewsCardList({ news }): JSX.Element {
+  const navigate = useNavigate();
+  const dispatchDeleteNews = useAppDispatch();
   const formattedDate = format(new Date(news.updatedAt), 'dd.MM.yyyy HH:mm');
   const [expanded, setExpanded] = useState(false);
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
+  const handleSettingsClick = () => {
+    navigate(`/updatenews/${news.id}`, { state: { news } }); // Переход на /settings при клике
+  };
+
+  const handleDelete = () => {
+    console.log(1111111);
+    dispatchDeleteNews(deleteNews(Number(news.id))).catch(console.log);
+  };
+
   return (
-    <Card sx={{ maxWidth: 400, backgroundColor: '#1f8a7009', boxShadow: 10 }}>
+    <Card sx={{ maxWidth: 500, backgroundColor: '#1f8a7009', boxShadow: 10 }}>
       <CardHeader
         avatar={<Avatar aria-label="recipe" src="../../../public/logo/Фавикон.png" />}
         action={
-          <IconButton aria-label="settings">
+          <IconButton aria-label="settings" onClick={handleSettingsClick}>
             <MoreVertIcon />
           </IconButton>
         }
@@ -52,14 +68,15 @@ function NewsCardList({ news }): JSX.Element {
         subheader={formattedDate}
       />
       <CardMedia component="img" sx={{ boxShadow: 3 }} image={news.photo} alt="Paella dish" />
+
       <CardContent>
         <Typography variant="body2" color="text.secondary">
           {news.title}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="share">
-          <ShareIcon />
+        <IconButton>
+          <DeleteForeverTwoToneIcon onClick={handleDelete} />
         </IconButton>
         <ExpandMore
           expand={expanded}
