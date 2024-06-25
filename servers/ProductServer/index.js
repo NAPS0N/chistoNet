@@ -27,12 +27,10 @@ app.get("/api/products", async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
-app.get('/api/products/shop',verifyAccessToken, async (req, res) => {
+app.get('/api/products/shop', async (req, res) => { // verifyAccessToken
   const { user } = res.locals;
-  console.log(4332, user);
     try {
-      const shopProducts = await Product.findAll()
-      console.log(999999, shopProducts);
+      const shopProducts = await Product.findAll({where: {userId: 1}}) // заменить на user.id
       res.status(200).json({message: 'OK', shopProducts })
     } catch (error) {
       res.status(500).json({ message: error.message });

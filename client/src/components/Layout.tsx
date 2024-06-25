@@ -14,11 +14,11 @@ export default function Layout(): JSX.Element {
   const userDispatch = useAppDispatch();
 
   useEffect(() => {
-    // axiosInstance
-    //   .get<ServerAuthResponse>('/token/refresh')
-    //   .then((data) => userDispatch(setUser(data.data.user)))
-    //   .catch(console.log);
-    //   console.log(store.getState());
+    axiosInstance
+      .get<ServerAuthResponse>('/token/refresh')
+      .then((data) => userDispatch(setUser(data.data.user)))
+      .catch(console.log);
+      console.log(store.getState());
       
   }, []);
 

@@ -15,14 +15,14 @@ import Layout from './components/Layout';
 import Login from './components/Auth/Login';
 import Registration from './components/Auth/Registration';
 import ProfileIndividual from '../pages/Profile/Individual/ProfileIndividual';
+import PersonalAccount from '../pages/PersonalAccount/PersonalAccount';
 import ProductItem from './components/Product/ProductItem';
 import HomePageChat from '../pages/Chat/HomePageChat';
 import ChatPage from '../pages/Chat/ChatPage';
 import NewsPage from '../pages/News/NewsPage';
 import Shop from '../pages/Shop/Shop';
 
-// const data = store.getState()
-// console.log(data.auth.user);
+
 
 
 
@@ -54,8 +54,8 @@ const router = createBrowserRouter([
         element: <Registration />,
       },
       {
-        path: '/profile',
-        element: <ProfileIndividual />,
+        path: '/personalaccaunt',
+        element: <PersonalAccount />,
       },
 
       {

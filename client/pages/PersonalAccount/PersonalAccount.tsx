@@ -3,8 +3,8 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
-import { useAppDispatch, useAppSelector } from '../../../src/App/redux/store';
-import { loadProfileUser } from '../../../src/App/redux/slicers/ProfileSlicer';
+import { useAppDispatch, useAppSelector } from '../../src/App/redux/store';
+import { loadProfileUser } from '../../src/App/redux/slicers/ProfileSlicer';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -14,7 +14,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-export default function ProfileIndividual() {
+export default function PersonalAccount() {
   const dispatch = useAppDispatch();
 
   React.useEffect(() => {

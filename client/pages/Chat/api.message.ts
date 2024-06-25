@@ -5,7 +5,6 @@ import type { MessageType } from './MessageType';
 export const fetchMessage = async (): Promise<MessageType[]> => {
   const response: AxiosResponse<{ message: string; chatMessages: MessageType[] }> =
     await axios.get('/api/chat/message');
-  console.log(response.data);
 
   return response.data.chatMessages;
 };

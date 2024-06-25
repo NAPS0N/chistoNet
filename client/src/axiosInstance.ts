@@ -32,7 +32,6 @@ axiosInstance.interceptors.request.use(
     if (!config.headers.Authorization) {
       config.headers.Authorization = `Bearer ${accessToken}`;
     }
-    console.log("config.headers.Authorization", config.headers.Authorization);
     return config;
   },
 );
@@ -47,13 +46,10 @@ axiosInstance.interceptors.response.use(
     if (error?.response?.status === 403 && !prevRequest.sent) {
       const response = await axios<TokensRefreshResponse>('/api/token/refresh');
       const newAccessToken = response.data.accessToken;
-      console.log('response.data.accessToken', response.data.accessToken);
 
       store.dispatch(setAccessToken(newAccessToken));
       prevRequest.sent = true;
       prevRequest.headers.Authorization = `Bearer ${newAccessToken}`;
-      console.log('   prevRequest.headers.Authorization',    prevRequest.headers.Authorization);
-      console.log('  prevRequest',   prevRequest);
        
       
       return axiosInstance(prevRequest);
