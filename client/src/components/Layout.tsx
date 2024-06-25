@@ -4,15 +4,24 @@ import Nav from './Navbar/Nav';
 import { Container } from '@mui/material';
 import '../index.css';
 import Footer from './Footer/Footer';
-import axios from 'axios';
+
+import { store, useAppDispatch } from '../App/redux/store';
+import axiosInstance from '../axiosInstance';
+import { ServerAuthResponse } from './Auth/UserType';
+import { setUser } from '../App/redux/slicers/AuthSlicer';
 
 export default function Layout(): JSX.Element {
-  useEffect(() => {
-    console.log(1);
+  const userDispatch = useAppDispatch();
 
-    axios.get('/api/tokens/refresh');
-    axios.get('/api/profile');
+  useEffect(() => {
+    // axiosInstance
+    //   .get<ServerAuthResponse>('/token/refresh')
+    //   .then((data) => userDispatch(setUser(data.data.user)))
+    //   .catch(console.log);
+    //   console.log(store.getState());
+      
   }, []);
+
 
   return (
     <>

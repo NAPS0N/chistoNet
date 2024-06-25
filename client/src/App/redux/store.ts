@@ -10,6 +10,7 @@ import authSlicer from '../../App/redux/slicers/AuthSlicer';
 import ProfileSlicer from './slicers/ProfileSlicer';
 
 import productReducer from './slicers/ProductSlice';
+import shopSlicer from './slicers/ShopSlice';
 
 
 
@@ -18,7 +19,7 @@ export const store = configureStore({
   reducer: {
     products: productReducer,
     auth: authSlicer,
-
+    shop: shopSlicer,
     message: MessageReducer,
 
     profileIndividual: ProfileSlicer,

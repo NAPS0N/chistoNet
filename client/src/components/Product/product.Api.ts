@@ -20,5 +20,15 @@ export const fetchSingleProduct = async (): Promise<ProductType> => {
     return response.data.product
 }
 
+export const fetchShopProduct = async (): Promise<ProductType[]> => {
+  console.log(555555555);
+  
+  const res: AxiosResponse<{ message: string; shopProducts: ProductType[]}> =
+  await axiosInstance.get('/products/shop');
+  console.log(5444444444, res);
+  
+  return res.data.shopProducts;
+}
+
 
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { RouterProvider, createBrowserRouter, useParams } from 'react-router-dom';
+import { RouterProvider, createBrowserRouter, redirect, useNavigate } from 'react-router-dom';
 
 // import { Chat, Home } from '@mui/icons-material';
 // import App from './App/App';
@@ -16,12 +16,15 @@ import Login from './components/Auth/Login';
 import Registration from './components/Auth/Registration';
 import ProfileIndividual from '../pages/Profile/Individual/ProfileIndividual';
 import ProductItem from './components/Product/ProductItem';
-
 import HomePageChat from '../pages/Chat/HomePageChat';
 import ChatPage from '../pages/Chat/ChatPage';
 import NewsPage from '../pages/News/NewsPage';
-
 import Shop from '../pages/Shop/Shop';
+
+// const data = store.getState()
+// console.log(data.auth.user);
+
+
 
 const router = createBrowserRouter([
   {
@@ -40,6 +43,7 @@ const router = createBrowserRouter([
       {
         path: '/products/:id',
         element: <ProductItem/>,
+        
       },
       {
         path: '/login',
@@ -68,7 +72,14 @@ const router = createBrowserRouter([
       }, 
       {
         path: '/shop',
+        
         element: <Shop />,
+        // loader: () => {
+        //   if(!data.auth.user) {
+        //      return redirect("/")
+        //   }
+        //   return true
+        // },
       },
     ],
   },

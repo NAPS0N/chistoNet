@@ -6,6 +6,8 @@ import Grid from '@mui/material/Grid';
 import './shopCss.css'
 import { useAppDispatch, useAppSelector } from '../../src/App/redux/store';
 import MapYandex from '../../src/components/Map/Map';
+import { loadShop } from '../../src/App/redux/slicers/ShopSlice';
+import { loadProductShop } from '../../src/App/redux/slicers/ProductSlice';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -16,25 +18,30 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export default function Shop(): JSX.Element {
-    // разкомментировать когда будет настроено соединение с сервером
 
-//     const dispatch = useAppDispatch();
-//     React.useEffect(() => {
-//         dispatch(loadProductShope()).catch(console.log) 
-//     }, []);
+    const dispatch = useAppDispatch();
+    React.useEffect(() => {
+        dispatch(loadShop()).catch(console.log);
+        dispatch(loadProductShop()).catch(console.log) 
+    }, []);
 
-const shop = useAppSelector((store) => store.shop); // указать точное свойство
-const shopProduct = useAppSelector((store) => store.products); // указать точное свойство
+    const shop = useAppSelector((store) => store.shop.shop);
+    const shopProducts = useAppSelector((store)=> store.products.products)
+    console.log(333333333, shopProducts);
+    
+
+
+// const shopProduct = useAppSelector((store) => store.products); // указать точное свойство
 
 
   return (
     <>
     <div className='imgShop'>
-        <img className='img' src='https://s1.kaercher-media.com/media/image/selection/166780/d0/Esli-moika-to-Kerkher-2024-ru.webp' alt='karcher'/>
+        <img className='img' src={shop.photo} alt={shop.description}/>
     </div>
     <div>
         <h3>О магазине</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, delectus quia. Recusandae eaque ipsum perferendis dolorum ipsa, fugit eveniet dolor magnam necessitatibus consequatur inventore, sit hic! Blanditiis, nam vitae. Harum.</p>
+        <p>{shop.description}</p>
     </div>
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2} columns={16}>
@@ -55,8 +62,9 @@ const shopProduct = useAppSelector((store) => store.products); // указать
       </Grid>
     </Box>
 <br/>
-
-<MapYandex/>
+<h3>Адрес</h3>
+<p>{shop.address}</p>
+<MapYandex shop={shop}/>
   
     </>
   );

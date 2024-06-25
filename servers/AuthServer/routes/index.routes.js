@@ -7,7 +7,7 @@ const router = require("express").Router();
  * Auth and tokens routes
  */
 router.use("/auth", require("./api/auth.api.routes"));
-router.use("/tokens", require("./api/tokens.api.routes"));
+router.use("/token", require("./api/tokens.api.routes"));
 /**
  * API routes
  */

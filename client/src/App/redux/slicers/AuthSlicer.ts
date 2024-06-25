@@ -46,6 +46,8 @@ export const authSlice = createSlice({
   reducers: {
     setAccessToken: (state, action: PayloadAction<string>) => {
       state.accessToken = action.payload;
+   
+      
     },
     clearAccessToken: (state) => {
       state.accessToken = null;
