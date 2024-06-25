@@ -61,7 +61,6 @@ function Nav(): JSX.Element {
             <Typography
               variant="h6"
               noWrap
-              component="a"
               href="#app-bar-with-responsive-menu"
               sx={{
                 mr: 2,
@@ -85,7 +84,6 @@ function Nav(): JSX.Element {
                   <Typography
                     variant="h6"
                     noWrap
-                    component="a"
                     href="#app-bar-with-responsive-menu"
                     sx={{
                       mr: 2,
@@ -121,7 +119,6 @@ function Nav(): JSX.Element {
                   <Typography
                     variant="h6"
                     noWrap
-                    component="a"
                     href="#app-bar-with-responsive-menu"
                     sx={{
                       mr: 2,
@@ -157,30 +154,33 @@ function Nav(): JSX.Element {
             <PopupState variant="popover" popupId="demo-popup-menu">
               {(popupState) => (
                 <Typography
-                  variant="h6"
-                  noWrap
-                  component="a"
-                  href="#app-bar-with-responsive-menu"
-                  sx={{
-                    mr: 2,
-                    display: { xs: 'none', md: 'flex' },
-                    fontFamily: 'monospace',
-                    fontWeight: 700,
-                    letterSpacing: '.3rem',
-                    color: 'inherit',
-                    textDecoration: 'none',
-                  }}
-                >
-                  <Link to="/products" className="menuLink">
-                    Вакансии
-                  </Link>
-                </Typography>
+
+                    variant="h6"
+                    noWrap
+                    href="#app-bar-with-responsive-menu"
+                    sx={{
+                      mr: 2,
+                      display: { xs: 'none', md: 'flex' },
+                      fontFamily: 'monospace',
+                      fontWeight: 700,
+                      letterSpacing: '.3rem',
+                      color: 'inherit',
+                      textDecoration: 'none',
+                    }}
+                  >
+                    <Link
+                      to="/products"
+                      className="menuLink"
+                    >
+                      Вакансии
+                    </Link>
+                  </Typography>
+
               )}
             </PopupState>
             <Typography
               variant="h6"
               noWrap
-              component="a"
               href="#app-bar-with-responsive-menu"
               sx={{
                 mr: 2,
@@ -199,7 +199,6 @@ function Nav(): JSX.Element {
             <Typography
               variant="h6"
               noWrap
-              component="a"
               href="#app-bar-with-responsive-menu"
               sx={{
                 mr: 2,
