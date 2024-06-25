@@ -4,8 +4,6 @@ const path = require("path");
 const morgan = require("morgan");
 const http = require("http");
 require("dotenv").config();
-// const { connectionCb, wss } = require("./socket/wsServer");
-// const { WebSocketServer } = require("ws");
 const map = new Map();
 const app = express();
 
