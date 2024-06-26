@@ -19,6 +19,7 @@ app.use(cookieParser()); // для чтения кук
 app.use(express.urlencoded()); // для чтения данных из формы
 app.use(express.json()); // для чтения JSON данных
 
+
 app.get("/api/products", async (req, res) => {
   try {
     const products = await Product.findAll({ include: ProductImg });

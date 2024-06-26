@@ -56,7 +56,7 @@ function ProductCard({product} :{product: ProductType}): JSX.Element {
     <>
     <Button onClick={handleOpen}><Typography>{product.title}</Typography></Button>
    
-    <Box sx={{ maxWidth: 1024, flexGrow: 1 }}>
+    <Box sx={{ width: 800, flexGrow: 1 }}>
       <Paper
         square
         elevation={0}
