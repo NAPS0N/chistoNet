@@ -4,8 +4,6 @@ const path = require("path");
 const morgan = require("morgan");
 const http = require("http");
 require("dotenv").config();
-// const { connectionCb, wss } = require("./socket/wsServer");
-// const { WebSocketServer } = require("ws");
 const map = new Map();
 const app = express();
 
@@ -32,5 +30,5 @@ const server = http.createServer(app);
 // wss.on("connection", wssCb);
 
 server.listen(process.env.PORTnews, () => {
-  console.log(`Server Profile запущен! PORT=${process.env.PORTnews}`);
+  console.log(`NewsServer запущен! PORT=${process.env.PORTnews}`);
 });

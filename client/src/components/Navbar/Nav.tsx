@@ -12,12 +12,15 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useParams } from 'react-router-dom';
 import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
 import './Nav.css';
 import '@fontsource/roboto/400.css';
 import { makeStyles } from '@mui/material';
 import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
+
+
+
 
 const pages = [
   { title: 'Товары', path: '/products' },
@@ -32,6 +35,10 @@ const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 function Nav(): JSX.Element {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+
+  const {id} = useParams()
+  console.log(id, 'id')
+
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -56,11 +63,12 @@ function Nav(): JSX.Element {
           style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
         >
           <div style={{ display: 'flex', alignItems: 'center' }}>
+
             <img src="../../../public/logo/240х400.png" alt="" style={{width: '45px', height: '50px', padding: '0 10px 0 0'}} />
+
             <Typography
               variant="h6"
               noWrap
-              component="a"
               href="#app-bar-with-responsive-menu"
               sx={{
                 mr: 2,
@@ -73,7 +81,9 @@ function Nav(): JSX.Element {
                 textDecoration: 'none',
               }}
             >
+
               <Link to='/home' className="menuLink">ChistoNet</Link>
+
             </Typography>
           </div>
 
@@ -84,7 +94,6 @@ function Nav(): JSX.Element {
                   <Typography
                     variant="h6"
                     noWrap
-                    component="a"
                     href="#app-bar-with-responsive-menu"
                     sx={{
                       mr: 2,
@@ -107,9 +116,10 @@ function Nav(): JSX.Element {
                   </Typography>
 
                   <Menu {...bindMenu(popupState)}>
-                    <MenuItem onClick={popupState.close}>Инвентарь</MenuItem>
-                    <MenuItem onClick={popupState.close}>Расходные материалы</MenuItem>
-                    <MenuItem onClick={popupState.close}>Моющие средства</MenuItem>
+  
+                    <Link to='/products/categories/5'><MenuItem onClick={popupState.close}>Инвентарь</MenuItem></Link>
+                    <Link to='/products/categories/6'><MenuItem onClick={popupState.close}>Расходные материалы</MenuItem></Link>
+                    <Link to='/products/categories/7'><MenuItem onClick={popupState.close}>Моющие средства</MenuItem></Link>
                   </Menu>
                 </>
               )}
@@ -120,7 +130,6 @@ function Nav(): JSX.Element {
                   <Typography
                     variant="h6"
                     noWrap
-                    component="a"
                     href="#app-bar-with-responsive-menu"
                     sx={{
                       mr: 2,
@@ -156,9 +165,9 @@ function Nav(): JSX.Element {
     
             
                 <Typography
+
                     variant="h6"
                     noWrap
-                    component="a"
                     href="#app-bar-with-responsive-menu"
                     sx={{
                       mr: 2,
@@ -177,6 +186,7 @@ function Nav(): JSX.Element {
                       Аренда
                     </Link>
                   </Typography>
+
 
 
          
@@ -199,10 +209,10 @@ function Nav(): JSX.Element {
                 Вакансии
               </Link>
             </Typography>
+
             <Typography
               variant="h6"
               noWrap
-              component="a"
               href="#app-bar-with-responsive-menu"
               sx={{
                 mr: 2,
@@ -221,7 +231,6 @@ function Nav(): JSX.Element {
             <Typography
               variant="h6"
               noWrap
-              component="a"
               href="#app-bar-with-responsive-menu"
               sx={{
                 mr: 2,
@@ -237,6 +246,44 @@ function Nav(): JSX.Element {
               <QuestionAnswerIcon/>
               </Link>
             </Typography>
+            <Typography
+              variant="h6"
+              noWrap
+              component="a"
+              href="#app-bar-with-responsive-menu"
+              sx={{
+                mr: 2,
+                display: { xs: 'none', md: 'flex' },
+                fontFamily: 'monospace',
+                fontWeight: 700,
+                letterSpacing: '.3rem',
+                color: 'inherit',
+                textDecoration: 'none',
+              }}
+            >
+              <Link to="/createnews" className="menuLink">
+                Новая новость
+              </Link>
+            </Typography>
+            <Typography
+              variant="h6"
+              noWrap
+              component="a"
+              href="#app-bar-with-responsive-menu"
+              sx={{
+                mr: 2,
+                display: { xs: 'none', md: 'flex' },
+                fontFamily: 'monospace',
+                fontWeight: 700,
+                letterSpacing: '.3rem',
+                color: 'inherit',
+                textDecoration: 'none',
+              }}
+            >
+              <Link to="/updatenews" className="menuLink">
+                Редактировать новость
+              </Link>
+            </Typography>
           </div>
 
           <Box>
@@ -246,6 +293,7 @@ function Nav(): JSX.Element {
               </Button>
             </Link>
           </Box>
+
         </Toolbar>
       </Container>
     </AppBar>
