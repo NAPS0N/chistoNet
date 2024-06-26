@@ -12,11 +12,14 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useParams } from 'react-router-dom';
 import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
 import './Nav.css';
 import '@fontsource/roboto/400.css';
 import { makeStyles } from '@mui/material';
+
+
+
 
 const pages = [
   { title: 'Товары', path: '/products' },
@@ -29,6 +32,10 @@ const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 function Nav(): JSX.Element {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+
+  const {id} = useParams()
+  console.log(id, 'id')
+
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -106,9 +113,10 @@ function Nav(): JSX.Element {
                   </Typography>
 
                   <Menu {...bindMenu(popupState)}>
-                    <MenuItem onClick={popupState.close}>Инвентарь</MenuItem>
-                    <MenuItem onClick={popupState.close}>Расходные материалы</MenuItem>
-                    <MenuItem onClick={popupState.close}>Моющие средства</MenuItem>
+  
+                    <Link to='/products/categories/5'><MenuItem onClick={popupState.close}>Инвентарь</MenuItem></Link>
+                    <Link to='/products/categories/6'><MenuItem onClick={popupState.close}>Расходные материалы</MenuItem></Link>
+                    <Link to='/products/categories/7'><MenuItem onClick={popupState.close}>Моющие средства</MenuItem></Link>
                   </Menu>
                 </>
               )}
@@ -265,7 +273,9 @@ function Nav(): JSX.Element {
             <Link to="/registration" className="menuLink">
               <Button color="inherit"> Зарегестрироваться </Button>
             </Link>
+            
           </Box>
+          
         </Toolbar>
       </Container>
     </AppBar>

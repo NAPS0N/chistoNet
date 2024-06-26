@@ -8,7 +8,10 @@ function Home(): JSX.Element {
   const  products = useAppSelector((store) => store.products.products);
 
   return (
+    <>
+    <h2>Товары</h2>
     <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
+      
       {products.map((product) => (
         <div className='product-item'>
           <ProductItem key={product.id} product={product}/>
@@ -16,6 +19,7 @@ function Home(): JSX.Element {
         ))}
  
       </div>
+      </>
 
   );
 }
