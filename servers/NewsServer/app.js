@@ -30,5 +30,5 @@ const server = http.createServer(app);
 // wss.on("connection", wssCb);
 
 server.listen(process.env.PORTnews, () => {
-  console.log(`Server Profile запущен! PORT=${process.env.PORTnews}`);
+  console.log(`NewsServer запущен! PORT=${process.env.PORTnews}`);
 });
