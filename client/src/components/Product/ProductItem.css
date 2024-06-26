@@ -12,7 +12,7 @@
 } */
 
 .product-cardHeader{
-  font-size: 1rem;
+  padding: 0;
 }
 .slide {
   display: block;

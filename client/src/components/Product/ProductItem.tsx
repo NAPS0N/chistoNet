@@ -20,7 +20,7 @@ function ProductItem({ product }: { product: ProductType }): JSX.Element {
     <div>
       {product !== undefined && (
         <Card sx={{ width: 200, height: 200 }}>
-          <CardHeader sx={{fontSize:'1px'}}
+          <CardHeader sx={{fontSize:'1px', p: '10px 5px 5px 10px'}}
             title={
               <Typography variant="h6" sx={{ fontSize: '1rem',height: '55px', overflow: 'hidden', textOverflow: "ellipsis"}}>
                 {product.title}
@@ -41,9 +41,9 @@ function ProductItem({ product }: { product: ProductType }): JSX.Element {
               />
             ))}
           </div>
-          <CardContent>
+          <CardContent sx={{p: '5px 5px 10px 5px'}}>
 
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" color="text.secondary" >
               цена: {product.price}
             </Typography>
           </CardContent>
