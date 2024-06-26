@@ -17,12 +17,15 @@ import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
 import './Nav.css';
 import '@fontsource/roboto/400.css';
 import { makeStyles } from '@mui/material';
+import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
 
 
 
 
 const pages = [
   { title: 'Товары', path: '/products' },
+  { title: 'Оборудование', path: '/products' },
+  { title: 'Аренда', path: '/products' },
   { title: 'Вакансии', path: '/vacancies' },
   { title: 'Новости', path: '/news' },
   { title: 'Чатик', path: '/chat' },
@@ -60,10 +63,8 @@ function Nav(): JSX.Element {
           style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
         >
           <div style={{ display: 'flex', alignItems: 'center' }}>
-            <AdbIcon
-              className="menuLink"
-              sx={{ display: { xs: 'none', md: 'flex', alignItems: 'center' }, mr: 1 }}
-            />
+
+            <img src="../../../public/logo/240х400.png" alt="" style={{width: '45px', height: '50px', padding: '0 10px 0 0'}} />
 
             <Typography
               variant="h6"
@@ -80,7 +81,9 @@ function Nav(): JSX.Element {
                 textDecoration: 'none',
               }}
             >
-              <Link to="/home">ChistoNet</Link>
+
+              <Link to='/home' className="menuLink">ChistoNet</Link>
+
             </Typography>
           </div>
 
@@ -144,7 +147,7 @@ function Nav(): JSX.Element {
                       variant="contained"
                       {...bindTrigger(popupState)}
                     >
-                      Аренда
+                      Оборудование
                     </Link>
                   </Typography>
 
@@ -159,8 +162,8 @@ function Nav(): JSX.Element {
                 </>
               )}
             </PopupState>
-            <PopupState variant="popover" popupId="demo-popup-menu">
-              {(popupState) => (
+    
+            
                 <Typography
 
                     variant="h6"
@@ -180,12 +183,33 @@ function Nav(): JSX.Element {
                       to="/products"
                       className="menuLink"
                     >
-                      Вакансии
+                      Аренда
                     </Link>
                   </Typography>
 
-              )}
-            </PopupState>
+
+
+         
+            <Typography
+              variant="h6"
+              noWrap
+              component="a"
+              href="#app-bar-with-responsive-menu"
+              sx={{
+                mr: 2,
+                display: { xs: 'none', md: 'flex' },
+                fontFamily: 'monospace',
+                fontWeight: 700,
+                letterSpacing: '.3rem',
+                color: 'inherit',
+                textDecoration: 'none',
+              }}
+            >
+              <Link to="/products" className="menuLink">
+                Вакансии
+              </Link>
+            </Typography>
+
             <Typography
               variant="h6"
               noWrap
@@ -219,7 +243,7 @@ function Nav(): JSX.Element {
               }}
             >
               <Link to="/homepagechat" className="menuLink">
-                Чатик
+              <QuestionAnswerIcon/>
               </Link>
             </Typography>
             <Typography
@@ -269,13 +293,7 @@ function Nav(): JSX.Element {
               </Button>
             </Link>
           </Box>
-          <Box>
-            <Link to="/registration" className="menuLink">
-              <Button color="inherit"> Зарегестрироваться </Button>
-            </Link>
-            
-          </Box>
-          
+
         </Toolbar>
       </Container>
     </AppBar>
