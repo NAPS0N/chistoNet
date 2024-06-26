@@ -17,6 +17,7 @@ import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
 import './Nav.css';
 import '@fontsource/roboto/400.css';
 import { makeStyles } from '@mui/material';
+import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
 
 const pages = [
   { title: 'Товары', path: '/products' },
@@ -55,11 +56,7 @@ function Nav(): JSX.Element {
           style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
         >
           <div style={{ display: 'flex', alignItems: 'center' }}>
-            <AdbIcon
-              className="menuLink"
-              sx={{ display: { xs: 'none', md: 'flex', alignItems: 'center' }, mr: 1 }}
-            />
-           
+            <img src="../../../public/logo/240х400.png" alt="" style={{width: '45px', height: '50px', padding: '0 10px 0 0'}} />
             <Typography
               variant="h6"
               noWrap
@@ -76,7 +73,7 @@ function Nav(): JSX.Element {
                 textDecoration: 'none',
               }}
             >
-              <Link to='/home'>ChistoNet</Link>
+              <Link to='/home' className="menuLink">ChistoNet</Link>
             </Typography>
           </div>
 
@@ -237,7 +234,7 @@ function Nav(): JSX.Element {
               }}
             >
               <Link to="/homepagechat" className="menuLink">
-                Чатик
+              <QuestionAnswerIcon/>
               </Link>
             </Typography>
           </div>
