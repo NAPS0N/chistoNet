@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { RouterProvider, createBrowserRouter, useParams } from 'react-router-dom';
+import { RouterProvider, createBrowserRouter, redirect, useNavigate } from 'react-router-dom';
 
 // import { Chat, Home } from '@mui/icons-material';
 // import App from './App/App';
@@ -15,12 +15,11 @@ import Layout from './components/Layout';
 import Login from './components/Auth/Login';
 import Registration from './components/Auth/Registration';
 import ProfileIndividual from '../pages/Profile/Individual/ProfileIndividual';
+import PersonalAccount from '../pages/PersonalAccount/PersonalAccount';
 import ProductItem from './components/Product/ProductItem';
-
 import HomePageChat from '../pages/Chat/HomePageChat';
 import ChatPage from '../pages/Chat/ChatPage';
 import NewsPage from '../pages/News/NewsPage';
-
 import Shop from '../pages/Shop/Shop';
 import Home from './components/Home/Home';
 import Category from './components/Product/ProductByCategory';
@@ -28,6 +27,10 @@ import ProductByCategory from './components/Product/ProductByCategory';
 import NewsAdmin from './components/News/NewsCreateForm';
 import NewsCreateForm from './components/News/NewsCreateForm';
 import NewsUpdateForm from './components/News/NewsUpdateForm';
+
+
+
+
 
 
 const router = createBrowserRouter([
@@ -52,10 +55,11 @@ const router = createBrowserRouter([
       //   path: '/products',
       //   element: <ListOfProducts/>,
       // },
-      // {
-      //   path: '/products/:id',
-      //   element: <ProductItem/>,
-      // },
+      {
+        path: '/products/:id',
+        element: <ProductItem/>,
+        
+      },
       {
         path: '/login',
         element: <Login />,
@@ -65,8 +69,8 @@ const router = createBrowserRouter([
         element: <Registration />,
       },
       {
-        path: '/profile',
-        element: <ProfileIndividual />,
+        path: '/personalaccaunt',
+        element: <PersonalAccount />,
       },
 
       {
@@ -83,7 +87,14 @@ const router = createBrowserRouter([
       },
       {
         path: '/shop',
+        
         element: <Shop />,
+        // loader: () => {
+        //   if(!data.auth.user) {
+        //      return redirect("/")
+        //   }
+        //   return true
+        // },
       },
       {
         path: '/createnews',

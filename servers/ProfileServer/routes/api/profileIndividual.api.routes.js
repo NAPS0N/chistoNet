@@ -1,8 +1,7 @@
 const router = require("express").Router();
-const verifyRefreshToken = require("../../../AuthServer/middleware/verifyRefreshToken");
+const verifyRefreshToken = require("../../../middleware/verifyRefreshToken");
 const {Individual} = require("../../../db/models/");
 
-//добавить verifyRefreshToken
 router.get("/", verifyRefreshToken, async (req, res) => {
     try {
         const {user} =  res.locals;

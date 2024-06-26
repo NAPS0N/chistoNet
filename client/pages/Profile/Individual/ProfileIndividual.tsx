@@ -28,7 +28,14 @@ export default function ProfileIndividual() {
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
         <Grid item xl={6} md={4}>
-          <Item>Меню навигации по личному кабинету</Item>
+          <Item>
+          <Item>Мои объявления</Item>
+          <Item>Избранное</Item>
+          <Item>Чат</Item>
+          <Item>Контактная информация</Item>
+          <Item>Выйти</Item>
+          </Item>
+          
         </Grid>
         <Grid item xl={6} md={8}>
           <Item>

@@ -41,6 +41,22 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.TEXT,
     },
+    description: {
+      allowNull: false,
+      type: DataTypes.TEXT,
+    },
+    lax: {
+      allowNull: true,
+      type: DataTypes.TEXT,
+    },
+    lon: {
+      allowNull: true,
+      type: DataTypes.TEXT,
+    },
+    phoneNumber: {
+      allowNull: true,
+      type: DataTypes.TEXT,
+    },
   }, {
     sequelize,
     modelName: 'Shop',

@@ -1,5 +1,6 @@
-const jwt = require('jsonwebtoken');
-require('dotenv').config();
+const jwt = require("jsonwebtoken");
+const path = require("path");
+require("dotenv").config({ path: path.join("../.env") });
 
 function verifyRefreshToken(req, res, next) {
   try {
@@ -11,7 +12,7 @@ function verifyRefreshToken(req, res, next) {
     next();
   } catch (error) {
     console.log('Invalid refresh token');
-    res.clearCookie('refreshToken');
+    res.status(403).clearCookie('refreshToken');
   }
 }
 

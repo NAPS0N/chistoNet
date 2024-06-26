@@ -1,6 +1,7 @@
-require('dotenv').config();
-const jwt = require('jsonwebtoken');
-const jwtConfig = require('../AuthServer/configs/jwtConfig');
+const path = require("path");
+const jwt = require("jsonwebtoken");
+const jwtConfig = require("../AuthServer/configs/jwtConfig");
+require("dotenv").config({ path: path.join("../.env") });
 
 /**
  *
@@ -9,8 +10,16 @@ const jwtConfig = require('../AuthServer/configs/jwtConfig');
  */
 function generateTokens(payload) {
   return {
-    accessToken: jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, jwtConfig.access),
-    refreshToken: jwt.sign(payload, process.env.REFRESH_TOKEN_SECRET, jwtConfig.refresh),
+    accessToken: jwt.sign(
+      payload,
+      process.env.ACCESS_TOKEN_SECRET,
+      jwtConfig.access
+    ),
+    refreshToken: jwt.sign(
+      payload,
+      process.env.REFRESH_TOKEN_SECRET,
+      jwtConfig.refresh
+    ),
   };
 }
 
