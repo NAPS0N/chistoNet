@@ -6,14 +6,15 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import MessageReducer from './slicers/MessageSlicer';
 
-import authSlicer from '../../App/redux/slicers/AuthSlicer';
+import authSlicer from './slicers/AuthSlicer';
 import ProfileSlicer from './slicers/ProfileSlicer';
 
 import productReducer from './slicers/ProductSlice';
 import shopSlicer from './slicers/ShopSlice';
 
-
-
+import categoryReducer from './slicers/CategorySlice';
+import productByCategoryReducer from './slicers/ProductByCategorySlice';
+import NewsReducer from './slicers/NewsSlicer';
 
 export const store = configureStore({
   reducer: {
@@ -23,8 +24,9 @@ export const store = configureStore({
     message: MessageReducer,
 
     profileIndividual: ProfileSlicer,
-  
-
+    news: NewsReducer,
+    categories: categoryReducer,
+    productsByCategory: productByCategoryReducer
   },
 });
 

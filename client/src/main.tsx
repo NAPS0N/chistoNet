@@ -21,6 +21,13 @@ import HomePageChat from '../pages/Chat/HomePageChat';
 import ChatPage from '../pages/Chat/ChatPage';
 import NewsPage from '../pages/News/NewsPage';
 import Shop from '../pages/Shop/Shop';
+import Home from './components/Home/Home';
+import Category from './components/Product/ProductByCategory';
+import ProductByCategory from './components/Product/ProductByCategory';
+import NewsAdmin from './components/News/NewsCreateForm';
+import NewsCreateForm from './components/News/NewsCreateForm';
+import NewsUpdateForm from './components/News/NewsUpdateForm';
+
 
 
 
@@ -35,6 +42,14 @@ const router = createBrowserRouter([
       {
         path: '/products',
         element: <ListOfProducts />,
+      },
+      {
+        path: '/home',
+        element: <Home />,
+      },
+      {
+        path: '/products/categories/:id',
+        element: <ProductByCategory />,
       },
       // {
       //   path: '/products',
@@ -69,7 +84,7 @@ const router = createBrowserRouter([
       {
         path: '/news',
         element: <NewsPage />,
-      }, 
+      },
       {
         path: '/shop',
         
@@ -80,6 +95,14 @@ const router = createBrowserRouter([
         //   }
         //   return true
         // },
+      },
+      {
+        path: '/createnews',
+        element: <NewsCreateForm />,
+      },
+      {
+        path: '/updatenews/:id',
+        element: <NewsUpdateForm />,
       },
     ],
   },

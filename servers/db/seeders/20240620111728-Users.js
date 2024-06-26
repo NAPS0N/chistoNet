@@ -2,10 +2,9 @@
 const bcrypt = require("bcrypt");
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
-
+  async up(queryInterface, Sequelize) {
     await queryInterface.bulkInsert(
-      'Users',
+      "Users",
       [
         {
           phoneNumber: "+79999999999",
@@ -19,9 +18,9 @@ module.exports = {
         },
         {
           phoneNumber: "+79999999998",
-          email: 'semechkin@mail.ru',
-          firstName: 'Nikolay',
-          lastName: 'Elay',
+          email: "semechkin@mail.ru",
+          firstName: "Nikolay",
+          lastName: "Elay",
           password: await bcrypt.hash("123456", 10),
           isBlocked: false,
           createdAt: new Date(),
@@ -29,19 +28,18 @@ module.exports = {
         },
         {
           phoneNumber: "+79999999997",
-          email: 'dionis@mail.ru',
+          email: "dionis@mail.ru",
           password: await bcrypt.hash("123456", 10),
-          firstName: 'Petr',
-          lastName: 'First',
+          firstName: "Petr",
           isBlocked: false,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           phoneNumber: "+79999999996",
-          email: 'kapusta@mail.ru',
-          firstName: 'Brus',
-          lastName: 'Willes',
+          email: "kapusta@mail.ru",
+          firstName: "Brus",
+          lastName: "Willes",
           password: await bcrypt.hash("123456", 10),
           isBlocked: false,
           createdAt: new Date(),
@@ -49,9 +47,9 @@ module.exports = {
         },
         {
           phoneNumber: "+79999999995",
-          email: 'nyashka@gmail.ru',
-          firstName: 'Kiano',
-          lastName: 'Ruvs',
+          email: "nyashka@gmail.ru",
+          firstName: "Kiano",
+          lastName: "Ruvs",
           password: await bcrypt.hash("123456", 10),
           isBlocked: false,
           createdAt: new Date(),
@@ -62,13 +60,13 @@ module.exports = {
     );
   },
 
-  async down (queryInterface, Sequelize) {
-    await queryInterface.bulkDelete('Users', null, {});
+  async down(queryInterface, Sequelize) {
+    await queryInterface.bulkDelete("Users", null, {});
     /**
      * Add commands to revert seed here.
      *
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-  }
+  },
 };

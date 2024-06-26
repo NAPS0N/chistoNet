@@ -11,7 +11,6 @@ router.use("/token", require("./api/tokens.api.routes"));
 /**
  * API routes
  */
- 
 
 // router.use("/admin", verifyRefreshToken, checkAdminPermission,  require("./api/admin/admin.api.routes"));
 

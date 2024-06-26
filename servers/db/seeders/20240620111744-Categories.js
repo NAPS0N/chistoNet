@@ -28,7 +28,19 @@ module.exports = {
       updatedAt: new Date(),
     },
     {
-      title: 'Уборочные тележки',
+      title: 'Инвентарь',
+      pId: 1,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      title: 'Расходные материалы',
+      pId: 1,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      title: 'Моющие средства',
       pId: 1,
       createdAt: new Date(),
       updatedAt: new Date(),
@@ -63,8 +75,7 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date(),
     },
-  
-  ])
+    ]);
     /**
      * Add seed commands here.
      *

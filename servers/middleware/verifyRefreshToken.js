@@ -11,8 +11,8 @@ function verifyRefreshToken(req, res, next) {
 
     next();
   } catch (error) {
-    console.log("Invalid refresh token, in verifyRefreshToken.js", error);
-    res.status(403).send("Invalid refresh token");
+    console.log('Invalid refresh token');
+    res.status(403).clearCookie('refreshToken');
   }
 }
 

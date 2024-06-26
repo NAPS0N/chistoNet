@@ -20,6 +20,7 @@ const loadProduct = createAsyncThunk('product/load', async () => fetchSingleProd
 const loadProductShop = createAsyncThunk('productShop/load', async () => fetchShopProduct())
 const loadProductUser = createAsyncThunk('productUser/load', async () => fetchUserProduct())
 
+
 export const productSlice = createSlice({
   name: 'products',
   initialState,
@@ -28,6 +29,8 @@ export const productSlice = createSlice({
     builder
       .addCase(loadProducts.fulfilled, (state, action) => {
         state.products = action.payload; 
+ 
+        
       })
       .addCase(loadProducts.rejected, (state, action) => {
         state.products = [];
