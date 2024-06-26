@@ -19,9 +19,6 @@ import '@fontsource/roboto/400.css';
 import { makeStyles } from '@mui/material';
 import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
 
-
-
-
 const pages = [
   { title: 'Товары', path: '/products' },
   { title: 'Оборудование', path: '/products' },
@@ -36,9 +33,8 @@ function Nav(): JSX.Element {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
-  const {id} = useParams()
-  console.log(id, 'id')
-
+  const { id } = useParams();
+  console.log(id, 'id');
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -116,10 +112,15 @@ function Nav(): JSX.Element {
                   </Typography>
 
                   <Menu {...bindMenu(popupState)}>
-  
-                    <Link to='/products/categories/5'><MenuItem onClick={popupState.close}>Инвентарь</MenuItem></Link>
-                    <Link to='/products/categories/6'><MenuItem onClick={popupState.close}>Расходные материалы</MenuItem></Link>
-                    <Link to='/products/categories/7'><MenuItem onClick={popupState.close}>Моющие средства</MenuItem></Link>
+                    <Link to="/products/categories/5">
+                      <MenuItem onClick={popupState.close}>Инвентарь</MenuItem>
+                    </Link>
+                    <Link to="/products/categories/6">
+                      <MenuItem onClick={popupState.close}>Расходные материалы</MenuItem>
+                    </Link>
+                    <Link to="/products/categories/7">
+                      <MenuItem onClick={popupState.close}>Моющие средства</MenuItem>
+                    </Link>
                   </Menu>
                 </>
               )}
@@ -210,6 +211,7 @@ function Nav(): JSX.Element {
               </Link>
             </Typography>
 
+
             <Typography
               variant="h6"
               noWrap
@@ -246,44 +248,6 @@ function Nav(): JSX.Element {
               <QuestionAnswerIcon/>
               </Link>
             </Typography>
-            <Typography
-              variant="h6"
-              noWrap
-              component="a"
-              href="#app-bar-with-responsive-menu"
-              sx={{
-                mr: 2,
-                display: { xs: 'none', md: 'flex' },
-                fontFamily: 'monospace',
-                fontWeight: 700,
-                letterSpacing: '.3rem',
-                color: 'inherit',
-                textDecoration: 'none',
-              }}
-            >
-              <Link to="/createnews" className="menuLink">
-                Новая новость
-              </Link>
-            </Typography>
-            <Typography
-              variant="h6"
-              noWrap
-              component="a"
-              href="#app-bar-with-responsive-menu"
-              sx={{
-                mr: 2,
-                display: { xs: 'none', md: 'flex' },
-                fontFamily: 'monospace',
-                fontWeight: 700,
-                letterSpacing: '.3rem',
-                color: 'inherit',
-                textDecoration: 'none',
-              }}
-            >
-              <Link to="/updatenews" className="menuLink">
-                Редактировать новость
-              </Link>
-            </Typography>
           </div>
 
           <Box>
@@ -293,6 +257,14 @@ function Nav(): JSX.Element {
               </Button>
             </Link>
           </Box>
+
+          <Box>
+            <Link to="/registration" className="menuLink">
+              <Button color="inherit"> Зарегестрироваться </Button>
+            </Link>
+          </Box>
+
+
 
         </Toolbar>
       </Container>

@@ -1,8 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { TextField, Button, Box, MenuItem, Select, InputLabel, FormControl } from '@mui/material';
+import {
+  TextField,
+  Button,
+  Box,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+} from '@mui/material';
 import { useAppDispatch, useAppSelector } from '../../App/redux/store';
 import { createNews, loadNews } from '../../App/redux/slicers/NewsSlicer';
-import { fetchCreateNews } from '../../../pages/News/api.news';
 
 function NewsCreateForm(): JSX.Element {
   const dispatchAllNews = useAppDispatch();
@@ -10,10 +18,9 @@ function NewsCreateForm(): JSX.Element {
   const allNews = useAppSelector((store) => store.news.news);
   console.log('NewsAdmin', allNews);
 
-  // загрузка всех новостей
   useEffect(() => {
     dispatchAllNews(loadNews()).catch(console.log);
-  }, []);
+  }, [dispatchAllNews]);
 
   const [formData, setFormData] = useState({
     title: '',
@@ -22,10 +29,7 @@ function NewsCreateForm(): JSX.Element {
     video: '',
   });
 
-  const [selectedPhoto, setSelectedPhoto] = useState(null);
-  const [selectedVideo, setSelectedVideo] = useState(null);
-  const [photoPreview, setPhotoPreview] = useState(null);
-  const [videoPreview, setVideoPreview] = useState(null);
+  const [open, setOpen] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -41,16 +45,15 @@ function NewsCreateForm(): JSX.Element {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('NewsAdminSubmit', e.target);
-    dispatchNewNews(createNews({ ...formData })).catch(console.log);
-    // Process formData here (e.g., send it to the server or dispatch an action)
+    dispatchNewNews(createNews({ ...formData }))
+      .then(() => {
+        setOpen(true); // Открыть модальное окно после успешной публикации
+      })
+      .catch(console.log);
   };
 
-  // загрузка файлов
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, files } = e.target;
-    console.log('handleFileChange', files);
-
     if (files && files.length > 0) {
       const file = files[0];
       const reader = new FileReader();
@@ -63,38 +66,19 @@ function NewsCreateForm(): JSX.Element {
       reader.readAsDataURL(file);
     }
   };
-  console.log('formdata', formData);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
     <Box sx={{ mt: 5, mx: 'auto', width: '50%' }}>
       <form onSubmit={handleSubmit}>
-        {/* <FormControl fullWidth margin="normal">
-          <InputLabel id="news-select-label">Select News</InputLabel>
-          <Select
-            labelId="news-select-label"
-            name="selectedNews"
-            value={formData.selectedNews}
-            onChange={handleChange}
-            label="Select News"
-          >
-            {allNews.map((news) => (
-              <MenuItem key={news.id} value={news.title}>
-                {news.title}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl> */}
-        <TextField
-          label="Title"
-          name="title"
-          onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-          fullWidth
-          margin="normal"
-        />
+        <TextField label="Title" name="title" onChange={handleChange} fullWidth margin="normal" />
         <TextField
           label="Text"
           name="text"
-          onChange={(e) => setFormData({ ...formData, text: e.target.value })}
+          onChange={handleChange}
           multiline
           rows={4}
           fullWidth
@@ -103,7 +87,7 @@ function NewsCreateForm(): JSX.Element {
         <TextField
           label="Photo URL"
           name="photo"
-          onChange={(e) => setFormData({ ...formData, photo: e.target.value })}
+          onChange={handleChange}
           fullWidth
           margin="normal"
         />
@@ -114,11 +98,10 @@ function NewsCreateForm(): JSX.Element {
         <TextField
           label="Video URL"
           name="video"
-          onChange={(e) => setFormData({ ...formData, video: e.target.value })}
+          onChange={handleChange}
           fullWidth
           margin="normal"
         />
-
         <Button variant="contained" component="label" sx={{ mt: 2 }}>
           Upload Video
           <input type="file" name="video" accept="video/*" hidden onChange={handleFileChange} />
@@ -129,6 +112,18 @@ function NewsCreateForm(): JSX.Element {
           </Button>
         </Box>
       </form>
+
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>Новость опубликована</DialogTitle>
+        <DialogContent>
+          <DialogContentText>Ваша новость успешно опубликована.</DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary" autoFocus>
+            Закрыть
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Box>
   );
 }
