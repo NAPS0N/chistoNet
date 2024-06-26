@@ -5,7 +5,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
 import type { ProductType } from '../../../components/Product/ProductType';
-import { fetchProductLoad, fetchShopProduct, fetchSingleProduct, fetchUserProduct } from '../../../components/Product/product.Api';
+import { fetchProductLoad, fetchShopProduct, fetchUserProduct } from '../../../components/Product/product.Api';
 
 export type InitialStateType = {
   products: ProductType[];
@@ -16,7 +16,6 @@ const initialState: InitialStateType = {
 };
 
 const loadProducts = createAsyncThunk('products/load', async () => fetchProductLoad())
-const loadProduct = createAsyncThunk('product/load', async () => fetchSingleProduct())
 const loadProductShop = createAsyncThunk('productShop/load', async () => fetchShopProduct())
 const loadProductUser = createAsyncThunk('productUser/load', async () => fetchUserProduct())
 
@@ -61,6 +60,6 @@ export const productSlice = createSlice({
   },
 });
 
-export { loadProducts, loadProduct, loadProductShop, loadProductUser};
+export { loadProducts, loadProductShop, loadProductUser};
 
 export default productSlice.reducer
