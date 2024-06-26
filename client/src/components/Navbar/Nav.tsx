@@ -18,9 +18,6 @@ import './Nav.css';
 import '@fontsource/roboto/400.css';
 import { makeStyles } from '@mui/material';
 
-
-
-
 const pages = [
   { title: 'Товары', path: '/products' },
   { title: 'Вакансии', path: '/vacancies' },
@@ -33,9 +30,8 @@ function Nav(): JSX.Element {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
-  const {id} = useParams()
-  console.log(id, 'id')
-
+  const { id } = useParams();
+  console.log(id, 'id');
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -113,10 +109,15 @@ function Nav(): JSX.Element {
                   </Typography>
 
                   <Menu {...bindMenu(popupState)}>
-  
-                    <Link to='/products/categories/5'><MenuItem onClick={popupState.close}>Инвентарь</MenuItem></Link>
-                    <Link to='/products/categories/6'><MenuItem onClick={popupState.close}>Расходные материалы</MenuItem></Link>
-                    <Link to='/products/categories/7'><MenuItem onClick={popupState.close}>Моющие средства</MenuItem></Link>
+                    <Link to="/products/categories/5">
+                      <MenuItem onClick={popupState.close}>Инвентарь</MenuItem>
+                    </Link>
+                    <Link to="/products/categories/6">
+                      <MenuItem onClick={popupState.close}>Расходные материалы</MenuItem>
+                    </Link>
+                    <Link to="/products/categories/7">
+                      <MenuItem onClick={popupState.close}>Моющие средства</MenuItem>
+                    </Link>
                   </Menu>
                 </>
               )}
@@ -162,28 +163,23 @@ function Nav(): JSX.Element {
             <PopupState variant="popover" popupId="demo-popup-menu">
               {(popupState) => (
                 <Typography
-
-                    variant="h6"
-                    noWrap
-                    href="#app-bar-with-responsive-menu"
-                    sx={{
-                      mr: 2,
-                      display: { xs: 'none', md: 'flex' },
-                      fontFamily: 'monospace',
-                      fontWeight: 700,
-                      letterSpacing: '.3rem',
-                      color: 'inherit',
-                      textDecoration: 'none',
-                    }}
-                  >
-                    <Link
-                      to="/products"
-                      className="menuLink"
-                    >
-                      Вакансии
-                    </Link>
-                  </Typography>
-
+                  variant="h6"
+                  noWrap
+                  href="#app-bar-with-responsive-menu"
+                  sx={{
+                    mr: 2,
+                    display: { xs: 'none', md: 'flex' },
+                    fontFamily: 'monospace',
+                    fontWeight: 700,
+                    letterSpacing: '.3rem',
+                    color: 'inherit',
+                    textDecoration: 'none',
+                  }}
+                >
+                  <Link to="/products" className="menuLink">
+                    Вакансии
+                  </Link>
+                </Typography>
               )}
             </PopupState>
             <Typography
@@ -222,44 +218,6 @@ function Nav(): JSX.Element {
                 Чатик
               </Link>
             </Typography>
-            <Typography
-              variant="h6"
-              noWrap
-              component="a"
-              href="#app-bar-with-responsive-menu"
-              sx={{
-                mr: 2,
-                display: { xs: 'none', md: 'flex' },
-                fontFamily: 'monospace',
-                fontWeight: 700,
-                letterSpacing: '.3rem',
-                color: 'inherit',
-                textDecoration: 'none',
-              }}
-            >
-              <Link to="/createnews" className="menuLink">
-                Новая новость
-              </Link>
-            </Typography>
-            <Typography
-              variant="h6"
-              noWrap
-              component="a"
-              href="#app-bar-with-responsive-menu"
-              sx={{
-                mr: 2,
-                display: { xs: 'none', md: 'flex' },
-                fontFamily: 'monospace',
-                fontWeight: 700,
-                letterSpacing: '.3rem',
-                color: 'inherit',
-                textDecoration: 'none',
-              }}
-            >
-              <Link to="/updatenews" className="menuLink">
-                Редактировать новость
-              </Link>
-            </Typography>
           </div>
 
           <Box>
@@ -273,9 +231,7 @@ function Nav(): JSX.Element {
             <Link to="/registration" className="menuLink">
               <Button color="inherit"> Зарегестрироваться </Button>
             </Link>
-            
           </Box>
-          
         </Toolbar>
       </Container>
     </AppBar>
