@@ -23,7 +23,7 @@ const initialState: InitialStateType = {
 
 const loadShop = createAsyncThunk('shop/load', async () => fetchShopLoad());
 // const updateImg = createAsyncThunk('shop/updateImg', async (data)=>fetchShopUpdateImg(data))
-// const updateShopDiscription = createAsyncThunk('shop/updateDescription', async (data)=>fetchShopUpdateImg(data))
+const updateFormShop = createAsyncThunk('shop/updateForm', async (updateForm:)=>fetchUpdateShop(updateForm))
 
 export const shopSlicer = createSlice({
   name: 'shop',

@@ -145,19 +145,19 @@ export default function PersonalAccount() {
                   <Grid item xs={8}>
                     <Item2>
                       <p>Опубликуванные объявления</p>
-                      <h5>5</h5>
+                      <h5>3</h5>
                     </Item2>
                   </Grid>
                   <Grid item xs={8}>
                     <Item2>
                       <p>На проверке</p>
-                      <h5>5</h5>
+                      <h5>3</h5>
                     </Item2>
                   </Grid>
                   <Grid item xs={8}>
                     <Item2>
                       <p>Не активные объявления</p>
-                      <h5>5</h5>
+                      <h5>0</h5>
                     </Item2>
                   </Grid>
                 </Grid>
