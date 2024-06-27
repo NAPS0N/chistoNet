@@ -257,13 +257,31 @@ function Nav(): JSX.Element {
                 textDecoration: 'none',
               }}
             >
-              <Link to="/news" className="menuLink">
-                Новости
+
+              <Link to="/chatroom" className="menuLink">
+                Chatroom
+              </Link>
+            </Typography>
+            <Typography
+              variant="h6"
+              noWrap
+              href="#app-bar-with-responsive-menu"
+              sx={{
+                mr: 2,
+                display: { xs: 'none', md: 'flex' },
+                fontFamily: 'monospace',
+                fontWeight: 700,
+                letterSpacing: '.3rem',
+                color: 'inherit',
+                textDecoration: 'none',
+              }}
+            >
+              <Link to="/chat" className="menuLink">
+                <QuestionAnswerIcon />
               </Link>
             </Typography>
       
           </div>
-
 
 
              {!user ? (
@@ -318,6 +336,7 @@ function Nav(): JSX.Element {
               </Link>
               </>
             )} 
+
         </Toolbar>
       </Container>
     </AppBar>

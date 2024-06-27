@@ -19,6 +19,7 @@ import PersonalAccount from '../pages/PersonalAccount/PersonalAccount';
 import ProductItem from './components/Product/ProductItem';
 import HomePageChat from '../pages/Chat/HomePageChat';
 import ChatPage from '../pages/Chat/ChatPage';
+import Chat from '../pages/Chat/Chat';
 import NewsPage from '../pages/News/NewsPage';
 import Shop from '../pages/Shop/Shop';
 import Home from './components/Home/Home';
@@ -28,6 +29,7 @@ import NewsAdmin from './components/News/NewsCreateForm';
 import NewsCreateForm from './components/News/NewsCreateForm';
 import NewsUpdateForm from './components/News/NewsUpdateForm';
 import CompanyProfile from '../pages/Profile/Company/CompanyProfile';
+
 
 const router = createBrowserRouter([
   {
@@ -105,6 +107,10 @@ const router = createBrowserRouter([
       {
         path: '/company',
         element: < CompanyProfile/>,
+      },
+      {
+        path: '/chatroom',
+        element: <Chat />,
       },
     ],
   },
