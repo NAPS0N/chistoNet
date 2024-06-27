@@ -5,7 +5,7 @@ import { Form, Input, Button } from 'antd';
 import { useAppDispatch } from '../../App/redux/store';
 import { logInThunk } from '../../App/redux/slicers/AuthSlicer';
 
-function LogIn(): JSX.Element {
+function LogIn({setOpen}:{setOpen:React.Dispatch<React.SetStateAction<boolean>>}): JSX.Element {
   const [loginForm, setLoginForm] = useState({ email: 'user1@email.com', password: '123456' });
 
   const dispatch = useAppDispatch();
@@ -14,11 +14,14 @@ function LogIn(): JSX.Element {
   const logIn = async (): Promise<void> =>
     dispatch(logInThunk(loginForm))
       .then(() => navigate('/'))
+      .then(()=> setOpen(false))
       .catch(console.log);
       
 
   return (
     <Form style={{ width: '360px', padding: '8% 0 0', margin: 'auto' }} onFinish={logIn}>
+      <h3>Войти</h3>
+      <br/>
       <Form.Item label="Login" name="email">
         <Input
           type="text"
@@ -35,9 +38,15 @@ function LogIn(): JSX.Element {
         />
       </Form.Item>
       <Form.Item>
-        <Button type="primary" htmlType="submit">
+        <Button style={{background: '#468866'}} type="primary" htmlType="submit">
           Войти
         </Button>
+      </Form.Item>
+
+      <Form.Item>
+               
+               
+             
       </Form.Item>
     </Form>
   );

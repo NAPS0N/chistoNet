@@ -28,11 +28,6 @@ import NewsAdmin from './components/News/NewsCreateForm';
 import NewsCreateForm from './components/News/NewsCreateForm';
 import NewsUpdateForm from './components/News/NewsUpdateForm';
 
-
-
-
-
-
 const router = createBrowserRouter([
   {
     path: '/',
@@ -57,8 +52,7 @@ const router = createBrowserRouter([
       // },
       {
         path: '/products/:id',
-        element: <ProductItem/>,
-        
+        element: <ProductItem />,
       },
       {
         path: '/login',
@@ -87,7 +81,6 @@ const router = createBrowserRouter([
       },
       {
         path: '/shop',
-        
         element: <Shop />,
         // loader: () => {
         //   if(!data.auth.user) {

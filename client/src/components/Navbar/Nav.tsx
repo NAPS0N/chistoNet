@@ -8,7 +8,8 @@ import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
+import Button, { ButtonProps } from '@mui/material/Button';
+import { styled } from '@mui/material/styles';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
@@ -18,6 +19,33 @@ import './Nav.css';
 import '@fontsource/roboto/400.css';
 import { makeStyles } from '@mui/material';
 import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
+import Modal from '@mui/material/Modal';
+import Login from '../Auth/Login';
+import Registration from '../Auth/Registration';
+import { useAppSelector } from '../../App/redux/store';
+import PersonIcon from '@mui/icons-material/Person';
+
+// moodal
+const style = {
+  position: 'absolute' as 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 600,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
+
+const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
+  color: theme.palette.getContrastText('#468866'),
+  backgroundColor: '#468866',
+  '&:hover': {
+    backgroundColor: '#46a966',
+  },
+}));
+//========
 
 const pages = [
   { title: 'Товары', path: '/products' },
@@ -32,6 +60,15 @@ const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 function Nav(): JSX.Element {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+
+  const user = useAppSelector(store=>store.auth.user);
+
+  //Modal
+  const [authModal, setAuthModal] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  //========
 
   const { id } = useParams();
   console.log(id, 'id');
@@ -59,8 +96,11 @@ function Nav(): JSX.Element {
           style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
         >
           <div style={{ display: 'flex', alignItems: 'center' }}>
-
-            <img src="../../../public/logo/240х400.png" alt="" style={{width: '45px', height: '50px', padding: '0 10px 0 0'}} />
+            <img
+              src="../../../public/logo/240х400.png"
+              alt=""
+              style={{ width: '45px', height: '50px', padding: '0 10px 0 0' }}
+            />
 
             <Typography
               variant="h6"
@@ -77,9 +117,9 @@ function Nav(): JSX.Element {
                 textDecoration: 'none',
               }}
             >
-
-              <Link to='/home' className="menuLink">ChistoNet</Link>
-
+              <Link to="/home" className="menuLink">
+                ChistoNet
+              </Link>
             </Typography>
           </div>
 
@@ -163,34 +203,26 @@ function Nav(): JSX.Element {
                 </>
               )}
             </PopupState>
-    
-            
-                <Typography
 
-                    variant="h6"
-                    noWrap
-                    href="#app-bar-with-responsive-menu"
-                    sx={{
-                      mr: 2,
-                      display: { xs: 'none', md: 'flex' },
-                      fontFamily: 'monospace',
-                      fontWeight: 700,
-                      letterSpacing: '.3rem',
-                      color: 'inherit',
-                      textDecoration: 'none',
-                    }}
-                  >
-                    <Link
-                      to="/products"
-                      className="menuLink"
-                    >
-                      Аренда
-                    </Link>
-                  </Typography>
+            <Typography
+              variant="h6"
+              noWrap
+              href="#app-bar-with-responsive-menu"
+              sx={{
+                mr: 2,
+                display: { xs: 'none', md: 'flex' },
+                fontFamily: 'monospace',
+                fontWeight: 700,
+                letterSpacing: '.3rem',
+                color: 'inherit',
+                textDecoration: 'none',
+              }}
+            >
+              <Link to="/products" className="menuLink">
+                Аренда
+              </Link>
+            </Typography>
 
-
-
-         
             <Typography
               variant="h6"
               noWrap
@@ -211,7 +243,6 @@ function Nav(): JSX.Element {
               </Link>
             </Typography>
 
-
             <Typography
               variant="h6"
               noWrap
@@ -230,7 +261,40 @@ function Nav(): JSX.Element {
                 Новости
               </Link>
             </Typography>
-            <Typography
+      
+          </div>
+
+
+
+             {!user ? (
+                <ColorButton variant="contained" onClick={handleOpen}>
+                Войти{' '}
+                <Modal
+                  open={open}
+                  onClose={handleClose}
+                  aria-labelledby="modal-modal-title"
+                  aria-describedby="modal-modal-description"
+                >
+                  {authModal === false ? (
+                    <Box sx={style}>
+                      <Login setOpen={setOpen}/>
+                      ⠀⠀ Если у вас еще нет аккаунта, пожалуйста{' '}
+                      <Link to="" onClick={() => setAuthModal(true)}>
+                        зарегистрируйтесь!
+                      </Link>
+                    </Box>
+                  ) : (
+                    <Box sx={style}>
+                      <Registration setOpen={setOpen} />
+                    </Box>
+                  )}
+                </Modal>
+              </ColorButton>
+             )
+            :
+            (
+              <>
+              {/* <Typography
               variant="h6"
               noWrap
               href="#app-bar-with-responsive-menu"
@@ -245,27 +309,15 @@ function Nav(): JSX.Element {
               }}
             >
               <Link to="/homepagechat" className="menuLink">
-              <QuestionAnswerIcon/>
+                <QuestionAnswerIcon />
               </Link>
-            </Typography>
-          </div>
+            </Typography> */}
 
-          <Box>
-            <Link to="/login" className="menuLink">
-              <Button color="inherit" variant="outlined">
-                Войти{' '}
-              </Button>
-            </Link>
-          </Box>
-
-          <Box>
-            <Link to="/registration" className="menuLink">
-              <Button color="inherit"> Зарегестрироваться </Button>
-            </Link>
-          </Box>
-
-
-
+              <Link to="/personalaccaunt" className="menuLink">
+                <PersonIcon />
+              </Link>
+              </>
+            )} 
         </Toolbar>
       </Container>
     </AppBar>

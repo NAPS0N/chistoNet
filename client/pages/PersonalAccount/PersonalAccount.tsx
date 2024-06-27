@@ -11,14 +11,13 @@ import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import ViewAgendaIcon from '@mui/icons-material/ViewAgenda';
 import { useAppDispatch, useAppSelector } from '../../src/App/redux/store';
 import { loadProfileUser } from '../../src/App/redux/slicers/ProfileSlicer';
-import Avatar from '@mui/material/Avatar';
-import Stack from '@mui/material/Stack';
-import axiosInstance from '../../src/axiosInstance';
+// import Avatar from '@mui/material/Avatar';
+
 import { loadProductUser } from '../../src/App/redux/slicers/ProductSlice';
-import ProductItem from '../../src/components/Product/ProductItem';
-import { Link, useNavigate } from 'react-router-dom';
+// import ProductItem from '../../src/components/Product/ProductItem';
+import { useNavigate } from 'react-router-dom';
 import { logOutThunk } from '../../src/App/redux/slicers/AuthSlicer';
-import { Margin } from '@mui/icons-material';
+
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -52,7 +51,7 @@ export default function PersonalAccount() {
   }
 
   const user = useAppSelector((store) => store.profileIndividual.user);
-  const userProfileIndividual = useAppSelector((store) => store.profileIndividual.individual);
+  // const userProfileIndividual = useAppSelector((store) => store.profileIndividual.individual);
   const productsUser = useAppSelector((store)=> store.products.products)
 
   return (
@@ -78,19 +77,21 @@ export default function PersonalAccount() {
                <Grid container spacing={2} columns={16}>
                <Grid item xs={8}>
                  <Item2>
-                 
-                   {/* <div className='avatar'>
+                  {/*
+                   <div className='avatar'>
                     <Stack direction="row" spacing={2}>
                    
                      <Avatar
                        alt={user?.firstName}
                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_gaxAkYYDw8UfNleSC2Viswv3xSmOa4bIAQ&s"
-                     /> <p></p> */}
+                     /> <p></p>
                      {/* заменить на userProfileIndividual.photo */}
                    {/* </Stack>
                    </div> */}
                       
-                     <h5>{`${user?.firstName} ${user?.lastName}`}</h5>
+                      {user?.firstName !== null || user?.lastName !== null && (
+                        <h5>{`${user?.firstName} ${user?.lastName}`}</h5>
+                      )}
                      <p>{user?.email}</p>
 
                      

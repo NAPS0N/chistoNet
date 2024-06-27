@@ -2,88 +2,71 @@
 import React, { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../App/redux/store';
 import { clearError, registrationThunk } from '../../App/redux/slicers/AuthSlicer';
-import { useNavigate } from 'react-router-dom';
-// import { showAlert } from '../../App/redux/slicers/alertSlice';
+import { Form, Input, Button } from 'antd';
 
-function Registration(): JSX.Element {
+import { useNavigate } from 'react-router-dom'
+
+function Registration({setOpen}:{setOpen:React.Dispatch<React.SetStateAction<boolean>>}): JSX.Element {
   const [signUpForm, setSignUpForm] = useState({
     id: null,
-    phoneNumber: '',
+    phoneNumber: '+79999999999',
     login: '',
     password: '',
     firstName: '',
     lastName: '',
-    email: '',
+    email: 'email@email.com',
     isBlocked: false,
   });
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const err = useAppSelector((state) => state.auth.error);
 
-  const logIn = async (): Promise<void> => {
+  const reg = async (): Promise<void> => {
     const data = await dispatch(registrationThunk(signUpForm));
+    setOpen(false);
+    navigate('/personalaccaunt')
 
-    // if (data.payload) {
-    //   dispatch(showAlert({ message: "Welcome", type: 'success' }));
-    //   navigate('/');
-    // } else {
-    //   dispatch(showAlert({ message: err || 'Error =)', type: 'error' }));
-    //   dispatch(clearError());
-    // }
   };
 
   return (
-    <form
-      style={{ width: '360px', padding: '8% 0 0', margin: 'auto' }}
-      onSubmit={(e) => e.preventDefault()}
-    >
-
-<label htmlFor="email" className="form-label">
-        Email
-      </label>
-      <input
+    <Form style={{ width: '360px', padding: '8% 0 0', margin: 'auto' }} onFinish={reg}>
+      <h3>Регистрация</h3>
+      <br/>
+    <Form.Item label="Email" name="email">
+      <Input
         type="text"
-        placeholder="Email"
+        placeholder={signUpForm.email}
         value={signUpForm.email}
         onChange={(e) => setSignUpForm({ ...signUpForm, email: e.target.value })}
-        className="form-control"
-        id="email"
       />
+    </Form.Item>
 
-
-      <label htmlFor="phoneNumber" className="form-label">
-        Номер телефона
-      </label>
-      <input
+    <Form.Item label="Номер телефона" name="phoneNumber">
+      <Input
         type="text"
-        placeholder="Номер телефона"
+        placeholder={signUpForm.phoneNumber}
         value={signUpForm.phoneNumber}
         onChange={(e) => setSignUpForm({ ...signUpForm, phoneNumber: e.target.value })}
-        className="form-control"
-        id="phoneNumber"
       />
+    </Form.Item>
 
-      <label htmlFor="password" className="form-label">
-        Password
-      </label>
-      <input
-        type="password"
-        placeholder="Password"
+    <Form.Item label="Password" name="password">
+      <Input.Password
+        placeholder={signUpForm.password}
         value={signUpForm.password}
         onChange={(e) => setSignUpForm({ ...signUpForm, password: e.target.value })}
-        className="form-control"
-        id="password"
       />
+    </Form.Item>
 
-      
-
-      <div className="d-grid gap-1">
-        <button type="submit" onClick={() => void logIn()} className="btn btn-success">
-          Зарегистрироваться
-        </button>
-      </div>
-    </form>
-  );
+    <Form.Item>
+      <Button style={{background: '#468866'}} type="primary" htmlType="submit"  onClick={() => void reg() }>
+        Зарегистрироваться
+      </Button>
+    </Form.Item>
+  </Form>
+);
 }
 
 export default Registration;
+
+
