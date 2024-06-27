@@ -29,6 +29,7 @@ import NewsAdmin from './components/News/NewsCreateForm';
 import NewsCreateForm from './components/News/NewsCreateForm';
 import NewsUpdateForm from './components/News/NewsUpdateForm';
 import CompanyProfile from '../pages/Profile/Company/CompanyProfile';
+import Product from './components/Product/Product';
 
 
 const router = createBrowserRouter([
@@ -49,10 +50,10 @@ const router = createBrowserRouter([
         path: '/products/categories/:id',
         element: <ProductByCategory />,
       },
-      // {
-      //   path: '/products',
-      //   element: <ListOfProducts/>,
-      // },
+      {
+        path: '/product/:id',
+        element: <Product/>,
+      },
       {
         path: '/products/:id',
         element: <ProductItem />,
