@@ -21,7 +21,7 @@ module.exports = {
       },
       inn: {
         allowNull: false,
-        type: Sequelize.INTEGER,
+        type: Sequelize.TEXT,
       },
       website: {
         allowNull: true,
@@ -29,7 +29,7 @@ module.exports = {
       },
       workPhoneNumber: {
         allowNull: true,
-        type: Sequelize.INTEGER,
+        type: Sequelize.TEXT,
       },
       corporateEmail: {
         allowNull: true,

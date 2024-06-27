@@ -4,8 +4,9 @@ import { Container } from '@mui/material';
 import Nav from './Navbar/Nav';
 import '../index.css';
 import Footer from './Footer/Footer';
+
 import axios from 'axios';
-import { useAppDispatch, useAppSelector } from '../App/redux/store';
+import { store, useAppDispatch, useAppSelector } from '../App/redux/store';
 import { loadProducts } from '../App/redux/slicers/ProductSlice';
 import axiosInstance from '../axiosInstance';
 import { setUser } from '../App/redux/slicers/AuthSlicer';
@@ -27,6 +28,7 @@ export default function Layout(): JSX.Element {
   useEffect(() => {
     productDispatch(loadProducts()).catch(console.log)});
   
+
 
 
   return (

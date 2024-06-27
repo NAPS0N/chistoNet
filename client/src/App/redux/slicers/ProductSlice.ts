@@ -5,7 +5,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
 import type { ProductType } from '../../../components/Product/ProductType';
-import { fetchProductLoad, fetchSingleProduct } from '../../../components/Product/product.Api';
+import { fetchProductLoad, fetchShopProduct, fetchUserProduct } from '../../../components/Product/product.Api';
 
 export type InitialStateType = {
   products: ProductType[];
@@ -16,9 +16,9 @@ const initialState: InitialStateType = {
 };
 
 const loadProducts = createAsyncThunk('products/load', async () => fetchProductLoad())
+const loadProductShop = createAsyncThunk('productShop/load', async () => fetchShopProduct())
+const loadProductUser = createAsyncThunk('productUser/load', async () => fetchUserProduct())
 
-// const loadProduct = createAsyncThunk('product/load', async () => fetchSingleProduct())
-  
 
 export const productSlice = createSlice({
   name: 'products',
@@ -37,13 +37,29 @@ export const productSlice = createSlice({
       .addCase(loadProducts.pending, (state, action) => {
         state.products = [];
       })
-      // .addCase(loadProduct.fulfilled, (state, action) => {
-      //   state.products = action.payload; 
-      // })
+      .addCase(loadProductShop.fulfilled, (state, action) => {
+        state.products = action.payload;
+      })
+      .addCase(loadProductShop.rejected, (state, action) => {
+        state.products = [];
+      })
+      .addCase(loadProductShop.pending, (state, action) => {
+        state.products = [];
+      })
+      .addCase(loadProductUser.fulfilled, (state, action) => {
+        state.products = action.payload;
+      })
+      .addCase(loadProductUser.rejected, (state, action) => {
+        state.products = [];
+      })
+      .addCase(loadProductUser.pending, (state, action) => {
+        state.products = [];
+      })
+    
       
   },
 });
 
-export { loadProducts};
+export { loadProducts, loadProductShop, loadProductUser};
 
 export default productSlice.reducer

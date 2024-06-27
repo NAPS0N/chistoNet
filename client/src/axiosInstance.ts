@@ -4,7 +4,7 @@ import axios from 'axios';
 import type { RootState } from './App/redux/store';
 import { store } from './App/redux/store';
 import { setAccessToken } from './App/redux/slicers/AuthSlicer';
-import type { User } from './components/Auth/UserType';
+import type { UserType } from './components/Auth/UserType';
 
 type RetryConfig = {
   sent?: boolean;
@@ -12,7 +12,7 @@ type RetryConfig = {
 
 type TokensRefreshResponse = {
   accessToken: string;
-  user: User;
+  user: UserType;
 };
 
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';
@@ -46,9 +46,12 @@ axiosInstance.interceptors.response.use(
     if (error?.response?.status === 403 && !prevRequest.sent) {
       const response = await axios<TokensRefreshResponse>('/api/token/refresh');
       const newAccessToken = response.data.accessToken;
+
       store.dispatch(setAccessToken(newAccessToken));
       prevRequest.sent = true;
       prevRequest.headers.Authorization = `Bearer ${newAccessToken}`;
+       
+      
       return axiosInstance(prevRequest);
     }
     return Promise.reject(error);
