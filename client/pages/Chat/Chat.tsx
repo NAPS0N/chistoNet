@@ -13,7 +13,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemText from '@mui/material/ListItemText';
 
-function Chat({ companionId, setCompanionId, companionMessages, companionUsers }): JSX.Element {
+function Chat({ setCompanionId, companionUsers }): JSX.Element {
   const [value, setValue] = React.useState(0);
   const ref = React.useRef<HTMLDivElement>(null);
 

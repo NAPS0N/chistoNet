@@ -2,8 +2,9 @@ import React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import { Box } from '@mui/material';
+import { UserType } from '../../src/components/Auth/UserType';
 
-function ChatRoom({ companionMessages, companionUser }): JSX.Element {
+function ChatRoom({ companionUser }: {companionUser:UserType}): JSX.Element {
   return (
     <Box
       sx={{

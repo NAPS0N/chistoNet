@@ -246,6 +246,7 @@ function Nav(): JSX.Element {
             <Typography
               variant="h6"
               noWrap
+              component="a"
               href="#app-bar-with-responsive-menu"
               sx={{
                 mr: 2,
@@ -257,31 +258,13 @@ function Nav(): JSX.Element {
                 textDecoration: 'none',
               }}
             >
-
-              <Link to="/chatroom" className="menuLink">
-                Chatroom
-              </Link>
-            </Typography>
-            <Typography
-              variant="h6"
-              noWrap
-              href="#app-bar-with-responsive-menu"
-              sx={{
-                mr: 2,
-                display: { xs: 'none', md: 'flex' },
-                fontFamily: 'monospace',
-                fontWeight: 700,
-                letterSpacing: '.3rem',
-                color: 'inherit',
-                textDecoration: 'none',
-              }}
-            >
-              <Link to="/chat" className="menuLink">
-                <QuestionAnswerIcon />
+              <Link to="/news" className="menuLink">
+                Новости
               </Link>
             </Typography>
       
           </div>
+
 
 
              {!user ? (
@@ -312,7 +295,7 @@ function Nav(): JSX.Element {
             :
             (
               <>
-              {/* <Typography
+               <Typography
               variant="h6"
               noWrap
               href="#app-bar-with-responsive-menu"
@@ -329,7 +312,8 @@ function Nav(): JSX.Element {
               <Link to="/homepagechat" className="menuLink">
                 <QuestionAnswerIcon />
               </Link>
-            </Typography> */}
+            </Typography>
+            
 
               <Link to="/personalaccaunt" className="menuLink">
                 <PersonIcon />

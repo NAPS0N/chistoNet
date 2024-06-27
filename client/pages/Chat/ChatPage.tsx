@@ -1,23 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
-import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
+
 
 import { Grid } from '@mui/material';
-import { useDispatch } from 'react-redux';
+
 import Sidebar from '../../src/components/Chat/components/Sidebar';
 import Bodychat from '../../src/components/Chat/components/Bodychat';
 import MessageBlock from '../../src/components/Chat/components/MessageBlock';
-import { addMessage } from './api.message';
 
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(2),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-}));
 
 const socket = io('http://localhost:5000');
 

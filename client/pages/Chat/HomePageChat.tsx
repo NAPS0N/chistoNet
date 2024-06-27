@@ -1,15 +1,13 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { io } from 'socket.io-client';
-import { useSelector } from 'react-redux';
 import { Box } from '@mui/material';
 import { useAppDispatch, useAppSelector } from '../../src/App/redux/store';
 import { loadMessages } from '../../src/App/redux/slicers/MessageSlicer';
 import { loadUsers } from '../../src/App/redux/slicers/AuthSlicer';
-import ChatRoom from './ChatRoom';
 import ChatPage from './ChatPage';
 import type { UserType } from '../../src/components/Auth/UserType';
-import Chat from './Chat';
+
 
 function HomePageChat(): JSX.Element {
   // достаю все сообщения

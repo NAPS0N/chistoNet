@@ -84,7 +84,7 @@ const [descript, setDescript] = React.useState('');
         <h3>О магазине</h3>
         <p>{shop.description}</p>
         {user && (
-           <ColorButton variant="contained" onClick={setFormUpdate(true)}>
+           <ColorButton variant="contained" > 
             Изменить
            </ColorButton>
           //  {formUpdate === true & (

@@ -1,14 +1,15 @@
 const path = require("path");
 require("dotenv").config({ path: path.join('../.env')});
-
 const express = require('express');
+const cookieParser = require("cookie-parser");
+
 const cors = require('cors');
 
 const app = express();
 
-// app.use(cookieParser()); // для чтения кук
-app.use(express.urlencoded()); // для чтения данных из формы
-app.use(express.json()); // для чтения JSON данных
+app.use(cookieParser()); 
+app.use(express.urlencoded()); 
+app.use(express.json()); 
 
 // функция, которая будет прослушивать приложение
 app.get('/api', (req, res) => {

@@ -32,7 +32,7 @@ function LogIn({setOpen}:{setOpen:React.Dispatch<React.SetStateAction<boolean>>}
       </Form.Item>
       <Form.Item label="Password" name="password">
         <Input.Password
-          placeholder={loginForm.email}
+          placeholder={loginForm.password}
           value={loginForm.password}
           onChange={(e) => setLoginForm({ ...loginForm, password: e.target.value })}
         />
