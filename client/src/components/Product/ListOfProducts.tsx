@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Grid } from '@mui/material';
 import ProductCard from './ProductCard';
 import type { ProductType } from './ProductType';
 import {ProductImg} from '../ProductImg/ProductImg';
@@ -21,10 +22,9 @@ function ListOfProducts(): JSX.Element {
   }, []);
 
   return (
-    <>
+    <Grid  container spacing={2} xs={12} sm={12}>
       {products.map((product) => <ProductCard key={product.id} product={product}/>)}
-    
-    </>
+    </Grid>
   );
 }
 

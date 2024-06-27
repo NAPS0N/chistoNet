@@ -55,9 +55,9 @@ function ProductCard({ product }: { product: ProductType }): JSX.Element {
 
   return (
     <>
-      <Button onClick={handleOpen}><Typography>{product.title}</Typography></Button>
-
-      <Box sx={{ width: 800, flexGrow: 1 }}>
+<Grid item xs={4} sm={4} md={4} lg={4} sx={{ padding: 2 }}>
+  <Box sx={{ mx: 1, mb: 2 }}>
+      <Box sx={{ width: 300, flexGrow: 1 }}>
         <Paper
           square
           elevation={0}
@@ -66,34 +66,48 @@ function ProductCard({ product }: { product: ProductType }): JSX.Element {
             alignItems: 'center',
             height: 50,
             pl: 2,
+            pr: 2,
             bgcolor: 'background.default',
+            boxShadow: 6,
+            mb: 2,
+            mt: 2,
+            pt: 1
           }}
-        />
-        <AutoPlaySwipeableViews
-          axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-          index={activeStep}
-          onChangeIndex={handleStepChange}
-          enableMouseEvents
         >
-          {product.ProductImgs.map((step, index) =>
-            <div key={step.id}>
-              {Math.abs(activeStep - index) <= 2 ? (
-                <Box
-                  component="img"
-                  sx={{
-                    height: 768,
-                    display: 'block',
-                    maxWidth: 1024,
-                    overflow: 'hidden',
-                    width: '100%',
-                  }}
-                  src={step.img}
-                  alt='Тута что-то есть'
-                />
-              ) : null}
-            </div>
-          )}
-        </AutoPlaySwipeableViews>
+          <Button onClick={handleOpen}>
+            <Typography variant="h6" component="div" sx={{ color: 'black', mb: 1, fontSize: '0.8rem' }}>
+              {product.title}
+            </Typography>
+          </Button>
+        </Paper>
+        <Box sx={{ width: 300, height: 400, mb: 2 }}>
+          <AutoPlaySwipeableViews
+            axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+            index={activeStep}
+            onChangeIndex={handleStepChange}
+            enableMouseEvents
+          >
+            {product.ProductImgs.map((step, index) => (
+              <div key={step.id} style={{ display: 'flex', justifyContent: 'center' }}>
+                {Math.abs(activeStep - index) <= 2 ? (
+                  <Box
+                    component="img"
+                    sx={{
+                      height: 400,
+                      display: 'block',
+                      width: 300,
+                      minWidth: 300,
+                      overflow: 'hidden',
+                      boxShadow: 6,
+                    }}
+                    src={step.img}
+                    alt='Тута что-то есть'
+                  />
+                ) : null}
+              </div>
+            ))}
+          </AutoPlaySwipeableViews>
+        </Box>
         <MobileStepper
           steps={maxSteps}
           position="static"
@@ -122,8 +136,11 @@ function ProductCard({ product }: { product: ProductType }): JSX.Element {
               Back
             </Button>
           }
+          sx={{ mb: 2 }}
         />
       </Box>
+      </Box>
+    </Grid>
       <Modal
         open={open}
         onClose={handleClose}
@@ -153,7 +170,7 @@ function ProductCard({ product }: { product: ProductType }): JSX.Element {
                           sx={{
                             height: 468,
                             display: 'block',
-                            maxWidth: 500,
+                            width: 500,
                             overflow: 'hidden',
                             width: '100%',
                             borderRadius: 5,
