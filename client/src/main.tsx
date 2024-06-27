@@ -54,8 +54,7 @@ const router = createBrowserRouter([
       // },
       {
         path: '/products/:id',
-        element: <ProductItem/>,
-        
+        element: <ProductItem />,
       },
       {
         path: '/login',
@@ -84,7 +83,6 @@ const router = createBrowserRouter([
       },
       {
         path: '/shop',
-        
         element: <Shop />,
         // loader: () => {
         //   if(!data.auth.user) {

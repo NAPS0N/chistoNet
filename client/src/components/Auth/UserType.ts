@@ -13,7 +13,7 @@ export type UserType = {
   export type UserLogInForm= {
     email: string;
     password: string;
-    phoneNumber: string;
+    phoneNumber?: string;
   };
   
   export type AccessToken = {
