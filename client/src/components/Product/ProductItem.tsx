@@ -14,7 +14,7 @@ function ProductItem({ product }: { product: ProductType }): JSX.Element {
     setCurrentSlide(index);
   };
 
-  const slides = product.ProductImgs;
+  const slides = product?.ProductImgs;
 
   return (
     <div>

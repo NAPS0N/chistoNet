@@ -5,6 +5,7 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import { useAppDispatch, useAppSelector } from '../../../src/App/redux/store';
 import { loadProfileUser } from '../../../src/App/redux/slicers/ProfileSlicer';
+import ProductItem from '../../../src/components/Product/ProductItem';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -23,44 +24,31 @@ export default function ProfileIndividual() {
 
   const user = useAppSelector((store) => store.profileIndividual.user);
   const userProfileIndividual = useAppSelector((store) => store.profileIndividual.individual);
+  const productsUser = useAppSelector((store)=> store.products.products.filter(product => product.userId === user?.id))
+
+  
 
   return (
+    
     <Box sx={{ flexGrow: 1 }}>
+      <br></br>
+      <br></br>
       <Grid container spacing={2}>
         <Grid item xl={6} md={4}>
           <Item>
-          <Item>Мои объявления</Item>
-          <Item>Избранное</Item>
-          <Item>Чат</Item>
-          <Item>Контактная информация</Item>
-          <Item>Выйти</Item>
+          <Item>{user?.firstName} {user?.lastName}</Item>
           </Item>
           
         </Grid>
         <Grid item xl={6} md={8}>
           <Item>
-            <Grid container spacing={2} columns={16}>
-              <Grid item xs={8}>
-                <Item>
-                  Информация о пользователе Почта и выбранная роль
-                  {user?.email}
-                </Item>
-              </Grid>
-            </Grid>
             <br></br>
             <Grid container spacing={2} columns={16}>
-              <Grid item xs={8}>
-                <Item>Всего объявлений</Item>
+              <Grid item xs={16}>
+                {productsUser.map((product)=> 
+                <ProductItem key={product.id} product={product}/>)}
               </Grid>
-              <Grid item xs={8}>
-                <Item>кол-во Опубликуванные объявления</Item>
-              </Grid>
-              <Grid item xs={8}>
-                <Item>На проверке кол-во</Item>
-              </Grid>
-              <Grid item xs={8}>
-                <Item>Не активные объявления</Item>
-              </Grid>
+          
             </Grid>
           </Item>
         </Grid>

@@ -2,6 +2,7 @@ import React from 'react';
 import { YMaps, Map, Placemark } from '@pbe/react-yandex-maps';
 import { ShopType } from '../../../pages/Shop/ShopType';
 
+
 function MapYandex({shop}:{shop: ShopType}): JSX.Element {
     return (
         <div className='map'>

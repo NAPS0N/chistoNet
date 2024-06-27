@@ -37,14 +37,16 @@ export const fetchProductByCategoryLoad = async (id: number): Promise<ProductTyp
 export const fetchShopProduct = async (): Promise<ProductType[]> => {  
   const res: AxiosResponse<{ message: string; shopProducts: ProductType[]}> =
   await axiosInstance.get('/products/shop'); 
+  console.log(11111111, res.data);
+  
   return res.data.shopProducts;
 }
 
-export const fetchUserProduct = async(): Promise<ProductType[]> => {
-  const res: AxiosResponse<{message: string, productsUser:ProductType[]}> =
-  await axiosInstance.get('/products/user');
-  return res.data.productsUser;
-  }
+// export const fetchUserProduct = async(): Promise<ProductType[]> => {
+//   const res: AxiosResponse<{message: string, productsUser:ProductType[]}> =
+//   await axiosInstance.get('/products/user');
+//   return res.data.productsUser;
+//   }
 
 
 

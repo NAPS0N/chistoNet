@@ -7,6 +7,6 @@ export const fetchShopLoad = async () => {
   
     const res: AxiosResponse<{ shop: ShopType }> =
       await axiosInstance.get('/profile/shop');
-  
+      
     return res.data;
   };
