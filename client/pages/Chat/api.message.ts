@@ -9,3 +9,9 @@ export const fetchMessage = async (): Promise<MessageType[]> => {
 
   return response.data.chatMessages;
 };
+
+export const addMessage = async (obj: MessageType): Promise<MessageType> => {
+  const response: AxiosResponse<{ message: string; newMessage: MessageType }> =
+    await axiosInstance.post('/api/message', obj);
+  return response.data.newMessage;
+};

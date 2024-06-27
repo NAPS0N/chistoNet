@@ -4,21 +4,26 @@ import {
   fetchLogIn,
   fetchLogOut,
   fetchRegister,
+  fetchUsers,
   // fetchToken,
 } from '../../../components/Auth/api.auth';
 import type { UserType, UserLogInForm } from '../../../components/Auth/UserType';
 
 export type InitialStateType = {
   user: UserType | null;
+  users: UserType[];
   accessToken: string | null;
   error?: string;
 };
 
 const initialState: InitialStateType = {
   user: null,
+  users: [],
   accessToken: null,
   error: '',
 };
+
+const loadUsers = createAsyncThunk('users/load', async () => fetchUsers());
 
 const logInThunk = createAsyncThunk('login', async (userLoginData: UserLogInForm) =>
   fetchLogIn(userLoginData),
@@ -62,9 +67,15 @@ export const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      .addCase(loadUsers.fulfilled, (state, action) => {
+        state.users = action.payload;
+      })
+      .addCase(loadUsers.rejected, (state, action) => {
+        state.user = null;
+        state.error = action.error.message;
+      })
       .addCase(logInThunk.fulfilled, (state, action) => {
         state.user = action.payload.user;
-        console.log(7777777777, state.user);
       })
       .addCase(logInThunk.rejected, (state, action) => {
         state.user = null;
@@ -78,12 +89,13 @@ export const authSlice = createSlice({
       })
       .addCase(registrationThunk.fulfilled, (state, action) => {
         state.user = action.payload.user;
+        state.users = [...state.users, action.payload.user];
       });
   },
 });
 
 // // Action creators are generated for each case reducer function
-export { logInThunk, logOutThunk, registrationThunk };
+export { logInThunk, logOutThunk, registrationThunk, loadUsers };
 export const { setAccessToken, clearAccessToken, clearError, setUser } = authSlice.actions;
 
 export default authSlice.reducer;
