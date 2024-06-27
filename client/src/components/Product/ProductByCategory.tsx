@@ -33,7 +33,7 @@ function ProductByCategory(): JSX.Element {
 
 
   return (
-    <div>
+    <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
       {productsByCategory.map((product) => <ProductCard key={product.id} product={product}/>)}
     </div>
   );
