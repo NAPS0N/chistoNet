@@ -24,7 +24,7 @@ export const fetchLogIn = async ({
     return response.data;
   } catch (error) {
     console.log(error);
-    return { user: { id: 0, email: '', password: '' }, accessToken: '' };
+    return { user: { id: 0, email: '', password: '', phoneNumber: '' }, accessToken: '' };
   }
 };
 

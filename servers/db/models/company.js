@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     inn: {
       allowNull: false,
-      type: DataTypes.INTEGER,
+      type: DataTypes.TEXT,
     },
     website: {
       allowNull: true,
@@ -36,7 +36,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     workPhoneNumber: {
       allowNull: true,
-      type: DataTypes.INTEGER,
+      type: DataTypes.TEXT,
     },
     corporateEmail: {
       allowNull: true,

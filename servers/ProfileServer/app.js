@@ -3,7 +3,7 @@ const cookieParser = require("cookie-parser");
 const path = require("path");
 const morgan = require("morgan");
 const http = require("http");
-require("dotenv").config();
+require("dotenv").config({ path: path.join('../.env')});
 // const { connectionCb, wss } = require("./socket/wsServer");
 // const { WebSocketServer } = require("ws");
 const map = new Map();
@@ -21,6 +21,7 @@ const indexRouteApi = require("./routes/index.routes");
 
 
 app.use("/api/profile", indexRouteApi);
+
 
 //
 // Create an HTTP server.
