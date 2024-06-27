@@ -3,9 +3,12 @@ require("dotenv").config({ path: path.join('../.env')});
 
 const express = require('express');
 const cors = require('cors');
-const indexRouteApi = require('./routes/index.routes');
 
 const app = express();
+
+// app.use(cookieParser()); // для чтения кук
+app.use(express.urlencoded()); // для чтения данных из формы
+app.use(express.json()); // для чтения JSON данных
 
 // функция, которая будет прослушивать приложение
 app.get('/api', (req, res) => {
@@ -22,6 +25,7 @@ const socketIo = require('socket.io')(http, {
     origin: 'http://localhost:5173', // 5173 потому что vite будет работать на нем
   },
 });
+const indexRouteApi = require('./routes/index.routes');
 
 app.use('/api/chat/message', indexRouteApi);
 

@@ -41,6 +41,6 @@ export const questionSlice = createSlice({
   },
 });
 
-export { loadMessages };
+export { loadMessages, createMessage };
 
 export default questionSlice.reducer;

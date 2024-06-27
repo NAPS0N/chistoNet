@@ -13,7 +13,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemText from '@mui/material/ListItemText';
 
-function Chat({ companionMessages }): JSX.Element {
+function Chat({ companionId, setCompanionId, companionMessages, companionUsers }): JSX.Element {
   const [value, setValue] = React.useState(0);
   const ref = React.useRef<HTMLDivElement>(null);
 
@@ -21,12 +21,13 @@ function Chat({ companionMessages }): JSX.Element {
     <Box sx={{ pb: 7 }} ref={ref}>
       <CssBaseline />
       <List>
-        {companionMessages.map(({ message, fromId }, index) => (
-          <ListItemButton key={index}>
+        {companionUsers.map(({ id, firstName, lastName }, index) => (
+          <ListItemButton key={index} onClick={() => setCompanionId(id)}>
             <ListItemAvatar>
               <Avatar alt="Profile Picture" />
             </ListItemAvatar>
-            <ListItemText primary={message} secondary={fromId} />
+
+            <ListItemText primary={firstName} secondary={lastName} />
           </ListItemButton>
         ))}
       </List>
