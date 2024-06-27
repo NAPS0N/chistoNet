@@ -1,6 +1,6 @@
 import { AxiosResponse } from "axios";
 import axiosInstance from "../../src/axiosInstance";
-import { ShopType } from "./ShopType";
+import { ShopType, ShopTypeUpdate } from "./ShopType";
 
 
 export const fetchShopLoad = async () => {
@@ -10,3 +10,9 @@ export const fetchShopLoad = async () => {
       
     return res.data;
   };
+
+  export const fetchUpdateShop = async ({updateForm}: {updateForm: ShopTypeUpdate}) => {
+    const res: AxiosResponse<{shop:ShopType}> =
+    await axiosInstance.put('/profile/shop/user', updateForm)
+    return res.data;
+  }

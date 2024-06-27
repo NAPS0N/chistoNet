@@ -9,6 +9,7 @@ const router = require("express").Router();
 
 router.use('/', require('./api/profileIndividual.api.routes'));
 router.use('/shop', require('./api/Shop.api.routes'));
+
 /**
  * API routes
  */
