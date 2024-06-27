@@ -1,7 +1,7 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { ShopType } from '../../../../pages/Shop/ShopType';
-import { fetchShopLoad } from '../../../../pages/Shop/api.shop';
+import { ShopType, ShopTypeUpdate } from '../../../../pages/Shop/ShopType';
+import { fetchShopLoad, fetchUpdateShop } from '../../../../pages/Shop/api.shop';
 
 export type InitialStateType = {
   shop: ShopType;
@@ -23,7 +23,8 @@ const initialState: InitialStateType = {
 
 const loadShop = createAsyncThunk('shop/load', async () => fetchShopLoad());
 // const updateImg = createAsyncThunk('shop/updateImg', async (data)=>fetchShopUpdateImg(data))
-const updateFormShop = createAsyncThunk('shop/updateForm', async (updateForm:)=>fetchUpdateShop(updateForm))
+const updateFormShop = createAsyncThunk('shop/updateForm', async (updateForm: ShopType)=>fetchUpdateShop({updateForm}))
+const CreatShop = createAsyncThunk('shop/createForm', async (createForm: ShopType)=>fetchCreateShop({createForm}))
 
 export const shopSlicer = createSlice({
   name: 'shop',
@@ -59,7 +60,65 @@ export const shopSlicer = createSlice({
           lon: '',
           phoneNumber: '',
         };
-      });
+      })
+      .addCase(updateFormShop.fulfilled, (state, action) => {
+        state.shop = action.payload.shop;
+      })
+      .addCase(updateFormShop.rejected, (state, action) => {
+        state.shop = {
+          userId: null,
+          labelName: '',
+          logo: '',
+          address: '',
+          photo: '',
+          description: '',
+          lax: '',
+          lon: '',
+          phoneNumber: '',
+        };
+      })
+      .addCase(updateFormShop.pending, (state, action) => {
+        state.shop = {
+          userId: null,
+          labelName: '',
+          logo: '',
+          address: '',
+          photo: '',
+          description: '',
+          lax: '',
+          lon: '',
+          phoneNumber: '',
+        };
+      })
+      .addCase(CreatShop.fulfilled, (state, action) => {
+        state.shop = action.payload.shop;
+      })
+      .addCase(CreatShop.rejected, (state, action) => {
+        state.shop = {
+          userId: null,
+          labelName: '',
+          logo: '',
+          address: '',
+          photo: '',
+          description: '',
+          lax: '',
+          lon: '',
+          phoneNumber: '',
+        };
+      })
+      .addCase(CreatShop.pending, (state, action) => {
+        state.shop = {
+          userId: null,
+          labelName: '',
+          logo: '',
+          address: '',
+          photo: '',
+          description: '',
+          lax: '',
+          lon: '',
+          phoneNumber: '',
+        };
+      })
   },
 });
 
@@ -75,6 +134,6 @@ export const shopSlicer = createSlice({
 // createdAt: new Date(),
 // updatedAt: new Date(),
 
-export { loadShop };
+export { loadShop, updateFormShop, CreatShop };
 
 export default shopSlicer.reducer;

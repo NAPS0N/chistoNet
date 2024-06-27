@@ -94,6 +94,33 @@ app.get("/api/products/categories/:id", async (req, res) => {
 //   }
 // });
 
+app.post('/create',verifyAccessToken, async (req,res) => {
+  try {
+    const { title, price, description, categoryId, geo, ProductImgs } = req.body;
+    const { user } = res.locals;
+    const product = await Product.findOne({ where: { userId: user.id } }); // что-то другое
+
+    if (!product) {
+      await shop.create({
+        title,
+        price,
+        description,
+        categoryId,
+        geo,
+        ProductImgs,
+        userId: user.id,
+     
+      });
+      res.status(200).json({message: 'OK', product })
+    } else {
+      res.status(400).json({message: 'Такой продукт уже существует' })
+    }
+  } catch (error) {
+      res.status(500).json({ message: error.message });
+  }
+})
+
+
 server.listen(process.env.PORTProduct, () => {
   console.log(`Example app listening on port ${process.env.PORTProduct}`);
 });

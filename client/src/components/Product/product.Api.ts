@@ -1,5 +1,5 @@
 import axios, { type AxiosResponse } from 'axios';
-import type { ProductType } from './ProductType';
+import type { CreateProductType, ProductType } from './ProductType';
 import axiosInstance from '../../axiosInstance';
 import type { CategoryType } from './CategoryType';
 
@@ -48,6 +48,10 @@ export const fetchShopProduct = async (): Promise<ProductType[]> => {
 //   return res.data.productsUser;
 //   }
 
-
+export const fetchCreateProduct = async ({createForm}:{createForm:CreateProductType}):Promise<CreateProductType> => {
+  const res: AxiosResponse<{ message: string; product: CreateProductType}> =
+  await axiosInstance.post('/products/create', createForm); 
+  return res.data.product;
+}
 
 

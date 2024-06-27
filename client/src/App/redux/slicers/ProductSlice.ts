@@ -4,8 +4,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
-import type { ProductType } from '../../../components/Product/ProductType';
-import { fetchProductLoad, fetchShopProduct } from '../../../components/Product/product.Api';
+import type { CreateProductType, ProductType } from '../../../components/Product/ProductType';
+import { fetchCreateProduct, fetchProductLoad, fetchShopProduct } from '../../../components/Product/product.Api';
 
 export type InitialStateType = {
   products: ProductType[];
@@ -18,6 +18,7 @@ const initialState: InitialStateType = {
 const loadProducts = createAsyncThunk('products/load', async () => fetchProductLoad())
 const loadProductShop = createAsyncThunk('productShop/load', async () => fetchShopProduct())
 // const loadProductUser = createAsyncThunk('productUser/load', async () => fetchUserProduct())
+const CreatProduct = createAsyncThunk('product/create', async ({createForm}:{createForm:CreateProductType}) => fetchCreateProduct(createForm))
 
 
 export const productSlice = createSlice({
@@ -46,6 +47,15 @@ export const productSlice = createSlice({
       .addCase(loadProductShop.pending, (state, action) => {
         state.products = [];
       })
+      .addCase(CreatProduct.fulfilled, (state, action) => {
+        state.products = action.payload;
+      })
+      .addCase(CreatProduct.rejected, (state, action) => {
+        state.products = [];
+      })
+      .addCase(CreatProduct.pending, (state, action) => {
+        state.products = [];
+      })
       // .addCase(loadProductUser.fulfilled, (state, action) => {
       //   state.products = action.payload;
       // })
@@ -60,6 +70,6 @@ export const productSlice = createSlice({
   },
 });
 
-export { loadProducts, loadProductShop};
+export { loadProducts, loadProductShop, CreatProduct};
 
 export default productSlice.reducer

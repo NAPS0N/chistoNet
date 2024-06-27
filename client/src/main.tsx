@@ -29,6 +29,8 @@ import NewsAdmin from './components/News/NewsCreateForm';
 import NewsCreateForm from './components/News/NewsCreateForm';
 import NewsUpdateForm from './components/News/NewsUpdateForm';
 import CompanyProfile from '../pages/Profile/Company/CompanyProfile';
+import Policy from './components/Footer/Policy';
+import Rules from './components/Footer/Rules';
 
 
 const router = createBrowserRouter([
@@ -107,6 +109,18 @@ const router = createBrowserRouter([
       {
         path: '/chatroom',
         element: <Chat />,
+      },
+      {
+        path: '/policy',
+        element: <Policy />,
+      },
+      {
+        path: '/rules',
+        element: <Rules />,
+      },
+      {
+        path: '/offer',
+        element: <Rules />,
       },
     ],
   },
