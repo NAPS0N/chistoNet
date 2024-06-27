@@ -59,8 +59,11 @@ function Nav(): JSX.Element {
           style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
         >
           <div style={{ display: 'flex', alignItems: 'center' }}>
-
-            <img src="../../../public/logo/240х400.png" alt="" style={{width: '45px', height: '50px', padding: '0 10px 0 0'}} />
+            <img
+              src="../../../public/logo/240х400.png"
+              alt=""
+              style={{ width: '45px', height: '50px', padding: '0 10px 0 0' }}
+            />
 
             <Typography
               variant="h6"
@@ -77,9 +80,9 @@ function Nav(): JSX.Element {
                 textDecoration: 'none',
               }}
             >
-
-              <Link to='/home' className="menuLink">ChistoNet</Link>
-
+              <Link to="/home" className="menuLink">
+                ChistoNet
+              </Link>
             </Typography>
           </div>
 
@@ -163,34 +166,26 @@ function Nav(): JSX.Element {
                 </>
               )}
             </PopupState>
-    
-            
-                <Typography
 
-                    variant="h6"
-                    noWrap
-                    href="#app-bar-with-responsive-menu"
-                    sx={{
-                      mr: 2,
-                      display: { xs: 'none', md: 'flex' },
-                      fontFamily: 'monospace',
-                      fontWeight: 700,
-                      letterSpacing: '.3rem',
-                      color: 'inherit',
-                      textDecoration: 'none',
-                    }}
-                  >
-                    <Link
-                      to="/products"
-                      className="menuLink"
-                    >
-                      Аренда
-                    </Link>
-                  </Typography>
+            <Typography
+              variant="h6"
+              noWrap
+              href="#app-bar-with-responsive-menu"
+              sx={{
+                mr: 2,
+                display: { xs: 'none', md: 'flex' },
+                fontFamily: 'monospace',
+                fontWeight: 700,
+                letterSpacing: '.3rem',
+                color: 'inherit',
+                textDecoration: 'none',
+              }}
+            >
+              <Link to="/products" className="menuLink">
+                Аренда
+              </Link>
+            </Typography>
 
-
-
-         
             <Typography
               variant="h6"
               noWrap
@@ -210,7 +205,6 @@ function Nav(): JSX.Element {
                 Вакансии
               </Link>
             </Typography>
-
 
             <Typography
               variant="h6"
@@ -244,8 +238,26 @@ function Nav(): JSX.Element {
                 textDecoration: 'none',
               }}
             >
-              <Link to="/homepagechat" className="menuLink">
-              <QuestionAnswerIcon/>
+              <Link to="/chatroom" className="menuLink">
+                Chatroom
+              </Link>
+            </Typography>
+            <Typography
+              variant="h6"
+              noWrap
+              href="#app-bar-with-responsive-menu"
+              sx={{
+                mr: 2,
+                display: { xs: 'none', md: 'flex' },
+                fontFamily: 'monospace',
+                fontWeight: 700,
+                letterSpacing: '.3rem',
+                color: 'inherit',
+                textDecoration: 'none',
+              }}
+            >
+              <Link to="/chat" className="menuLink">
+                <QuestionAnswerIcon />
               </Link>
             </Typography>
           </div>
@@ -263,9 +275,6 @@ function Nav(): JSX.Element {
               <Button color="inherit"> Зарегестрироваться </Button>
             </Link>
           </Box>
-
-
-
         </Toolbar>
       </Container>
     </AppBar>
