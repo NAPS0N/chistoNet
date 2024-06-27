@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const verifyAccessToken = require("../../../middleware/verifyAccessToken");
-const { Shop } = require("../../../db/models");
+const { Shop, ProductImg } = require("../../../db/models");
 
 
 router.get("/", verifyAccessToken, async (req, res) => {

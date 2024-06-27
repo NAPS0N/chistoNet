@@ -29,25 +29,25 @@ app.get("/api/products", async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
-app.get('/api/products/shop', verifyAccessToken, async (req, res) => { // verifyAccessToken
+app.get('/api/products/shop', verifyAccessToken, async (req, res) => { 
   const { user } = res.locals;
     try {
-      const shopProducts = await Product.findAll({where: {userId: user.id}}) // заменить на user.id
+      const shopProducts = await Product.findAll({where: {userId: user.id}, include: ProductImg }) 
       res.status(200).json({message: 'OK', shopProducts })
     } catch (error) {
       res.status(500).json({ message: error.message });
     }
   })
 
-  app.get('/api/products/user', verifyAccessToken, async (req, res) => { 
-    const { user } = res.locals;
-      try {
-        const productsUser = await Product.findAll({where: {userId: user.id}})
-        res.status(200).json({message: 'OK', productsUser })
-      } catch (error) {
-        res.status(500).json({ message: error.message });
-      }
-    })
+  // app.get('/api/products/user', verifyAccessToken, async (req, res) => { 
+  //   const { user } = res.locals;
+  //     try {
+  //       const productsUser = await Product.findAll({where: {userId: user.id}})
+  //       res.status(200).json({message: 'OK', productsUser })
+  //     } catch (error) {
+  //       res.status(500).json({ message: error.message });
+  //     }
+  //   })
 
 // app.get("/api/products/:id", async (req, res) => {
 //   const { id } = req.params;

@@ -33,8 +33,8 @@ export const individualProfileSlice = createSlice({
       .addCase(loadProfileUser.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.individual = action.payload.individual;
-        state.productsUser= action.payload // добавить action.payload.userProdducts
-        console.log(121212121,  action.payload );
+        // state.productsUser= action.payload. // добавить action.payload.userProdducts
+
         
       })
       .addCase(loadProfileUser.rejected, (state, action) => {

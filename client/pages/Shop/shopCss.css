@@ -6,3 +6,18 @@ body {
 .img {
     width: 80vw;
 }
+.imgShop {
+    max-width: 100%;
+    overflow: hidden;
+  }
+  
+  .img {
+    max-width: 100%;
+    height: auto; /* Чтобы сохранить пропорции изображения */
+  }
+
+  .map {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; /* Примерный отступ сверху */
+  }

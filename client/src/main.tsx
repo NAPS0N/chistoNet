@@ -27,6 +27,7 @@ import ProductByCategory from './components/Product/ProductByCategory';
 import NewsAdmin from './components/News/NewsCreateForm';
 import NewsCreateForm from './components/News/NewsCreateForm';
 import NewsUpdateForm from './components/News/NewsUpdateForm';
+import CompanyProfile from '../pages/Profile/Company/CompanyProfile';
 
 const router = createBrowserRouter([
   {
@@ -96,6 +97,14 @@ const router = createBrowserRouter([
       {
         path: '/updatenews/:id',
         element: <NewsUpdateForm />,
+      },
+      {
+        path: '/profile',
+        element: < ProfileIndividual/>,
+      },
+      {
+        path: '/company',
+        element: < CompanyProfile/>,
       },
     ],
   },
