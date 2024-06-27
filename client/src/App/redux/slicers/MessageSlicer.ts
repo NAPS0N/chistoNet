@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import type { MessageType } from '../../../../pages/Chat/MessageType';
-import { fetchMessage } from '../../../../pages/Chat/api.message';
+import { addMessage, fetchMessage } from '../../../../pages/Chat/api.message';
 
 export type InitialStateType = {
   chatMessages: MessageType[];
@@ -14,6 +14,10 @@ const initialState: InitialStateType = {
 
 const loadMessages = createAsyncThunk('message/load', async () => fetchMessage());
 
+const createMessage = createAsyncThunk('message/create', async (newMessage: MessageType) =>
+  addMessage(newMessage),
+);
+// фудфилды написать!!!!
 export const questionSlice = createSlice({
   name: 'messages',
   initialState,
@@ -30,10 +34,13 @@ export const questionSlice = createSlice({
       .addCase(loadMessages.pending, (state, action) => {
         state.chatMessages = [];
         state.isLoading = true;
+      })
+      .addCase(createMessage.fulfilled, (state, action) => {
+        state.chatMessages = [...state.chatMessages, action.payload];
       });
   },
 });
 
-export { loadMessages };
+export { loadMessages, createMessage };
 
 export default questionSlice.reducer;

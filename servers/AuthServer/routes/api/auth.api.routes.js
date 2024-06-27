@@ -5,6 +5,15 @@ const generateTokens = require("../../../utils/generateTokens");
 const cookiesConfig = require("../../configs/cookiesConfig");
 const basicValidateFields = require("../../utils/basicValidateFields");
 
+authRoute.get("/", async (req, res) => {
+  try {
+    const users = await User.findAll();
+
+    res.json({ users, message: "OK" });
+  } catch (error) {
+    res.status(500).send({ error, message: "Внутренняя ошибка сервера" });
+  }
+});
 
 authRoute.post("/login", async (req, res) => {
   const { email, password } = req.body;
@@ -30,8 +39,8 @@ authRoute.post("/login", async (req, res) => {
 });
 
 authRoute.post("/registration", async (req, res) => {
-  const { email, password, phoneNumber} = req.body;
-  console.log(email, password, phoneNumber );
+  const { email, password, phoneNumber } = req.body;
+  console.log(email, password, phoneNumber);
   const errors = basicValidateFields(req.body);
   if (Object.keys(errors).length > 0) {
     return res.status(400).json(errors);
