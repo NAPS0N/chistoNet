@@ -5,6 +5,7 @@ import {ProductImg} from '../ProductImg/ProductImg';
 
 import { useAppDispatch, useAppSelector } from '../../App/redux/store';
 import { loadProducts } from '../../App/redux/slicers/ProductSlice';
+import { loadUsers } from '../../App/redux/slicers/AuthSlicer';
 
 
 function ListOfProducts(): JSX.Element {
@@ -14,6 +15,10 @@ function ListOfProducts(): JSX.Element {
   useEffect(()=> {
     dispatch(loadProducts()).catch(console.log);
   }, [])
+
+  useEffect(() => {
+    dispatch(loadUsers()).catch(console.log);
+  }, []);
 
   return (
     <>
