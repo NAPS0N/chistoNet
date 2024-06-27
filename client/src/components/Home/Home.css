@@ -18,3 +18,27 @@
   align-items: center;
   margin: 20px; 
 }
+
+.header {
+  font-family: Nunito;
+  font-weight: bold;
+  margin: 0% 0 2% 1%;
+}
+
+.header-news {
+  font-family: Nunito;
+  font-weight: bold;
+  margin: 10% 0 2% 1%;
+}
+.css-1pqm26d-MuiAvatar-img {
+  height: 40px;
+  width: 40px;
+}
+
+.news-item {
+  margin: '10px';
+
+  overflow: hidden;
+  margin-right: 13%;
+  margin-top: 5%;
+}

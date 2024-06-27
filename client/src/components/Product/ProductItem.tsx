@@ -22,7 +22,7 @@ function ProductItem({ product }: { product: ProductType }): JSX.Element {
         <Card sx={{ width: 200, height: 200 }}>
           <CardHeader sx={{fontSize:'1px', p: '10px 5px 5px 10px'}}
             title={
-              <Typography variant="h6" sx={{ fontSize: '1rem',height: '55px', overflow: 'hidden', textOverflow: "ellipsis"}}>
+              <Typography variant="h6" sx={{ fontSize: '1rem',height: '55px', overflow: 'hidden', textOverflow: "ellipsis", fontFamily: 'Nunito', fontWeight: 'bold'}}>
                 {product.title}
               </Typography>
             }
@@ -43,7 +43,7 @@ function ProductItem({ product }: { product: ProductType }): JSX.Element {
           </div>
           <CardContent sx={{p: '5px 5px 10px 5px'}}>
 
-            <Typography variant="body2" color="text.secondary" >
+            <Typography variant="body2" color="text.secondary" sx={{fontFamily: 'Nunito', fontWeight: 'bold', color: 'black'}} >
               цена: {product.price}
             </Typography>
           </CardContent>
