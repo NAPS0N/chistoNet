@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 import { createMessage } from '../../../App/redux/slicers/MessageSlicer';
 
-function MessageBlock({ users, companionId, userAuth, socket }): JSX.Element {
+function MessageBlock({ companionId, userAuth, socket }): JSX.Element {
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
   const dispatchMsg = useDispatch();
-
 
   // для отображения печатания
   const isTyping = () => socket.emit('typing', `${localStorage.getItem('user')} is typing`);
@@ -21,7 +22,6 @@ function MessageBlock({ users, companionId, userAuth, socket }): JSX.Element {
         id: `${socket.id}-${Math.random()}`, // Math random для уникального ключа сообщения в DOM дереве
         socketId: socket.id,
       });
-      console.log(54321, { message, fromId: userAuth.id, toId: companionId });
 
       dispatchMsg(createMessage({ message, fromId: userAuth.id, toId: companionId })).catch(
         console.log,
@@ -43,18 +43,20 @@ function MessageBlock({ users, companionId, userAuth, socket }): JSX.Element {
   return (
     <div className="message-block">
       <form className="message-form" onSubmit={handleSend}>
-        <input
+        <TextField
           type="text"
           className="user-message"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           onKeyDown={isTyping}
+          variant="outlined"
+          fullWidth
+          label="Введите сообщение"
         />
         {error && <div className="error-message">{error}</div>} {/* Сообщение об ошибке */}
-        <button type="submit">Отправить</button>
-        <button type="button" className="btn" onClick={handleLeave}>
-          Покинуть чат
-        </button>
+        <Button type="submit" variant="contained" sx={{ bgcolor: '#468966', color: '#ffffff' }}>
+          Отправить
+        </Button>
       </form>
     </div>
   );

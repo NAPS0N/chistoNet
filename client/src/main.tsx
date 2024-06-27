@@ -6,7 +6,7 @@ import { RouterProvider, createBrowserRouter, redirect, useNavigate } from 'reac
 // import { Chat, Home } from '@mui/icons-material';
 // import App from './App/App';
 import './index.css';
-
+import { ThemeProvider } from '@mui/material/styles';
 import { store, useAppSelector } from './App/redux/store';
 // k
 import ErrorPage from './components/Navbar/ErrorPage';
@@ -29,7 +29,6 @@ import NewsAdmin from './components/News/NewsCreateForm';
 import NewsCreateForm from './components/News/NewsCreateForm';
 import NewsUpdateForm from './components/News/NewsUpdateForm';
 import CompanyProfile from '../pages/Profile/Company/CompanyProfile';
-
 
 const router = createBrowserRouter([
   {
@@ -98,11 +97,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/profile',
-        element: < ProfileIndividual/>,
+        element: <ProfileIndividual />,
       },
       {
         path: '/company',
-        element: < CompanyProfile/>,
+        element: <CompanyProfile />,
       },
       {
         path: '/chatroom',
