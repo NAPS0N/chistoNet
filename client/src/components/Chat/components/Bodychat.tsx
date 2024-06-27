@@ -1,26 +1,25 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function Bodychat({ messages, status }): JSX.Element {
+function Bodychat({ users, toFromMessages, companionId, messages, status }): JSX.Element {
   const navigate = useNavigate();
-  // покинуть чат
-
+  const userCompain = users.find((user) => user.id === companionId);
   return (
     <>
       <div className="container" style={{ backgroundColor: 'grey', height: '100%', width: '100%' }}>
-        {messages.map((el) =>
-          el.name === localStorage.getItem('user') ? (
-            <div className="chats" key={el.id}>
+        {toFromMessages.map((msg) =>
+          msg.fromId !== companionId ? (
+            <div className="chats" key={msg.id}>
               <p>Я</p>
               <div className="message-sender">
-                <p>{el.text}</p>
+                <p>{msg.message}</p>
               </div>
             </div>
           ) : (
-            <div className="chats" key={el.id}>
-              <p>{el.name}</p>
+            <div className="chats" key={msg.id}>
+              <p>{userCompain.firstName}</p>
               <div className="message-recipient">
-                <p>{el.text}</p>
+                <p>{msg.message}</p>
               </div>
             </div>
           ),

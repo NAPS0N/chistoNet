@@ -7,6 +7,7 @@ import { useAppDispatch, useAppSelector } from '../../src/App/redux/store';
 import { loadMessages } from '../../src/App/redux/slicers/MessageSlicer';
 import { loadUsers } from '../../src/App/redux/slicers/AuthSlicer';
 import ChatRoom from './ChatRoom';
+import ChatPage from './ChatPage';
 import type { UserType } from '../../src/components/Auth/UserType';
 import Chat from './Chat';
 
@@ -18,18 +19,19 @@ function HomePageChat(): JSX.Element {
   const dispatch = useAppDispatch();
   const allMessages = useAppSelector((state) => state.message.chatMessages);
 
+  const myMessages = allMessages
+    .filter((message) => message.fromId === userAuth?.id || message.toId === userAuth?.id)
+    .sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+
   const userMessages = allMessages.filter((message) => message.fromId === userAuth?.id); // это сообщения от user 1 к user 2
-  console.log(11111, userMessages);
+
   const companionMessages = allMessages.filter((message) => message.toId === userAuth?.id);
-  console.log(2222, companionMessages);
+
   // Получаем уникальные toId
   const uniqueToIds = Array.from(new Set(companionMessages.map((message) => message.fromId)));
-  console.log(3333, uniqueToIds);
 
   // Получаем массив уникальных пользователей
   const companionUsers = users.filter((user) => uniqueToIds.includes(user.id));
-
-  console.log(4444, companionUsers);
 
   useEffect(() => {
     dispatch(loadMessages()).catch(console.log);
@@ -66,14 +68,14 @@ function HomePageChat(): JSX.Element {
         <input type="text" id="user" value={user} onChange={(e) => setUser(e.target.value)} />
         <button type="submit">Войти</button>
       </form>
-      <div>
-        {companionUsers.map((companionUser) => (
-          <ChatRoom companionUser={companionUser} companionMessages={companionMessages} />
-        ))}
-      </div>
-      <div>
-        <Chat companionMessages={companionMessages} />
-      </div>
+
+      <ChatPage
+      users={users}
+        userAuth={userAuth}
+        myMessages={myMessages}
+        companionMessages={companionMessages}
+        companionUsers={companionUsers}
+      />
     </Box>
   );
 }
