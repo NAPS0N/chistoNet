@@ -1,0 +1,44 @@
+.product-item {
+  flex: '0 0 auto';
+  margin: '10px';
+  height: '30vh';
+  overflow: hidden;
+}
+
+.home-image {
+  margin: 5% 0 3% -3%;
+  width: 100%;
+  border-radius: 5px; /* Закругленные углы */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Тень */
+}
+
+.home-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+
+.header {
+  font-family: Nunito;
+  font-weight: bold;
+  margin: 0% 0 2% 1%;
+}
+
+.header-news {
+  font-family: Nunito;
+  font-weight: bold;
+  margin: 10% 0 2% 1%;
+}
+.css-1pqm26d-MuiAvatar-img {
+  height: 40px;
+  width: 40px;
+}
+
+.news-item {
+  margin: '10px';
+
+  overflow: hidden;
+ 
+  margin-top: 5%;
+}

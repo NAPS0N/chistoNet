@@ -1,0 +1,124 @@
+/* Общий контейнер футера */
+.footer {
+    background-color: #333;
+    color: #f6f6f6;
+    padding: 40px 0;
+    
+        background-color: #1c1d20
+      
+  }
+  
+  /* Внутренний контейнер для контента футера */
+  .footerContent {
+    display: flex;
+    justify-content: space-between; /* Равномерное распределение по горизонтали */
+    align-items: flex-start; /* Выравнивание по верхнему краю */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    color: #91939d
+  }
+  
+  /* Левая секция для логотипа и ссылок на социальные сети */
+  .footerLeft {
+    display: flex;
+    align-items: center;
+    color: #f6f6f6;
+  }
+  
+  .footerLeft .logo {
+    width: 80px; /* Ширина логотипа */
+    height: 80px; /* Высота логотипа */
+    background-color: #fff; /* Цвет фона логотипа */
+    margin-right: 20px;
+  }
+  
+  .socials {
+    display: flex;
+  }
+  
+  .socials a {
+    color: #f6f6f6;
+    font-size: 1.5rem;
+    margin-right: 10px;
+  }
+  
+  /* Центральная секция для быстрых ссылок */
+  .footerCenter {
+    flex: 1;
+    padding: 0 20px;
+    font-size: 1.5rem;
+  }
+  
+  .footerCenter h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .quickLinks {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .quickLinks li {
+    margin-bottom: 10px;
+  }
+  
+  .quickLinks a {
+  color: #91939d;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .quickLinks a:hover {
+    color: #f6f6f6;
+  }
+  
+  /* Правая секция для дополнительных ссылок */
+  .footerRight {
+    flex: 1;
+    padding: 0 20px;
+  }
+  
+  .footerRight h2 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+  
+  .additionalLinks {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .additionalLinks li {
+    margin-bottom: 10px;
+  }
+  
+  .additionalLinks a {
+    color: #f6f6f6;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .additionalLinks a:hover {
+    color: #f6f6f6;
+  }
+  
+  /* Нижняя секция с копирайтом */
+  .footerBottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #777;
+    font-size: 0.9rem;
+    color: #91939d;
+  }
+  
+  .logo-img {
+    width: 200px;
+    height: 60px;
+  }
+
+  img {
+    width: 200px;
+    height: 60px;
+  }
