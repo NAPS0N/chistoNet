@@ -41,19 +41,19 @@ export const productSlice = createSlice({
         console.log(state.product, 'state.product');
         
       })
-      .addCase(loadProducts.rejected, (state, action) => {
+      .addCase(loadProducts.rejected, (state) => {
         state.products = [];
       })
-      .addCase(loadProducts.pending, (state, action) => {
+      .addCase(loadProducts.pending, (state) => {
         state.products = [];
       })
       .addCase(loadProductShop.fulfilled, (state, action) => {
         state.products = action.payload;
       })
-      .addCase(loadProductShop.rejected, (state, action) => {
+      .addCase(loadProductShop.rejected, (state) => {
         state.products = [];
       })
-      .addCase(loadProductShop.pending, (state, action) => {
+      .addCase(loadProductShop.pending, (state) => {
         state.products = [];
       })
       // .addCase(loadProductUser.fulfilled, (state, action) => {

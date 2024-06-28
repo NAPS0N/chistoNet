@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../App/redux/store';
 import { loadSingleProduct } from '../../App/redux/slicers/ProductSlice';
 import { Box, Button, Card, CardActions, CardContent, Grid, Typography } from '@mui/material';
-import { Telegram, WhatsApp } from '@mui/icons-material';
 import TelegramIcon from '@mui/icons-material/Telegram';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
-import { loadUsers } from '../../App/redux/slicers/AuthSlicer';
 import { autoPlay } from 'react-swipeable-views-utils';
 import SwipeableViews from 'react-swipeable-views';
 import { UserType } from '../Auth/UserType';
@@ -22,7 +20,7 @@ function Product (): JSX.Element {
   
   
   const users: UserType[] | [] = useAppSelector((store) => store.auth.users);
-  const user = users.find((user) => user.id === singleProduct.userId);
+  const user = users.find((foundUser) => singleProduct ? foundUser.id === singleProduct.userId : 'no product');
   
 
 

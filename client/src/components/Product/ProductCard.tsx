@@ -1,15 +1,11 @@
 import React from 'react';
-import { IconButton, ImageList, ImageListItem, ImageListItemBar, ListSubheader, Box, Paper, Typography, MobileStepper, Button, Modal, Card, CardMedia, CardContent, CardActions, Grid } from '@mui/material';
-import { Link } from 'react-router-dom';
-import { Height, KeyboardArrowLeft, KeyboardArrowRight, Telegram, WhatsApp } from '@mui/icons-material';
+import { Box, Paper, Typography, MobileStepper, Button, Modal, Card, CardContent, CardActions, Grid } from '@mui/material';
+import {  KeyboardArrowLeft, KeyboardArrowRight, Telegram, WhatsApp } from '@mui/icons-material';
 import { useTheme } from '@emotion/react';
 import { autoPlay } from 'react-swipeable-views-utils';
 import SwipeableViews from 'react-swipeable-views';
-import { Carousel } from 'antd';
-import ProductImg from '../ProductImg/ProductImg';
 import type { ProductType } from './ProductType';
-import { useAppDispatch, useAppSelector } from '../../App/redux/store';
-import SwipeableTextMobileStepper from './ProductSlide';
+import { useAppSelector } from '../../App/redux/store';
 import type { UserType } from '../Auth/UserType';
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
@@ -29,10 +25,9 @@ const modalStyle = {
 };
 
 function ProductCard({ product }: { product: ProductType }): JSX.Element {
-  const dispatch = useAppDispatch();
   const theme = useTheme();
   const users: UserType[] | [] = useAppSelector((store) => store.auth.users);
-  const user = users.find((user) => user.id === product.userId);
+  const user = users.find((foundUser) => foundUser.id === product.userId);
 
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);

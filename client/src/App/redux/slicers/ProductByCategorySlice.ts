@@ -1,11 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import type { PayloadAction } from '@reduxjs/toolkit';
-
 import type { ProductType } from '../../../components/Product/ProductType';
-import { fetchProductByCategoryLoad, fetchProductLoad, fetchSingleProduct } from '../../../components/Product/product.Api';
+import { fetchProductByCategoryLoad} from '../../../components/Product/product.Api';
 
 export type InitialStateType = {
   productsByCategory: ProductType[];
@@ -31,10 +28,10 @@ export const productByCategorySlice = createSlice({
  
         
       })
-      .addCase(loadProductByCategory.rejected, (state, action) => {
+      .addCase(loadProductByCategory.rejected, (state) => {
         state.productsByCategory = [];
       })
-      .addCase(loadProductByCategory.pending, (state, action) => {
+      .addCase(loadProductByCategory.pending, (state) => {
         state.productsByCategory = [];
       })
       // .addCase(loadProduct.fulfilled, (state, action) => {

@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { RouterProvider, createBrowserRouter, redirect, useNavigate } from 'react-router-dom';
+import { RouterProvider, createBrowserRouter} from 'react-router-dom';
 
 // import { Chat, Home } from '@mui/icons-material';
 // import App from './App/App';
 import './index.css';
 
-import { store, useAppSelector } from './App/redux/store';
+import { store } from './App/redux/store';
 // k
 import ErrorPage from './components/Navbar/ErrorPage';
 import ListOfProducts from './components/Product/ListOfProducts';
@@ -18,14 +18,11 @@ import ProfileIndividual from '../pages/Profile/Individual/ProfileIndividual';
 import PersonalAccount from '../pages/PersonalAccount/PersonalAccount';
 import ProductItem from './components/Product/ProductItem';
 import HomePageChat from '../pages/Chat/HomePageChat';
-import ChatPage from '../pages/Chat/ChatPage';
 import Chat from '../pages/Chat/Chat';
 import NewsPage from '../pages/News/NewsPage';
 import Shop from '../pages/Shop/Shop';
 import Home from './components/Home/Home';
-import Category from './components/Product/ProductByCategory';
 import ProductByCategory from './components/Product/ProductByCategory';
-import NewsAdmin from './components/News/NewsCreateForm';
 import NewsCreateForm from './components/News/NewsCreateForm';
 import NewsUpdateForm from './components/News/NewsUpdateForm';
 import CompanyProfile from '../pages/Profile/Company/CompanyProfile';

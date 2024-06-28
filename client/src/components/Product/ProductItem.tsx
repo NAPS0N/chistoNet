@@ -1,16 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import {useParams} from 'react-router-dom'
+import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardMedia, Typography } from '@mui/material';
-import ProductCard from './ProductCard'
-import ProductImg from './ProductImg'
-import { useAppSelector } from '../../App/redux/store';
 import type { ProductType } from './ProductType';
 import   './ProductItem.css'
 
 function ProductItem({ product }: { product: ProductType }): JSX.Element {
   const [currentSlide, setCurrentSlide] = useState(0);
   
-  const handleSlideChange = (index) => {
+  const handleSlideChange = (index: number) => {
     setCurrentSlide(index);
   };
 

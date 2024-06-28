@@ -2,7 +2,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import type { PayloadAction } from '@reduxjs/toolkit';
 import type { CategoryType } from '../../../components/Product/CategoryType';
 import { fetchCategoryLoad } from '../../../components/Product/product.Api';
 
@@ -31,10 +30,10 @@ export const categorySlice = createSlice({
  
         
       })
-      .addCase(loadCategories.rejected, (state, action) => {
+      .addCase(loadCategories.rejected, (state) => {
         state.categories = [];
       })
-      .addCase(loadCategories.pending, (state, action) => {
+      .addCase(loadCategories.pending, (state) => {
         state.categories = [];
       })
 

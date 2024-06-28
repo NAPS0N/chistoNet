@@ -1,9 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect} from 'react';
 import { Grid } from '@mui/material';
 import ProductCard from './ProductCard';
-import type { ProductType } from './ProductType';
-import {ProductImg} from '../ProductImg/ProductImg';
-
 import { useAppDispatch, useAppSelector } from '../../App/redux/store';
 import { loadProducts } from '../../App/redux/slicers/ProductSlice';
 import { loadUsers } from '../../App/redux/slicers/AuthSlicer';

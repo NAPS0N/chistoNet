@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../App/redux/store';
-import { loadCategories } from '../../App/redux/slicers/ProductSlice';
 import { loadProductByCategory } from '../../App/redux/slicers/ProductByCategorySlice';
 import { useParams } from 'react-router-dom';
 import ProductCard from './ProductCard';

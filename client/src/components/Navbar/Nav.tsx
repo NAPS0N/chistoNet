@@ -2,22 +2,16 @@ import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
 import Button, { ButtonProps } from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
-import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { Link,  useParams } from 'react-router-dom';
 import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
 import './Nav.css';
 import '@fontsource/roboto/400.css';
-import { makeStyles } from '@mui/material';
 import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
 import Modal from '@mui/material/Modal';
 import Login from '../Auth/Login';
@@ -47,19 +41,16 @@ const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
 }));
 //========
 
-const pages = [
-  { title: 'Товары', path: '/products' },
-  { title: 'Оборудование', path: '/products' },
-  { title: 'Аренда', path: '/products' },
-  { title: 'Вакансии', path: '/vacancies' },
-  { title: 'Новости', path: '/news' },
-  { title: 'Чатик', path: '/chat' },
-];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+// const pages = [
+//   { title: 'Товары', path: '/products' },
+//   { title: 'Оборудование', path: '/products' },
+//   { title: 'Аренда', path: '/products' },
+//   { title: 'Вакансии', path: '/vacancies' },
+//   { title: 'Новости', path: '/news' },
+//   { title: 'Чатик', path: '/chat' },
+// ];
 
 function Nav(): JSX.Element {
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
-  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
   const user = useAppSelector(store=>store.auth.user);
 
@@ -73,20 +64,6 @@ function Nav(): JSX.Element {
   const { id } = useParams();
   console.log(id, 'id');
 
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
 
   return (
     <AppBar position="fixed" className="menuColor">

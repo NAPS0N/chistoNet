@@ -1,11 +1,8 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
-import { useAppSelector } from '../../App/redux/store';
+import type { ImageType } from './ImageType';
 
-function ProductImg({image} ): JSX.Element {
- /// const {id} = useParams()
 
- /// const selectedProduct = useAppSelector((store) => store.products.products.find(product => product.id === Number(id)));
+function ProductImg({image} : {image : ImageType} ): JSX.Element {
 
   return (
     <div>

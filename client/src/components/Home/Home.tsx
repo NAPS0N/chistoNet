@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import ProductItem from '../Product/ProductItem';
 import { useAppDispatch, useAppSelector } from '../../App/redux/store';
 import './Home.css';
 import { loadNews } from '../../App/redux/slicers/NewsSlicer';
 import NewsCardList from '../News/NewsCardList';
-import { Link } from 'react-router-dom';
 import { loadUsers } from '../../App/redux/slicers/AuthSlicer';
 
 

@@ -1,4 +1,4 @@
-import type { ProductImg } from "../ProductImg/ProductImg";
+import type { ProductImgType } from "../ProductImg/ProductImgType";
 
 export type ProductType = {
     id: number,
@@ -8,6 +8,6 @@ export type ProductType = {
     userId: number,
     categoryId: number | null,
     geo: string,
-    ProductImgs: ProductImg[],
+    ProductImgs: ProductImgType[],
 }
 
