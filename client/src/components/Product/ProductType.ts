@@ -11,3 +11,12 @@ export type ProductType = {
     ProductImgs: ProductImg[],
 }
 
+export type CreateProductType = {
+    title: string,
+    price: number | string ,
+    description: string,
+    userId: number | null
+    categoryId: number | null,
+    geo: string,
+    ProductImgs: ProductImg,
+}

@@ -7,7 +7,7 @@ export type ShopType = {
     description: string;
     lax:string | null;
     lon: string | null;
-    phoneNumber: string | null;
+    phoneNumber: string ;
 }
 export type ShopTypeUpdate = {
     userId: null,

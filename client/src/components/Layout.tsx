@@ -39,8 +39,8 @@ export default function Layout(): JSX.Element {
           <Outlet />
         </div>
       </Container>
-      <div className="footer">
-        <Footer />
+      <div className="footer" style={{ marginTop: '80px',  }} >
+        <Footer/>
       </div>
     </>
   );

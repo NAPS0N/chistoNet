@@ -7,7 +7,6 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
 import Button, { ButtonProps } from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import Tooltip from '@mui/material/Tooltip';
@@ -96,13 +95,17 @@ function Nav(): JSX.Element {
           style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
         >
           <div style={{ display: 'flex', alignItems: 'center' }}>
+          <Link to="/" className="menuLink">
+              
+              
             <img
-              src="../../../public/logo/240х400.png"
+              src="../../../public/logo/12343256.png"
               alt=""
-              style={{ width: '45px', height: '50px', padding: '0 10px 0 0' }}
+              style={{ width: '200px', height: '44px', padding: '0 10px 0 0' }}
             />
+            </Link>
 
-            <Typography
+            {/* <Typography
               variant="h6"
               noWrap
               href="#app-bar-with-responsive-menu"
@@ -120,7 +123,7 @@ function Nav(): JSX.Element {
               <Link to="/" className="menuLink">
                 ChistoNet
               </Link>
-            </Typography>
+            </Typography> */}
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flex: 1 }}>

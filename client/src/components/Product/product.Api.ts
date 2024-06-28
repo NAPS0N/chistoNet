@@ -1,5 +1,5 @@
 import axios, { type AxiosResponse } from 'axios';
-import type { ProductType } from './ProductType';
+import type { CreateProductType, ProductType } from './ProductType';
 import axiosInstance from '../../axiosInstance';
 import type { CategoryType } from './CategoryType';
 
@@ -37,7 +37,6 @@ export const fetchSingleProduct = async (id: number): Promise<ProductType> => {
 export const fetchShopProduct = async (): Promise<ProductType[]> => {  
   const res: AxiosResponse<{ message: string; shopProducts: ProductType[]}> =
   await axiosInstance.get('/products/shop'); 
-  console.log(11111111, res.data);
   
   return res.data.shopProducts;
 }
@@ -48,6 +47,10 @@ export const fetchShopProduct = async (): Promise<ProductType[]> => {
 //   return res.data.productsUser;
 //   }
 
-
+export const fetchCreateProduct = async (createForm : CreateProductType):Promise<CreateProductType> => {
+  const res: AxiosResponse<{ message: string; product: CreateProductType}> =
+  await axiosInstance.post('/products/create', createForm); 
+  return res.data.product;
+}
 
 

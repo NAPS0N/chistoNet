@@ -1,8 +1,8 @@
 const router = require("express").Router();
-const verifyRefreshToken = require("../../../middleware/verifyRefreshToken");
+const verifyAccessToken = require("../../../middleware/verifyAccessToken");
 const {Individual} = require("../../../db/models/");
 
-router.get("/", verifyRefreshToken, async (req, res) => {
+router.get("/", verifyAccessToken, async (req, res) => {
     try {
         const {user} =  res.locals;
       const individual = await Individual.findOne({where: {userId: user.id}  });
