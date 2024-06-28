@@ -84,7 +84,6 @@ function Product (): JSX.Element {
                           display: 'block',
                           width: 500,
                           overflow: 'hidden',
-                          width: '100%',
                           borderRadius: 5,
                           marginLeft: '7%',
                           boxShadow: 3,

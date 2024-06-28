@@ -5,23 +5,23 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import Container from '@mui/material/Container';
-import Button, { ButtonProps } from '@mui/material/Button';
+import type { ButtonProps } from '@mui/material/Button';
+import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import MenuItem from '@mui/material/MenuItem';
-import { Link,  useParams } from 'react-router-dom';
-import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
+import { Link, useParams } from 'react-router-dom';
 import './Nav.css';
 import '@fontsource/roboto/400.css';
 import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
 import Modal from '@mui/material/Modal';
+import PersonIcon from '@mui/icons-material/Person';
 import Login from '../Auth/Login';
 import Registration from '../Auth/Registration';
 import { useAppSelector } from '../../App/redux/store';
-import PersonIcon from '@mui/icons-material/Person';
 
-// moodal
+// modal
 const style = {
-  position: 'absolute' as 'absolute',
+  position: 'absolute' as const,
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
@@ -39,31 +39,36 @@ const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
     backgroundColor: '#46a966',
   },
 }));
-//========
-
-// const pages = [
-//   { title: 'Товары', path: '/products' },
-//   { title: 'Оборудование', path: '/products' },
-//   { title: 'Аренда', path: '/products' },
-//   { title: 'Вакансии', path: '/vacancies' },
-//   { title: 'Новости', path: '/news' },
-//   { title: 'Чатик', path: '/chat' },
-// ];
 
 function Nav(): JSX.Element {
+  const user = useAppSelector(store => store.auth.user);
 
-  const user = useAppSelector(store=>store.auth.user);
-
-  //Modal
+  // Modal
   const [authModal, setAuthModal] = React.useState(false);
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  //========
+
+  const [anchorElProducts, setAnchorElProducts] = React.useState<null | HTMLElement>(null);
+  const [anchorElEquipment, setAnchorElEquipment] = React.useState<null | HTMLElement>(null);
+
+  const handleMouseEnterProducts = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElProducts(event.currentTarget);
+  };
+
+  const handleMouseLeaveProducts = () => {
+    setAnchorElProducts(null);
+  };
+
+  const handleMouseEnterEquipment = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElEquipment(event.currentTarget);
+  };
+
+  const handleMouseLeaveEquipment = () => {
+    setAnchorElEquipment(null);
+  };
 
   const { id } = useParams();
-  console.log(id, 'id');
-
 
   return (
     <AppBar position="fixed" className="menuColor">
@@ -101,85 +106,82 @@ function Nav(): JSX.Element {
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flex: 1 }}>
-            <PopupState variant="popover" popupId="demo-popup-menu">
-              {(popupState) => (
-                <>
-                  <Typography
-                    variant="h6"
-                    noWrap
-                    href="#app-bar-with-responsive-menu"
-                    sx={{
-                      mr: 2,
-                      display: { xs: 'none', md: 'flex' },
-                      fontFamily: 'monospace',
-                      fontWeight: 700,
-                      letterSpacing: '.3rem',
-                      color: 'inherit',
-                      textDecoration: 'none',
-                    }}
-                  >
-                    <Link
-                      to="/products"
-                      className="menuLink"
-                      variant="contained"
-                      {...bindTrigger(popupState)}
-                    >
-                      Товары
-                    </Link>
-                  </Typography>
+            <Typography
+              variant="h6"
+              noWrap
+              href="#app-bar-with-responsive-menu"
+              sx={{
+                mr: 2,
+                display: { xs: 'none', md: 'flex' },
+                fontFamily: 'monospace',
+                fontWeight: 700,
+                letterSpacing: '.3rem',
+                color: 'inherit',
+                textDecoration: 'none',
+              }}
+              onMouseEnter={handleMouseEnterProducts}
+            >
+              <Link to="/products" className="menuLink">
+                Товары
+              </Link>
+            </Typography>
 
-                  <Menu {...bindMenu(popupState)}>
-                    <Link to="/products/categories/5">
-                      <MenuItem onClick={popupState.close}>Инвентарь</MenuItem>
-                    </Link>
-                    <Link to="/products/categories/6">
-                      <MenuItem onClick={popupState.close}>Расходные материалы</MenuItem>
-                    </Link>
-                    <Link to="/products/categories/7">
-                      <MenuItem onClick={popupState.close}>Моющие средства</MenuItem>
-                    </Link>
-                  </Menu>
-                </>
-              )}
-            </PopupState>
-            <PopupState variant="popover" popupId="demo-popup-menu">
-              {(popupState) => (
-                <>
-                  <Typography
-                    variant="h6"
-                    noWrap
-                    href="#app-bar-with-responsive-menu"
-                    sx={{
-                      mr: 2,
-                      display: { xs: 'none', md: 'flex' },
-                      fontFamily: 'monospace',
-                      fontWeight: 700,
-                      letterSpacing: '.3rem',
-                      color: 'inherit',
-                      textDecoration: 'none',
-                    }}
-                  >
-                    <Link
-                      to="/products"
-                      className="menuLink"
-                      variant="contained"
-                      {...bindTrigger(popupState)}
-                    >
-                      Оборудование
-                    </Link>
-                  </Typography>
+            <Menu
+              anchorEl={anchorElProducts}
+              open={Boolean(anchorElProducts)}
+              onClose={handleMouseLeaveProducts}
+              MenuListProps={{
+                onMouseEnter: handleMouseEnterProducts,
+                onMouseLeave: handleMouseLeaveProducts,
+              }}
+            >
+              <Link to="/products/categories/5" className="menuLink">
+                <MenuItem onClick={handleMouseLeaveProducts}>Инвентарь</MenuItem>
+              </Link>
+              <Link to="/products/categories/6" className="menuLink">
+                <MenuItem onClick={handleMouseLeaveProducts}>Расходные материалы</MenuItem>
+              </Link>
+              <Link to="/products/categories/7" className="menuLink">
+                <MenuItem onClick={handleMouseLeaveProducts}>Моющие средства</MenuItem>
+              </Link>
+            </Menu>
 
-                  <Menu {...bindMenu(popupState)}>
-                    <MenuItem onClick={popupState.close}>Пылесос</MenuItem>
-                    <MenuItem onClick={popupState.close}>Химчистка</MenuItem>
-                    <MenuItem onClick={popupState.close}>Парогенератор</MenuItem>
-                    <MenuItem onClick={popupState.close}>Роторная машина</MenuItem>
-                    <MenuItem onClick={popupState.close}>Мойка высокого давления</MenuItem>
-                    <MenuItem onClick={popupState.close}>Поломоечная машина</MenuItem>
-                  </Menu>
-                </>
-              )}
-            </PopupState>
+            <Typography
+              variant="h6"
+              noWrap
+              href="#app-bar-with-responsive-menu"
+              sx={{
+                mr: 2,
+                display: { xs: 'none', md: 'flex' },
+                fontFamily: 'monospace',
+                fontWeight: 700,
+                letterSpacing: '.3rem',
+                color: 'inherit',
+                textDecoration: 'none',
+              }}
+              onMouseEnter={handleMouseEnterEquipment}
+            >
+              <Link to="/products" className="menuLink">
+                Оборудование
+              </Link>
+            </Typography>
+
+            <Menu
+              anchorEl={anchorElEquipment}
+              open={Boolean(anchorElEquipment)}
+              onClose={handleMouseLeaveEquipment}
+              MenuListProps={{
+                onMouseEnter: handleMouseEnterEquipment,
+                onMouseLeave: handleMouseLeaveEquipment,
+              }}
+            >
+              <MenuItem onClick={handleMouseLeaveEquipment}>Пылесос</MenuItem>
+              <MenuItem onClick={handleMouseLeaveEquipment}>Химчистка</MenuItem>
+              <MenuItem onClick={handleMouseLeaveEquipment}>Парогенератор</MenuItem>
+              <MenuItem onClick={handleMouseLeaveEquipment}>Роторная машина</MenuItem>
+              <MenuItem onClick={handleMouseLeaveEquipment}>Мойка высокого давления</MenuItem>
+              <MenuItem onClick={handleMouseLeaveEquipment}>Поломоечная машина</MenuItem>
+            </Menu>
 
             <Typography
               variant="h6"
@@ -239,65 +241,58 @@ function Nav(): JSX.Element {
                 Новости
               </Link>
             </Typography>
-      
           </div>
 
-
-
-             {!user ? (
-                <ColorButton variant="contained" onClick={handleOpen}>
-                Войти{' '}
-                <Modal
-                  open={open}
-                  onClose={handleClose}
-                  aria-labelledby="modal-modal-title"
-                  aria-describedby="modal-modal-description"
-                >
-                  {authModal === false ? (
-                    <Box sx={style}>
-                      <Login setOpen={setOpen}/>
-                      ⠀⠀ Если у вас еще нет аккаунта, пожалуйста{' '}
-                      <Link to="" onClick={() => setAuthModal(true)}>
-                        зарегистрируйтесь!
-                      </Link>
-                    </Box>
-                  ) : (
-                    <Box sx={style}>
-                      <Registration setOpen={setOpen} />
-                    </Box>
-                  )}
-                </Modal>
-              </ColorButton>
-             )
-            :
-            (
-              <>
-               <Typography
-              variant="h6"
-              noWrap
-              href="#app-bar-with-responsive-menu"
-              sx={{
-                mr: 2,
-                display: { xs: 'none', md: 'flex' },
-                fontFamily: 'monospace',
-                fontWeight: 700,
-                letterSpacing: '.3rem',
-                color: 'inherit',
-                textDecoration: 'none',
-              }}
-            >
-              <Link to="/homepagechat" className="menuLink">
-                <QuestionAnswerIcon />
-              </Link>
-            </Typography>
-            
+          {!user ? (
+            <ColorButton variant="contained" onClick={handleOpen}>
+              Войти{' '}
+              <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+              >
+                {authModal === false ? (
+                  <Box sx={style}>
+                    <Login setOpen={setOpen} />
+                    ⠀⠀ Если у вас еще нет аккаунта, пожалуйста{' '}
+                    <Link to="" onClick={() => setAuthModal(true)}>
+                      зарегистрируйтесь!
+                    </Link>
+                  </Box>
+                ) : (
+                  <Box sx={style}>
+                    <Registration setOpen={setOpen} />
+                  </Box>
+                )}
+              </Modal>
+            </ColorButton>
+          ) : (
+            <>
+              <Typography
+                variant="h6"
+                noWrap
+                href="#app-bar-with-responsive-menu"
+                sx={{
+                  mr: 2,
+                  display: { xs: 'none', md: 'flex' },
+                  fontFamily: 'monospace',
+                  fontWeight: 700,
+                  letterSpacing: '.3rem',
+                  color: 'inherit',
+                  textDecoration: 'none',
+                }}
+              >
+                <Link to="/homepagechat" className="menuLink">
+                  <QuestionAnswerIcon />
+                </Link>
+              </Typography>
 
               <Link to="/personalaccaunt" className="menuLink">
                 <PersonIcon />
               </Link>
-              </>
-            )} 
-
+            </>
+          )}
         </Toolbar>
       </Container>
     </AppBar>

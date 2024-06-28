@@ -5,7 +5,6 @@ import   './ProductItem.css'
 
 function ProductItem({ product }: { product: ProductType }): JSX.Element {
   const [currentSlide, setCurrentSlide] = useState(0);
-  
   const handleSlideChange = (index: number) => {
     setCurrentSlide(index);
   };
