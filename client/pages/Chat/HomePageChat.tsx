@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { io } from 'socket.io-client';
+
 import { Box } from '@mui/material';
 import { useAppDispatch, useAppSelector } from '../../src/App/redux/store';
 import { loadMessages } from '../../src/App/redux/slicers/MessageSlicer';
 import { loadUsers } from '../../src/App/redux/slicers/AuthSlicer';
 import ChatPage from './ChatPage';
 import type { UserType } from '../../src/components/Auth/UserType';
-
 
 function HomePageChat(): JSX.Element {
   // достаю все сообщения
@@ -18,18 +17,21 @@ function HomePageChat(): JSX.Element {
   const allMessages = useAppSelector((state) => state.message.chatMessages);
 
   const myMessages = allMessages
-    .filter((message) => message.fromId === userAuth?.id || message.toId === userAuth?.id)
+    .filter((message) => message.fromId === userAuth?.id || message.toId == userAuth?.id)
     .sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
 
-  const userMessages = allMessages.filter((message) => message.fromId === userAuth?.id); // это сообщения от user 1 к user 2
+  console.log('message.toId ', allMessages, userAuth?.id);
 
-  const companionMessages = allMessages.filter((message) => message.toId === userAuth?.id);
+  const companionMessages = allMessages.filter((message) => message.fromId == userAuth?.id);
 
   // Получаем уникальные toId
-  const uniqueToIds = Array.from(new Set(companionMessages.map((message) => message.fromId)));
+  const uniqueToIds: number[] = Array.from(
+    new Set(companionMessages.map((message) => message.toId)),
+  );
 
   // Получаем массив уникальных пользователей
-  const companionUsers = users.filter((user) => uniqueToIds.includes(user.id));
+  const companionUsers: UserType[] = users.filter((user) => uniqueToIds.includes(user.id));
+  console.log(1111, allMessages, companionMessages);
 
   useEffect(() => {
     dispatch(loadMessages()).catch(console.log);
@@ -39,36 +41,18 @@ function HomePageChat(): JSX.Element {
     dispatch(loadUsers()).catch(console.log);
   }, []);
 
-  const socket = io('http://localhost:5000');
-
-  const navigate = useNavigate();
-  const [user, setUser] = useState('');
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    // положить данные в localStorage
-    localStorage.setItem('user', user);
-
-    // делаем много пользователей
-
-    socket.emit('newUser', { user, socketId: socket.id });
-
-    navigate('/chat');
-  };
-
   return (
-    <Box>
-      <form onSubmit={handleSubmit}>
-        <h2>Вход в чат</h2>
+    <Box
+      sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
 
-        <label htmlFor="user" />
-        <input type="text" id="user" value={user} onChange={(e) => setUser(e.target.value)} />
-        <button type="submit">Войти</button>
-      </form>
-
+        padding: 2,
+      }}
+    >
       <ChatPage
-      users={users}
+        users={users}
         userAuth={userAuth}
         myMessages={myMessages}
         companionMessages={companionMessages}

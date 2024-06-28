@@ -3,4 +3,6 @@ export type MessageType = {
   message: string;
   fromId: number;
   toId: number;
+  createdAt: Date;
+  updatedAt: Date;
 };

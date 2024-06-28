@@ -28,10 +28,10 @@ export const questionSlice = createSlice({
         state.chatMessages = action.payload;
         state.isLoading = false;
       })
-      .addCase(loadMessages.rejected, (state, action) => {
+      .addCase(loadMessages.rejected, (state) => {
         state.chatMessages = [];
       })
-      .addCase(loadMessages.pending, (state, action) => {
+      .addCase(loadMessages.pending, (state) => {
         state.chatMessages = [];
         state.isLoading = true;
       })

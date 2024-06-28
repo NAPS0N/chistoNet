@@ -6,7 +6,7 @@ import { RouterProvider, createBrowserRouter, redirect, useNavigate } from 'reac
 // import { Chat, Home } from '@mui/icons-material';
 // import App from './App/App';
 import './index.css';
-
+import { ThemeProvider } from '@mui/material/styles';
 import { store, useAppSelector } from './App/redux/store';
 // k
 import ErrorPage from './components/Navbar/ErrorPage';
@@ -32,7 +32,6 @@ import CompanyProfile from '../pages/Profile/Company/CompanyProfile';
 import Policy from './components/Footer/Policy';
 import Rules from './components/Footer/Rules';
 import Product from './components/Product/Product';
-
 
 
 const router = createBrowserRouter([
@@ -102,11 +101,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/profile',
-        element: < ProfileIndividual/>,
+        element: <ProfileIndividual />,
       },
       {
         path: '/company',
-        element: < CompanyProfile/>,
+        element: <CompanyProfile />,
       },
       {
         path: '/chatroom',

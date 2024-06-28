@@ -42,12 +42,12 @@ messageRouter.delete('/:id', async (req, res) => {
     const chatMessage = await Chat.findByPk(req.params.id);
     if (chatMessage) {
       await chatMessage.destroy();
-      res.json({ message: 'Product deleted' });
+      res.json({ message: 'Message deleted' });
     } else {
-      res.status(404).send({ message: 'Product not found' });
+      res.status(404).send({ message: 'Message not found' });
     }
   } catch (error) {
-    res.status(500).send({ error, message: 'Internal server error' });
+    res.status(500).send({ error, message: 'Message server error' });
   }
 });
 

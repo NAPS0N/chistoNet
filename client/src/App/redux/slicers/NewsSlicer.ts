@@ -45,10 +45,10 @@ export const questionSlice = createSlice({
         state.news = action.payload;
         state.isLoading = false;
       })
-      .addCase(loadNews.rejected, (state, action) => {
+      .addCase(loadNews.rejected, (state) => {
         state.news = [];
       })
-      .addCase(loadNews.pending, (state, action) => {
+      .addCase(loadNews.pending, (state) => {
         state.news = [];
         state.isLoading = true;
       })

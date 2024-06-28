@@ -35,15 +35,17 @@ function NewsCreateForm(): JSX.Element {
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | { name?: string; value: unknown }
     >,
-  ) => {
+  ): void => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    if (typeof name === 'string') {
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
+    }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent): void => {
     e.preventDefault();
     dispatchNewNews(createNews({ ...formData }))
       .then(() => {
