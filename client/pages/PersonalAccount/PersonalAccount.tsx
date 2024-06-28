@@ -103,9 +103,9 @@ const handleClose = () => setOpen(false);
   }
 
   return (
-    <Box sx={{ flexGrow: 1, marginTop: '150px' }}>
+    <Box sx={{ flexGrow: 1, marginTop: '150px'}}>
       <Grid container spacing={2}>
-        <Grid item xl={8} md={3}>
+        <Grid item xl={4} md={4}>
           <Item>
             {' '}
             {/* вставляем компоненты */}
