@@ -9,6 +9,7 @@ const app = express();
 
 const verifyAccessToken = require("../middleware/verifyAccessToken");
 const { Product, ProductImg, Category } = require("../db/models");
+const { log } = require("console");
 
 const server = http.createServer(app);
 
@@ -94,14 +95,15 @@ app.get("/api/products/categories/:id", async (req, res) => {
 //   }
 // });
 
-app.post('/create',verifyAccessToken, async (req,res) => {
+app.post('/api/products/create',verifyAccessToken, async (req,res) => {
   try {
     const { title, price, description, categoryId, geo, ProductImgs } = req.body;
     const { user } = res.locals;
-    const product = await Product.findOne({ where: { userId: user.id } }); // что-то другое
+    let product = await Product.findOne({ where: { userId: user.id, title: title,categoryId: categoryId   }, }); 
+    console.log();
 
     if (!product) {
-      await shop.create({
+     product = await Product.create({
         title,
         price,
         description,

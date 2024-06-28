@@ -13,7 +13,7 @@ export type ProductType = {
 
 export type CreateProductType = {
     title: string,
-    price: number | null,
+    price: number | string ,
     description: string,
     userId: number | null
     categoryId: number | null,

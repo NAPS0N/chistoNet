@@ -54,7 +54,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="footerBottom">&copy; 2023 Все права защищены компанией ЧИСТО.NET</div>
+      <div className="footerBottom">&copy; 2023 Все права защищены ЧИСТО.NET</div>
     </div>
   );
 };

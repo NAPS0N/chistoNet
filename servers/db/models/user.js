@@ -13,6 +13,8 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(models.Chat, { foreignKey: "toId" });
       this.hasOne(models.Individual, { foreignKey: "userId" });
       this.hasOne(models.Company, { foreignKey: "userId" });
+      this.hasOne(models.Shop, { foreignKey: "userId" });
+
     }
   }
   User.init(

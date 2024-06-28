@@ -1,7 +1,6 @@
-import type { PayloadAction } from '@reduxjs/toolkit';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { ShopType, ShopTypeUpdate } from '../../../../pages/Shop/ShopType';
-import { fetchShopLoad, fetchUpdateShop } from '../../../../pages/Shop/api.shop';
+import { ShopType } from '../../../../pages/Shop/ShopType';
+import { fetchCreateShop, fetchShopLoad, fetchUpdateShop } from '../../../../pages/Shop/api.shop';
 
 export type InitialStateType = {
   shop: ShopType;
@@ -22,6 +21,8 @@ const initialState: InitialStateType = {
 };
 
 const loadShop = createAsyncThunk('shop/load', async () => fetchShopLoad());
+console.log('loadShop',loadShop);
+
 // const updateImg = createAsyncThunk('shop/updateImg', async (data)=>fetchShopUpdateImg(data))
 const updateFormShop = createAsyncThunk('shop/updateForm', async (updateForm: ShopType)=>fetchUpdateShop({updateForm}))
 const CreatShop = createAsyncThunk('shop/createForm', async (createForm: ShopType)=>fetchCreateShop({createForm}))

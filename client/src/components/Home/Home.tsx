@@ -7,7 +7,7 @@ import { Carousel } from 'antd';
 
 const contentStyle: React.CSSProperties = {
   margin: 0,
-  height: '500px',
+  height: '550px',
   width: '1200px',
   color: '#fff',
   lineHeight: '160px',
@@ -27,7 +27,7 @@ function Home(): JSX.Element {
   return (
     <>
 <div>
-<Carousel autoplay autoplaySpeed={2000} afterChange={onChange}>
+<Carousel autoplay autoplaySpeed={2500} afterChange={onChange}>
       <div>
         <img style={contentStyle} src='./public/slider/1.png' alt='1'/>
       </div>

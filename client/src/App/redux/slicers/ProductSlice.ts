@@ -18,7 +18,7 @@ const initialState: InitialStateType = {
 const loadProducts = createAsyncThunk('products/load', async () => fetchProductLoad())
 const loadProductShop = createAsyncThunk('productShop/load', async () => fetchShopProduct())
 // const loadProductUser = createAsyncThunk('productUser/load', async () => fetchUserProduct())
-const CreatProduct = createAsyncThunk('product/create', async ({createForm}:{createForm:CreateProductType}) => fetchCreateProduct(createForm))
+const CreatProduct = createAsyncThunk('product/create', async (createForm: CreateProductType) => fetchCreateProduct(createForm))
 
 
 export const productSlice = createSlice({

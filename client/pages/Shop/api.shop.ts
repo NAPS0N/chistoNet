@@ -7,6 +7,7 @@ export const fetchShopLoad = async () => {
   
     const res: AxiosResponse<{ shop: ShopType }> =
       await axiosInstance.get('/profile/shop');
+      console.log(9999999999, res.data);
       
     return res.data;
   };
@@ -19,7 +20,7 @@ export const fetchShopLoad = async () => {
 
   export const fetchCreateShop = async ({createForm}: {createForm: ShopType }) => {
     const res: AxiosResponse<{shop:ShopType}> =
-    await axiosInstance.put('/profile/shop/create', createForm)
+    await axiosInstance.post('/profile/shop/create', createForm)
     console.log(888888888, res.data);
     
     return res.data;

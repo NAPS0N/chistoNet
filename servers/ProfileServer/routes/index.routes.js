@@ -1,5 +1,3 @@
-// const verifyRefreshToken = require("../middleware/verifyRefreshToken");
-// const checkAdminPermission = require("../middleware/checkAdminPermission")
 
 const router = require("express").Router();
 

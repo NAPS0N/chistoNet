@@ -9,12 +9,14 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
+import { CreatProduct } from '../../App/redux/slicers/ProductSlice';
+import { useNavigate } from 'react-router-dom';
 
 
 function CreateProductForm({ setOpen }: { setOpen: React.Dispatch<React.SetStateAction<boolean>> }): JSX.Element {
   const [createForm, setCreateForm] = useState<CreateProductType>({
     title: '',
-    price: null,
+    price: '0',
     description: '',
     userId: null,
     categoryId: null,
@@ -25,16 +27,20 @@ function CreateProductForm({ setOpen }: { setOpen: React.Dispatch<React.SetState
   // Category
   const [category, setCategory] = React.useState('');
   const handleChange = (event: SelectChangeEvent) => {
+    setCreateForm({ ...createForm, categoryId: +event.target.value })
+    
     setCategory(event.target.value as string);
   };
 // ==========
-
+const navigate = useNavigate()
   const dispatch = useAppDispatch();
 
 
   const createProduct = async () => {
     await dispatch(CreatProduct(createForm)).catch(console.log);
     setOpen(false)
+    navigate('/personalaccaunt')
+    
   };
 
   return (
@@ -55,7 +61,7 @@ function CreateProductForm({ setOpen }: { setOpen: React.Dispatch<React.SetState
       <Form.Item label="Цена" name="price">
         <Input
           type="number"
-          placeholder={createForm.price}
+          placeholder='0'
           value={createForm.price}
           onChange={(e) => setCreateForm({ ...createForm, price: +e.target.value })}
         />
@@ -112,7 +118,7 @@ function CreateProductForm({ setOpen }: { setOpen: React.Dispatch<React.SetState
     </Box>
         <br/>
       <Form.Item>
-        <Button style={{ background: '#468866' }} type="primary" htmlType="submit" onClick={()=>void createProduct()}>
+        <Button style={{ background: '#468866' }} type="primary" htmlType="submit">
           Создать
         </Button>
       </Form.Item>

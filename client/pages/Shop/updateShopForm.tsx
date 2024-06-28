@@ -1,25 +1,17 @@
 import React, { useState } from 'react';
 import { Form, Input, Button, Upload } from 'antd';
-import { useAppDispatch } from '../../src/App/redux/store';
+import { useAppDispatch, useAppSelector } from '../../src/App/redux/store';
 import { ShopType, ShopTypeUpdate } from './ShopType';
 import { updateFormShop } from '../../src/App/redux/slicers/ShopSlice';
 import { PlusOutlined } from '@ant-design/icons';
 
 function UpdateShopForm({ setOpen }: { setOpen: React.Dispatch<React.SetStateAction<boolean>> }): JSX.Element {
-  const [updateForm, setUpdateForm] = useState<ShopType>({
-    userId: null,
-    labelName: '',
-    logo: '',
-    address: '',
-    photo: '',
-    description: '',
-    lax: '',
-    lon: '',
-    phoneNumber: '',
-  });
+  const shop = useAppSelector((store)=>store.shop.shop)
+  const [updateForm, setUpdateForm] = useState<ShopType>(shop)
+    
 
   const dispatch = useAppDispatch();
-
+ 
 
   // const normFile = (e: any) => {
   //   if (Array.isArray(e)) {
@@ -70,7 +62,7 @@ function UpdateShopForm({ setOpen }: { setOpen: React.Dispatch<React.SetStateAct
         <Input
           type="text"
           placeholder={updateForm.photo}
-          value={updateForm.labelName}
+          defaultValue={updateForm.photo}
           onChange={(e) => setUpdateForm({ ...updateForm, photo: e.target.value })}
         />
       </Form.Item>
@@ -80,7 +72,7 @@ function UpdateShopForm({ setOpen }: { setOpen: React.Dispatch<React.SetStateAct
         <Input
           type="text"
           placeholder={updateForm.labelName}
-          value={updateForm.labelName}
+          defaultValue={updateForm.labelName}
           onChange={(e) => setUpdateForm({ ...updateForm, labelName: e.target.value })}
         />
       </Form.Item>
@@ -89,7 +81,7 @@ function UpdateShopForm({ setOpen }: { setOpen: React.Dispatch<React.SetStateAct
         <Input
           type="text"
           placeholder={updateForm.address}
-          value={updateForm.address}
+          defaultValue={updateForm.address}
           onChange={(e) => setUpdateForm({ ...updateForm, address: e.target.value })}
         />
       </Form.Item>
@@ -98,7 +90,7 @@ function UpdateShopForm({ setOpen }: { setOpen: React.Dispatch<React.SetStateAct
         <Input
           type="text"
           placeholder={updateForm.description}
-          value={updateForm.address}
+          defaultValue={updateForm.address}
           onChange={(e) => setUpdateForm({ ...updateForm, description: e.target.value })}
         />
       </Form.Item>
@@ -107,7 +99,7 @@ function UpdateShopForm({ setOpen }: { setOpen: React.Dispatch<React.SetStateAct
         <Input
           type="text"
           placeholder={updateForm.phoneNumber}
-          value={updateForm.phoneNumber}
+          defaultValue={updateForm.phoneNumber}
           onChange={(e) => setUpdateForm({ ...updateForm, phoneNumber: e.target.value })}
         />
       </Form.Item>

@@ -46,26 +46,19 @@ const style = {
 //========
 
 export default function Shop(): JSX.Element {
-  const [formUpdate, setFormUpdate] = React.useState(false);
-const [descript, setDescript] = React.useState('');
 const [open, setOpen] = React.useState(false);
 const handleOpen = () => setOpen(true);
 const handleClose = () => setOpen(false);
 
 
   const dispatch = useAppDispatch();
+
   React.useEffect(() => {
+    console.log("AAAAAAAAAAAAAA");
+    
     dispatch(loadShop()).catch(console.log);
     dispatch(loadProductShop()).catch(console.log);
   }, []);
-
-  // const updatePhoto = async () => {
-  //   await dispatch(updateImg()).catch(console.log)
-  // }
-
-  // const updateDescription = async () => {
-    // await dispatch(updateShopDiscription()).catch(console.log);
-  // }
 
   //Настройки кнопок
   const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({

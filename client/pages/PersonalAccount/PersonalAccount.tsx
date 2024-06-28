@@ -184,7 +184,7 @@ const handleClose = () => setOpen(false);
             )}
 
             {selectItem === 'myAd' && (
-              <Box sx={{ flexGrow: 1, marginLeft: 30 }}>
+              <Box sx={{ flexGrow: 1}}>
                 <Grid container spacing={1}>
                   <Grid container item spacing={3}>
                   <ColorButton variant="contained" onClick={handleOpen}>

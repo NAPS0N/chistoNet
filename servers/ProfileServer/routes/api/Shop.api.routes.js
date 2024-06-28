@@ -14,11 +14,11 @@ router.get('/', verifyAccessToken, async (req, res) => {
 
 router.put('/user', verifyAccessToken, async (req, res) => {
   try {
-    const { photo, labelName,  address, description } = req.body;
+    const { photo, labelName,  address, description, phoneNumber } = req.body;
     const { user } = res.locals;
-    const shop = await Shop.findOne({ where: { userId: user.id } });
+    let shop = await Shop.findOne({ where: { userId: user.id } });
     if (shop) {
-      await shop.update({
+      shop = await shop.update({
         userId: user.id,
         labelName,
         logo: shop.logo,
@@ -42,12 +42,13 @@ router.put('/user', verifyAccessToken, async (req, res) => {
 
 router.post('/create',verifyAccessToken, async (req,res) => {
   try {
-    const { photo, labelName, address, logo, description } = req.body;
+    const { photo, labelName, address, logo, description, phoneNumber } = req.body;
     const { user } = res.locals;
-    const shop = await Shop.findOne({ where: { userId: user.id } });
+    let shop = await Shop.findOne({ where: { userId: user.id } });
 
     if (!shop) {
-      await shop.create({
+      
+      shop = await Shop.create({
         userId: user.id,
         labelName,
         logo,

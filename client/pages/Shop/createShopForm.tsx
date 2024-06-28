@@ -22,7 +22,11 @@ function CreateShopForm({ setOpen }: { setOpen: React.Dispatch<React.SetStateAct
 
 
   const createShop = async () => {
+  
+    console.log(122212222, createForm);
+    
     await dispatch(CreatShop(createForm)).catch(console.log);
+    
     setOpen(false)
   };
 
@@ -87,7 +91,7 @@ function CreateShopForm({ setOpen }: { setOpen: React.Dispatch<React.SetStateAct
       </Form.Item>
 
       <Form.Item>
-        <Button style={{ background: '#468866' }} type="primary" htmlType="submit" onClick={()=>void createShop()}>
+        <Button style={{ background: '#468866' }} type="primary" htmlType="submit">
           Создать
         </Button>
       </Form.Item>
