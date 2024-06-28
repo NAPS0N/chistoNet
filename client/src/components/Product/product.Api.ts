@@ -28,11 +28,11 @@ export const fetchProductByCategoryLoad = async (id: number): Promise<ProductTyp
   return response.data.products;
 };
 
-// export const fetchSingleProduct = async (): Promise<ProductType> => {
-//   const response: AxiosResponse<{ message: string; product: ProductType}> =
-//     await axios.get('/api/products/:id');
-//     return response.data.product
-// }
+export const fetchSingleProduct = async (id: number): Promise<ProductType> => {
+  const response: AxiosResponse<{ message: string; product: ProductType}> =
+    await axios.get(`/api/products/${id}`);
+    return response.data.product
+}
 
 export const fetchShopProduct = async (): Promise<ProductType[]> => {  
   const res: AxiosResponse<{ message: string; shopProducts: ProductType[]}> =

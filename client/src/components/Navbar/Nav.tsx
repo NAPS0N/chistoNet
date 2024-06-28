@@ -120,7 +120,7 @@ function Nav(): JSX.Element {
                 textDecoration: 'none',
               }}
             >
-              <Link to="/home" className="menuLink">
+              <Link to="/" className="menuLink">
                 ChistoNet
               </Link>
             </Typography> */}

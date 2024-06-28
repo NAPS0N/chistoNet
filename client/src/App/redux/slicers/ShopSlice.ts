@@ -27,6 +27,7 @@ console.log('loadShop',loadShop);
 const updateFormShop = createAsyncThunk('shop/updateForm', async (updateForm: ShopType)=>fetchUpdateShop({updateForm}))
 const CreatShop = createAsyncThunk('shop/createForm', async (createForm: ShopType)=>fetchCreateShop({createForm}))
 
+
 export const shopSlicer = createSlice({
   name: 'shop',
   initialState,

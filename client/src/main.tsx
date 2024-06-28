@@ -31,6 +31,8 @@ import NewsUpdateForm from './components/News/NewsUpdateForm';
 import CompanyProfile from '../pages/Profile/Company/CompanyProfile';
 import Policy from './components/Footer/Policy';
 import Rules from './components/Footer/Rules';
+import Product from './components/Product/Product';
+
 
 
 const router = createBrowserRouter([
@@ -51,10 +53,10 @@ const router = createBrowserRouter([
         path: '/products/categories/:id',
         element: <ProductByCategory />,
       },
-      // {
-      //   path: '/products',
-      //   element: <ListOfProducts/>,
-      // },
+      {
+        path: '/product/:id',
+        element: <Product/>,
+      },
       {
         path: '/products/:id',
         element: <ProductItem />,
