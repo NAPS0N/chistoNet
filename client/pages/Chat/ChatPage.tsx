@@ -24,6 +24,17 @@ function Chat({ users, userAuth, myMessages, companionMessages, companionUsers }
       setStatus(data);
       setTimeout(() => setStatus(''), 2000);
     });
+
+    socket.on('message', (msg) => {
+      console.log(12345678);
+
+      setMessages((prevMessages) => [...prevMessages, msg]);
+    });
+
+    return () => {
+      socket.off('responseTyping');
+      socket.off('message');
+    };
   }, []);
 
   return (

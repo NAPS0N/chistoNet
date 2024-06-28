@@ -10,7 +10,7 @@ function MessageBlock({ companionId, userAuth, socket }): JSX.Element {
   const dispatchMsg = useDispatch();
 
   // для отображения печатания
-  const isTyping = () => socket.emit('typing', `${localStorage.getItem('user')} is typing`);
+  const isTyping = () => socket.emit('typing', `${userAuth} is typing`);
 
   const handleSend = (e): void => {
     e.preventDefault();

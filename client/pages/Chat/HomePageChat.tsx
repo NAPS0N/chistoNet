@@ -8,6 +8,7 @@ import { loadUsers } from '../../src/App/redux/slicers/AuthSlicer';
 import ChatPage from './ChatPage';
 import type { UserType } from '../../src/components/Auth/UserType';
 
+
 function HomePageChat(): JSX.Element {
   // достаю все сообщения
   const userAuth: UserType | null = useAppSelector((state) => state.auth.user);
@@ -38,8 +39,6 @@ function HomePageChat(): JSX.Element {
   useEffect(() => {
     dispatch(loadUsers()).catch(console.log);
   }, []);
-
-  
 
   const navigate = useNavigate();
   const [user, setUser] = useState('');
