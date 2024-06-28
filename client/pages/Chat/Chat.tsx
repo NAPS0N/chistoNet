@@ -2,17 +2,13 @@ import React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
-import BottomNavigation from '@mui/material/BottomNavigation';
-import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import RestoreIcon from '@mui/icons-material/Restore';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ArchiveIcon from '@mui/icons-material/Archive';
-import Paper from '@mui/material/Paper';
+
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemText from '@mui/material/ListItemText';
 import { styled } from '@mui/system';
+import type { UserType } from '../../src/components/Auth/UserType';
 
 const StyledListItemButton = styled(ListItemButton)(({ theme }) => ({
   borderRadius: theme.shape.borderRadius,
@@ -21,8 +17,13 @@ const StyledListItemButton = styled(ListItemButton)(({ theme }) => ({
   margin: theme.spacing(1, 0),
 }));
 
-function Chat({ setIsOpen, setCompanionId, companionUsers }): JSX.Element {
-  const [value, setValue] = React.useState(0);
+type ChatProps = {
+  setIsOpen: (isOpen: boolean) => void;
+  setCompanionId: (id: number | null) => void;
+  companionUsers: UserType[];
+};
+
+function Chat({ setIsOpen, setCompanionId, companionUsers }: ChatProps): JSX.Element {
   const ref = React.useRef<HTMLDivElement>(null);
 
   return (

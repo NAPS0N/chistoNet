@@ -3,20 +3,36 @@ import { io } from 'socket.io-client';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 
+import type { MessageType } from 'antd/es/message/interface';
 import Sidebar from '../../src/components/Chat/components/Sidebar';
 import Bodychat from '../../src/components/Chat/components/Bodychat';
 import MessageBlock from '../../src/components/Chat/components/MessageBlock';
+import type { UserType } from '../../src/components/Auth/UserType';
 
 const socket = io('http://localhost:5000');
 
-function Chat({ users, userAuth, myMessages, companionMessages, companionUsers }): JSX.Element {
-  const [messages, setMessages] = useState([]);
-  const [status, setStatus] = useState([]);
-  const [companionId, setCompanionId] = useState(null);
-  const [isOpen, setIsOpen] = useState(false);
+type ChatProps = {
+  users: UserType[];
+  userAuth: UserType;
+  companionUsers: UserType[];
+  myMessages: MessageType[];
+  companionMessages: MessageType[];
+};
 
-  const toFromMessages = myMessages.filter(
-    (msg) => msg.fromId === companionId || msg.toId === companionId,
+function Chat({
+  users,
+  userAuth,
+  myMessages,
+  companionMessages,
+  companionUsers,
+}: ChatProps): JSX.Element {
+  const [messages, setMessages] = useState<MessageType[]>([]);
+  const [status, setStatus] = useState<string>('');
+  const [companionId, setCompanionId] = useState<number | null>(null);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const toFromMessages: MessageType[] = myMessages.filter(
+    (msg: MessageType) => msg.fromId === companionId || msg.toId === companionId,
   );
 
   useEffect(() => {

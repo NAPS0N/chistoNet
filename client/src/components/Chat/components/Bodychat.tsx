@@ -2,6 +2,8 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Box, Paper, Typography, useTheme } from '@mui/material';
 import { styled } from '@mui/system';
+import type { UserType } from '../../Auth/UserType';
+import type { MessageType } from '../../../../pages/Chat/MessageType';
 
 const MessageContainer = styled(Box)(({ theme }) => ({
   display: 'flex',
@@ -34,10 +36,16 @@ const DateTypography = styled(Typography)(({ theme }) => ({
   marginTop: theme.spacing(1),
 }));
 
-function Bodychat({ users, toFromMessages, companionId, messages, status }): JSX.Element {
-  const navigate = useNavigate();
+type BodyChatProps = {
+  users: UserType[];
+
+  toFromMessages: MessageType[];
+  companionId: number;
+};
+
+function Bodychat({ users, toFromMessages, companionId }: BodyChatProps): JSX.Element {
   const theme = useTheme();
-  const userCompain = users.find((user) => user.id === companionId);
+  const userCompain: UserType | undefined = users.find((user) => user.id === companionId);
 
   return (
     <MessageContainer theme={theme}>

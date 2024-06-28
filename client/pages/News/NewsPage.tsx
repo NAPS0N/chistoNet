@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
 import { Box, IconButton } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
@@ -11,7 +11,7 @@ import NewsCardList from '../../src/components/News/NewsCardList';
 import { loadUsers } from '../../src/App/redux/slicers/AuthSlicer';
 import type { UserType } from '../../src/components/Auth/UserType';
 
-const useIsDarkMode = () => {
+const useIsDarkMode = (): boolean => {
   const theme = useTheme();
   return theme.palette.mode === 'dark';
 };
@@ -23,7 +23,7 @@ function NewsPage(): JSX.Element {
   const allNews = useAppSelector((store) => store.news.news);
   const userAuth: UserType | null = useAppSelector((state) => state.auth.user);
 
-  const handleSettingsClick = () => {
+  const handleSettingsClick: () => void = () => {
     navigate(`/createnews`);
   };
 
