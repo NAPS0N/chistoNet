@@ -72,7 +72,7 @@ function NewsCardList({ news, userAuth }): JSX.Element {
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mb: 2 }}>
-      <Card sx={{ maxWidth: 500, backgroundColor: '#1f8a7009', boxShadow: 10 }}>
+      <Card sx={{ width: 500, backgroundColor: '#1f8a7009', boxShadow: 10 }}>
         <CardHeader
           avatar={<Avatar aria-label="recipe" src="../../../public/logo/Фавикон.png" />}
           title="ЧИСТО.NET"
@@ -80,7 +80,7 @@ function NewsCardList({ news, userAuth }): JSX.Element {
         />
         <CardMedia
           component="img"
-          sx={{ boxShadow: 3, maxHeight: 500 }}
+          sx={{ boxShadow: 3, height: 300 }}
           image={news.photo}
           alt="Paella dish"
         />

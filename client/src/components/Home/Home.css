@@ -16,7 +16,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20px; 
+  margin: 20px;
 }
 
 .header {
@@ -39,6 +39,6 @@
   margin: '10px';
 
   overflow: hidden;
-  margin-right: 13%;
+ 
   margin-top: 5%;
 }
